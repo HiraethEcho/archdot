@@ -6,14 +6,25 @@
 ## pacman etc
 
 
-```
+```shell
 sudo pacman -S archlinux-keyring
 [archlinuxcn]
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 
-`sudo pacman -Syyu`
-`sudo pacman -S yay`
+```shell
+sudo pacman -Syyu
+sudo pacman -S yay
+```
+```shell
+paccache -r # 清理缓存,仅包含最近的三个版本
+paccache -rk1 # 清理缓存,仅包含最近的1个版本
+pacman -Sc # 清理未安装软件包
+pacman -Scc # 清理缓存中所有内容
+sudo pacman -R $(pacman -Qdtq)
+sudo pacman -Rns $(pacman -Qdtq)
+journalctl --vacuum-size=50M #限制日志
+```
 ### manjaro kde
 
 ```
@@ -23,7 +34,7 @@ sudo chown -R sddm:sddm /var/lib/sddm/.config
 ## app config
 
 ### conky
-```
+```shell
 ${alignr}${font Unifont:style=regular:pixelsize=50}${time %H:%M}${font}
 
 ${alignr}${font Unifont:style=regular:pixelsize=18}${time %A %d %B %Y}${font}
@@ -32,7 +43,7 @@ mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
 ```
 ### i3
 ![来自 2023-02-02 19-35-15 的截图](https://user-images.githubusercontent.com/108179798/216314424-de609e26-df66-4794-9a09-f65f2ed9fa9a.png)
-```
+```shell
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec_always feh --bg-fill /usr/share/bachgrounds/i3/wall.png
@@ -52,12 +63,12 @@ sudo pacman -S feh
 
 
 ## watt
-```
+```shyell
 yay -S watt-toolkit-bin
 ```
 
 
-```
+```shell
 sudo trust anchor --store SteamTools.Certificate.cer
 sudo setcap cap_net_bind_service=+eip /opt/watt-toolkit/Steam++
 sudo chmod a+r /etc/hosts
@@ -67,7 +78,9 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 ### certificate
 Currently Arch Linux uses p11-kit from Fedora, which has more features (e.g. explicit distrusts) than the older scripts from Debian. To import a trust anchor using p11-kit, do:
 
-Run trust anchor --store myCA.crt as root.
+Run trust anchor --store myCA.crt 
+
+as root.
 The certificate will be written to /etc/ca-certificates/trust-source/myCA.p11-kit and the "legacy" directories automatically updated.
 
 If you get "no configured writable location" or a similar error, import the CA manually:
@@ -79,7 +92,7 @@ Run update-ca-trust as root.
 For more information, see the update-ca-trust(8) manual page.
 
 Arch 系的用户可能需要使用
-```
+```shell
 sudo trust anchor --store SteamTools.Certificate.cer 
 ```
 导入证书才能正常加速 Steam
