@@ -38,6 +38,12 @@ journalctl --vacuum-size=50M #限制日志
 
 ## DE
 
+### Display Manager
+[Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
+- sddm
+- lightDM
+- GDM
+- SLiM
 ### conky
 ```shell
 ${alignr}${font Unifont:style=regular:pixelsize=50}${time %H:%M}${font}
@@ -66,9 +72,17 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -theme Monokai -icon-t
 ### feh etc
 sudo pacman -S feh
 
+### dwm
+
+### awesome
+Maybe use Xfce as DE and awesome as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
+### rofi
+
+### slock
+
 
 ## watt
-```shyell
+```shell
 yay -S watt-toolkit-bin
 ```
 
@@ -112,6 +126,19 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > 勾选 信任由此证书颁发机构来标识网站
 
 
+## Basic app
+### Terminal
+- st
+- kitty
+- alacritty
+- etc
+
+### shell
+- zsh
+- fish
+
+### vim/neovim
+
 ## apps
 ### wechat
 `yay -S wewechat++ ` 
@@ -125,5 +152,7 @@ and
 
 `yay -S linuxqq`
 
+### zotero
 
+### pdf reader
 
