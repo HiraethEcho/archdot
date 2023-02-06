@@ -1,30 +1,63 @@
 # archdot
 
 ## init
-### manjaro kde
-
-```
-sudo chown -R sddm:sddm /var/lib/sddm/.config
-```
 
 ### pacman etc
 
+ sudo vim /etc/pacman.d/mirrorlist
+
+```
+# 清华大学
+
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+
+# 163
+
+Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+
+# aliyun
+
+Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+
+```
+
+sudo vim /etc/pacman.conf, add
+
+```
+[archlinuxcn]
+SigLevel = Optional TrustAll
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+```
+
+> 手动更改源排名
+> sudo pacman-mirrors -i -c China -m rank
+> sudo pacman-mirrors -i -c China -m rank //更新镜像排名
+> sudo pacman -Syy //更新数据源
+> 排列源（在终端中）
+> sudo pacman-mirrors -g
 
 ```shell
 sudo pacman -S archlinux-keyring
-[archlinuxcn]
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
+
 sometimes AUR的包出现签名是未知信任的, then
-```
+
+```bash
 sudo pacman -S archlinuxcn-keyring
 ```
 
-update:
-```shell
-sudo pacman -Syyu
+aur:
+
+```
 sudo pacman -S yay
 ```
+
+update:
+
+```shell
+sudo pacman -Syyu
+```
+
 ```shell
 paccache -r # 清理缓存,仅包含最近的三个版本
 paccache -rk1 # 清理缓存,仅包含最近的1个版本
@@ -35,25 +68,40 @@ sudo pacman -Rns $(pacman -Qdtq)
 journalctl --vacuum-size=50M #限制日志
 ```
 
+### misc
+
+If manjaro kde:
+
+```
+sudo chown -R sddm:sddm /var/lib/sddm/.config
+```
 
 ## DE
 
 ### Display Manager
+
 [Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
+
 - sddm
+
 - lightDM
+
 - GDM
+
 - SLiM
-### conky
-```shell
-${alignr}${font Unifont:style=regular:pixelsize=50}${time %H:%M}${font}
 
-${alignr}${font Unifont:style=regular:pixelsize=18}${time %A %d %B %Y}${font}
+### Desktop Environment
 
-mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
-```
-### i3
+- kde
+- xfce
+- gnone
+  
+  ### windows manger
+
+#### i3
+
 ![来自 2023-02-02 19-35-15 的截图](https://user-images.githubusercontent.com/108179798/216314424-de609e26-df66-4794-9a09-f65f2ed9fa9a.png)
+
 ```shell
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -69,25 +117,47 @@ bindsym $mod+b workspace 5; exec firefox
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -theme Monokai -icon-theme "Tela-circle" -show-icons
 ```
-### feh etc
+
+#### dwm
+
+#### awesome
+
+Maybe use Xfce as DE and awesome as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
+
+### tools
+
+#### conky
+
+```shell
+${alignr}${font Unifont:style=regular:pixelsize=50}${time %H:%M}${font}
+
+```
+
+```
+${alignr}${font Unifont:style=regular:pixelsize=18}${time %A %d %B %Y}${font}
+```
+
+```shell
+mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
+```
+
+#### feh etc
+
 sudo pacman -S feh
 
-### dwm
+#### rofi
 
-### awesome
-Maybe use Xfce as DE and awesome as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
-### rofi
+#### slock
 
-### slock
+## web
 
+### watt-toolkit
 
-## watt
 ```shell
 yay -S watt-toolkit-bin
 ```
 
-
-### certificate
+**certificate**
 
 ```shell
 sudo trust anchor --store SteamTools.Certificate.cer
@@ -106,9 +176,11 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > Run update-ca-trust as root.
 > For more information, see the update-ca-trust(8) manual page.
 > Arch 系的用户可能需要使用
+> 
 > ```shell
 > sudo trust anchor --store SteamTools.Certificate.cer 
 > ```
+> 
 > 导入证书才能正常加速 Steam
 > 证书路径请参考 下方存储空间位置
 > Steam 信任证书 ( Chrome 内核浏览器 )
@@ -125,26 +197,29 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > SteamTools.Certificate.pem文件 ( 火狐支持 cer 或者 pem 格式导入 )
 > 勾选 信任由此证书颁发机构来标识网站
 
-
 ## Basic app
+
 ### Terminal
+
 - st
 - kitty
 - alacritty
 - etc
 
 ### shell
+
 - zsh
 - fish
 
 ### vim/neovim
 
 ## apps
+
 ### wechat
+
 `yay -S wewechat++ ` 
 or
 `yay -S electronic-wechat-uos-bin ` 
-
 
 `freechat` is fucked, since web version wechat is dennied. 
 
@@ -155,4 +230,5 @@ and
 ### zotero
 
 ### pdf reader
+
 
