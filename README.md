@@ -7,21 +7,23 @@
  sudo vim /etc/pacman.d/mirrorlist
 
 ```
-# 清华大学
 
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 
-# 163
-
-Server = http://mirrors.163.com/archlinux/$repo/os/$arch
-
-# aliyun
-
-Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
 
 ```
 
-sudo vim /etc/pacman.conf, add
+
+```shell
+sudo pacman -S archlinux-keyring
+```
+
+then update.
+```shell
+sudo pacman -Syyu
+```
+
+`sudo vim /etc/pacman.conf`, add
 
 ```
 [archlinuxcn]
@@ -29,20 +31,7 @@ SigLevel = Optional TrustAll
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 
-> 手动更改源排名
-> sudo pacman-mirrors -i -c China -m rank
-> sudo pacman-mirrors -i -c China -m rank //更新镜像排名
-> sudo pacman -Syy //更新数据源
-> 排列源（在终端中）
-> sudo pacman-mirrors -g
-
 ```shell
-sudo pacman -S archlinux-keyring
-```
-
-sometimes AUR的包出现签名是未知信任的, then
-
-```bash
 sudo pacman -S archlinuxcn-keyring
 ```
 
@@ -52,12 +41,7 @@ aur:
 sudo pacman -S yay
 ```
 
-update:
-
-```shell
-sudo pacman -Syyu
-```
-
+clean pacman:
 ```shell
 paccache -r # 清理缓存,仅包含最近的三个版本
 paccache -rk1 # 清理缓存,仅包含最近的1个版本
@@ -79,26 +63,26 @@ sudo chown -R sddm:sddm /var/lib/sddm/.config
 ## DE
 
 ### Display Manager
-
 [Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
 
 - sddm
-
 - lightDM
-
+- ly
 - GDM
 
-- SLiM
+Or just start from tty.
 
 ### Desktop Environment
 
-- kde
 - xfce
-- gnone
+- wayfire
+
+Maybe use Xfce as DE and dwm as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
   
-  ### windows manger
+### windows manger
 
 #### i3
+**Maybe Not**
 
 ![来自 2023-02-02 19-35-15 的截图](https://user-images.githubusercontent.com/108179798/216314424-de609e26-df66-4794-9a09-f65f2ed9fa9a.png)
 
@@ -119,10 +103,9 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -theme Monokai -icon-t
 ```
 
 #### dwm
+This is great! But also hard to config.
 
-#### awesome
 
-Maybe use Xfce as DE and awesome as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
 
 ### tools
 
@@ -170,17 +153,18 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > Currently Arch Linux uses p11-kit from Fedora, which has more features (e.g. explicit distrusts) than the older scripts from Debian. To import a trust anchor using p11-kit, do:
 > Run trust anchor --store myCA.crt 
 > as root.
+>
 > The certificate will be written to /etc/ca-certificates/trust-source/myCA.p11-kit and the "legacy" directories automatically updated.
 > If you get "no configured writable location" or a similar error, import the CA manually:
 > Copy the certificate to the /etc/ca-certificates/trust-source/anchors directory.
 > Run update-ca-trust as root.
 > For more information, see the update-ca-trust(8) manual page.
 > Arch 系的用户可能需要使用
-> 
-> ```shell
-> sudo trust anchor --store SteamTools.Certificate.cer 
-> ```
-> 
+ 
+ ```shell
+ sudo trust anchor --store SteamTools.Certificate.cer 
+ ```
+ 
 > 导入证书才能正常加速 Steam
 > 证书路径请参考 下方存储空间位置
 > Steam 信任证书 ( Chrome 内核浏览器 )
@@ -200,11 +184,14 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 ## Basic app
 
 ### Terminal
-
+For Xorg:
 - st
 - kitty
 - alacritty
 - etc
+
+For wayland
+- foot
 
 ### shell
 
