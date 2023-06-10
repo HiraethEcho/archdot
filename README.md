@@ -1,8 +1,6 @@
 # archdot
 
-## init
-
-### pacman etc
+## pacman
 
  sudo vim /etc/pacman.d/mirrorlist
 
@@ -10,11 +8,10 @@
 
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 
-
 ```
 
 
-```shell
+```bash
 sudo pacman -S archlinux-keyring
 ```
 
@@ -31,7 +28,7 @@ SigLevel = Optional TrustAll
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 
-```shell
+```bash
 sudo pacman -S archlinuxcn-keyring
 ```
 
@@ -42,7 +39,7 @@ sudo pacman -S yay
 ```
 
 clean pacman:
-```shell
+```bash
 paccache -r # 清理缓存,仅包含最近的三个版本
 paccache -rk1 # 清理缓存,仅包含最近的1个版本
 pacman -Sc # 清理未安装软件包
@@ -52,97 +49,15 @@ sudo pacman -Rns $(pacman -Qdtq)
 journalctl --vacuum-size=50M #限制日志
 ```
 
-### misc
+## watt-toolkit
 
-If manjaro kde:
-
-```
-sudo chown -R sddm:sddm /var/lib/sddm/.config
-```
-
-## DE
-
-### Display Manager
-[Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
-
-- sddm
-- lightDM
-- ly
-- GDM
-
-Or just start from tty.
-
-### Desktop Environment
-
-- xfce
-- wayfire
-
-Maybe use Xfce as DE and dwm as WM. See [here](https://wiki.archlinux.org/title/Xfce#Use_a_different_window_manager)
-  
-### windows manger
-
-#### i3
-**Maybe Not**
-
-![来自 2023-02-02 19-35-15 的截图](https://user-images.githubusercontent.com/108179798/216314424-de609e26-df66-4794-9a09-f65f2ed9fa9a.png)
-
-```shell
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-exec_always feh --bg-fill /usr/share/bachgrounds/i3/wall.png
-
-exec_always picom -f
-
-bindsym $mod+x exec betterlockscreen -l
-
-bindsym $mod+Shift+s exec shutdown now
-
-bindsym $mod+b workspace 5; exec firefox
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
-bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -theme Monokai -icon-theme "Tela-circle" -show-icons
-```
-
-#### dwm
-This is great! But also hard to config.
-
-
-
-### tools
-
-#### conky
-
-```shell
-${alignr}${font Unifont:style=regular:pixelsize=50}${time %H:%M}${font}
-
-```
-
-```
-${alignr}${font Unifont:style=regular:pixelsize=18}${time %A %d %B %Y}${font}
-```
-
-```shell
-mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
-```
-
-#### feh etc
-
-sudo pacman -S feh
-
-#### rofi
-
-#### slock
-
-## web
-
-### watt-toolkit
-
-```shell
+```bash
 yay -S watt-toolkit-bin
 ```
 
 **certificate**
 
-```shell
+```bash
 sudo trust anchor --store SteamTools.Certificate.cer
 sudo setcap cap_net_bind_service=+eip /opt/watt-toolkit/Steam++
 sudo chmod a+r /etc/hosts
@@ -161,7 +76,7 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > For more information, see the update-ca-trust(8) manual page.
 > Arch 系的用户可能需要使用
  
- ```shell
+ ```bash
  sudo trust anchor --store SteamTools.Certificate.cer 
  ```
  
@@ -181,34 +96,67 @@ pk12util -d sql:$HOME/.pki/nssdb -i XXXX.pfx
 > SteamTools.Certificate.pem文件 ( 火狐支持 cer 或者 pem 格式导入 )
 > 勾选 信任由此证书颁发机构来标识网站
 
-## Basic app
+
+
+## DWM
+dwm: 
+### auto login
+/etc/systemd/system/getty@tty1.service.d/overide.conf:
+
+```
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin wyz --noclear %I $TERM 
+
+```
+
+/etc/systemd/system/getty@tty1.service.d/autologin.conf:
+```
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -f -- \\u' --autologin wyz --noclear %I $TERM 
+
+```
+### feh etc
+
+### rofi
+
+### fonts
+check nerd-cheat-sheet
+
+## sound and bluetooth
+
+```
+yay -S alsa alsa-utils 
+```
+
+```
+yay -S bluez bluez-utils pulseaudio-bluetooth blueberry
+```
+
+
+```
+1. Set  "ControllerMode = bredr"  in  /etc/bluetooth/main.conf
+2. sudo /etc/init.d/bluetooth restart
+3. Try to pair again.
+```
+## Apps
 
 ### Terminal
-For Xorg:
-- st
-- kitty
-- alacritty
-- etc
-
-For wayland
-- foot
+`st`
 
 ### shell
 
-- zsh
-- fish
+`zsh`
 
 ### vim/neovim
 
-## apps
 
 ### wechat
 
 `yay -S wewechat++ ` 
 or
 `yay -S electronic-wechat-uos-bin ` 
-
-`freechat` is fucked, since web version wechat is dennied. 
 
 and 
 
@@ -217,5 +165,29 @@ and
 ### zotero
 
 ### pdf reader
+`sioyek`
 
+## useful commands
+``` sh
+sudo pacman -Rns --recursive --unneeded package_name
+```
 
+### mout win disk
+```
+/dev/nvme0n1p4: LABEL="Hiraeth" BLOCK_SIZE="512" UUID="E6361CF7361CCA87" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="54a7e2d9-5d6e-4487-8d81-1ffdc21ce6f3"
+```
+
+icloud app key
+```
+aqef-ukin-gehe-hqmr
+```
+### nvim server
+```zsh
+nvim --listen localhost:6666
+```
+this works as a server
+
+```zsh
+nvim --server localhost:6666 --remote-ui
+nvim --server localhost:6666 --remote-send gg
+```

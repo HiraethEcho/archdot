@@ -1,0 +1,12 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p5
+UUID=616cc5d4-91cc-4dd3-8089-7b30daad16ca	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1 LABEL=SYSTEM
+UUID=DC42-502D      	/efi      	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p4 LABEL=WIN
+UUID=E6361CF7361CCA87 /mnt/win ntfs-3g default 0 0
