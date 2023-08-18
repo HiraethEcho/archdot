@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=dwm
+Comment=suckless dwm
+Exec=dwm
+Icon=dwm
+Type=XSession

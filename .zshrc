@@ -10,6 +10,7 @@ alias s="fastfetch"
 alias l="lsd -l"
 alias la="lsd -la"
 alias ra="ranger"
+alias lg="lazygit"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile

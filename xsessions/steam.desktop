@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=steam
+Comment=steam
+Exec=/usr/bin/steam -bigpicture
+TryExec=/usr/bin/steam
+Icon=
+Type=Application

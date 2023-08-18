@@ -3,3 +3,5 @@
 	email = wyz2016zxc@outlook.com
 [http]
     sslverify = false
+[init]
+	defaultBranch = main
