@@ -13,7 +13,7 @@ nmcli dev wifi list
 nmcli device wifi connect "your wifi name"password "your wifi password"
 
 ### csdn
-`#pacman -S iw wireless_tools wpa_supplicant`
+`pacman -S iw wireless_tools wpa_supplicant`
 
  
 
