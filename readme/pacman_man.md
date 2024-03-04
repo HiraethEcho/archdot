@@ -1,68 +1,18 @@
 # Pacman Manual PACMAN(8)
 
-## NAME
-
-pacman - package manager utility
-
 ## SYNOPSIS
 
 pacman **operation** [options] [targets]
 
-## DESCRIPTION
-
-Pacman is a package management utility that tracks installed packages on a Linux system. It features dependency support, package groups,
-install and uninstall scripts, and the ability to sync your local machine with a remote repository to automatically upgrade packages.
-Pacman packages are a zipped tar format.
-
-Since version 3.0.0, pacman has been the front-end to libalpm(3), the “Arch Linux Package Management” library. This library allows
-alternative front-ends to be written (for instance, a GUI front-end).
-
-Invoking pacman involves specifying an operation with any potential options and targets to operate on. A target is usually a package name,
-file name, URL, or a search string. Targets can be provided as command line arguments. Additionally, if stdin is not from a terminal and a
-single hyphen (-) is passed as an argument, targets will be read from stdin.
-
 ## OPERATIONS
 
 -D, --database
-Operate on the package database. This operation allows you to modify certain attributes of the installed packages in pacman’s database.
-It also allows you to check the databases for internal consistency. See Database Options below.
 
 -Q, --query
-Query the package database. This operation allows you to view installed packages and their files, as well as meta-information about
-individual packages (dependencies, conflicts, install date, build date, size). This can be run against the local package database or
-can be used on individual package files. In the first case, if no package names are provided in the command line, all installed
-packages will be queried. Additionally, various filters can be applied on the package list. See Query Options below.
 
 -R, --remove
-Remove package(s) from the system. Groups can also be specified to be removed, in which case every package in that group will be
-removed. Files belonging to the specified package will be deleted, and the database will be updated. Most configuration files will be
-saved with a .pacsave extension unless the --nosave option is used. See Remove Options below.
 
 -S, --sync
-Synchronize packages. Packages are installed directly from the remote repositories, including all dependencies required to run the
-packages. For example, pacman -S qt will download and install qt and all the packages it depends on. If a package name exists in more
-than one repository, the repository can be explicitly specified to clarify the package to install: pacman -S testing/qt. You can also
-specify version requirements: pacman -S "bash>=3.2". Quotes are needed, otherwise the shell interprets ">" as redirection to a file.
-
-In addition to packages, groups can be specified as well. For example, if gnome is a defined package group, then pacman -S gnome will
-provide a prompt allowing you to select which packages to install from a numbered list. The package selection is specified using a
-space- and/or comma-separated list of package numbers. Sequential packages may be selected by specifying the first and last package
-numbers separated by a hyphen (-). Excluding packages is achieved by prefixing a number or range of numbers with a caret (^).
-
-Packages that provide other packages are also handled. For example, pacman -S foo will first look for a foo package. If foo is not
-found, packages that provide the same functionality as foo will be searched for. If any package is found, it will be installed. A
-selection prompt is provided if multiple packages providing foo are found.
-
-You can also use pacman -Su to upgrade all packages that are out-of-date. See Sync Options below. When upgrading, pacman performs
-version comparison to determine which packages need upgrading. This behavior operates as follows:
-
-    Alphanumeric:
-        1.0a < 1.0b < 1.0beta < 1.0p < 1.0pre < 1.0rc < 1.0 < 1.0.a < 1.0.1
-    Numeric:
-        1 < 1.0 < 1.1 < 1.1.1 < 1.2 < 2.0 < 3.0.0
-
-Additionally, version strings can have an epoch value defined that will overrule any version comparison, unless the epoch values are
-equal. This is specified in an epoch:version-rel format. For example, 2:1.0-1 is always greater than 1:3.6-1.
 
 -T, --deptest
 Check dependencies; this is useful in scripts such as makepkg to check installed packages. This operation will check each dependency
@@ -77,12 +27,6 @@ pacman takes care of configuration files.
 -F, --files
 Query the files database. This operation allows you to look for packages owning certain files or display files owned by certain
 packages. Only packages that are part of your sync databases are searched. See File Options below.
-
--V, --version
-Display version and exit.
-
--h, --help
-Display syntax for the given operation. If no operation was supplied, then the general syntax is shown.
 
 ## OPTIONS
 
@@ -99,17 +43,10 @@ instead.
 -v, --verbose
 Output paths such as the Root, Conf File, DB Path, Cache Dirs, etc.
 
---arch **arch**
-Specify an alternate architecture.
-
 --cachedir **dir**
 Specify an alternative package cache location (the default is /var/cache/pacman/pkg). Multiple cache directories can be specified, and
 they are tried in the order they are passed to pacman.  NOTE: This is an absolute path, and the root path is not automatically
 prepended.
-
---color **when**
-Specify when to enable coloring. Valid options are always, never, or auto.  always forces colors on; never forces colors off; and auto
-only automatically enables colors when outputting onto a tty.
 
 --config **file**
 Specify an alternate configuration file.
@@ -144,6 +81,25 @@ gateway.
 --sysroot **dir**
 Specify an alternative system root. Pacman will chroot and chdir into the system root prior to running. This allows mounted guest
 systems to be properly operated on. Any other paths given will be interpreted as relative to the system root. Requires root privileges.
+
+### REMOVE OPTIONS (APPLY TO -R)
+
+-c, --cascade
+Remove all target packages, as well as all packages that depend on one or more target packages. This operation is recursive and must be
+used with care, since it can remove many potentially needed packages.
+
+-n, --nosave
+Instructs pacman to ignore file backup designations. Normally, when a file is removed from the system, the database is checked to see
+if the file should be renamed with a .pacsave extension.
+
+-s, --recursive
+Remove each target specified including all of their dependencies, provided that (A) they are not required by other packages; and (B)
+they were not explicitly installed by the user. This operation is recursive and analogous to a backwards --sync operation, and it helps
+keep a clean system without orphans. If you want to omit condition (B), pass this option twice.
+
+-u, --unneeded
+Removes targets that are not required by any other packages. This is mostly useful when removing a group without using the -c option,
+to avoid breaking any dependencies.
 
 ### TRANSACTION OPTIONS (APPLY TO -S, -R AND -U)
 
@@ -265,24 +221,6 @@ this option twice to include packages which are optionally, but not directly, re
 Restrict or filter output to packages that are out-of-date on the local system. Only package versions are used to find outdated
 packages; replacements are not checked here. This option works best if the sync database is refreshed using -Sy.
 
-### REMOVE OPTIONS (APPLY TO -R)
-
--c, --cascade
-Remove all target packages, as well as all packages that depend on one or more target packages. This operation is recursive and must be
-used with care, since it can remove many potentially needed packages.
-
--n, --nosave
-Instructs pacman to ignore file backup designations. Normally, when a file is removed from the system, the database is checked to see
-if the file should be renamed with a .pacsave extension.
-
--s, --recursive
-Remove each target specified including all of their dependencies, provided that (A) they are not required by other packages; and (B)
-they were not explicitly installed by the user. This operation is recursive and analogous to a backwards --sync operation, and it helps
-keep a clean system without orphans. If you want to omit condition (B), pass this option twice.
-
--u, --unneeded
-Removes targets that are not required by any other packages. This is mostly useful when removing a group without using the -c option,
-to avoid breaking any dependencies.
 
 ### SYNC OPTIONS (APPLY TO -S)
 
