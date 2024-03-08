@@ -1,0 +1,56 @@
+# To specify a key, you can use 'xbindkeys --key' or 'xbindkeys --multikey' and put one of the two lines in this file.
+
+# A list of keys is in /usr/include/X11/keysym.h and in /usr/include/X11/keysymdef.h The XK_ is not needed.
+
+# List of modifier: Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock), Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+
+# The release modifier is not a standard X modifier, but you can use it if you want to catch release events instead of press events
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+#   apps
+"pcmanfm"
+  Mod4 + e
+"sudo -A gparted"
+  Mod4 + k
+"i3lock --clock --blur 20"
+  Mod4 + l
+
+# scripts
+"~/scripts/touchpad.sh"
+  Mod4 + space
+
+# rofi
+"rofi -show run"
+  Mod4 + r
+"~/scripts/rofi/allapps.sh"
+  Mod1 + space
+"~/scripts/rofi/powermenu.sh"
+  Mod4 + u
+"~/scripts/rofi/windows.sh"
+  Mod4 + Tab
+"~/scripts/rofi/quicklinks.sh"
+  Mod4 + w
+"~/scripts/rofi/screenshot.sh"
+  Shift + Mod4 + s
+"~/scripts/rofi/quickapps.sh"
+  Mod4 + a
+
+
+## Control+Shift+a  release event starts rxvt
+#"rxvt"
+#  release+control+shift + a
+#
+## Control + mouse button 2 release event starts rxvt
+#"rxvt"
+#  Control + b:2 + Release
+
+##################################
+# End of xbindkeys configuration #
+##################################
