@@ -1,0 +1,17 @@
+lastupdatecheck: 0
+recentrepos:
+- /home/hiraeth/stow
+- /home/hiraeth/archdot
+- /home/hiraeth/program/dwm
+- /home/hiraeth/scripts
+- /home/hiraeth/github/blogs/hexo
+- /home/hiraeth/.config/nvim
+- /home/hiraeth/.local/share/nvim/lazy/mkdnflow.nvim
+- /home/hiraeth/.local/share/nvim/lazy/markdown-preview.nvim
+- /home/hiraeth/github/reviung
+- /home/hiraeth/.vim
+startuppopupversion: 5
+customcommandshistory:
+- git config pull.rebase true
+hidecommandlog: false
+ignorewhitespaceindiffview: false
