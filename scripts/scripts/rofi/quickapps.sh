@@ -33,21 +33,21 @@ office_cmd='libreoffice'
 mail_cmd='thunderbird'
 #  
 # Options
-option_1=" Edge "
-option_2="󰓓 Steam++"
-option_3=" Zotero "
-option_4=" Obsidian "
-option_5="󰇮 Mail "
-option_6=" BlueTooth "
-option_7=" Wifi "
-option_8=" Whale "
-option_9="󱄠 Volume "
-option_10=" Editor "
-option_11=" Onedrive "
-option_12="󰌪 Battery "
-option_13="󰘑 Wechat"
-option_14=" Rss Reader"
-option_15="󰏆 Office"
+option_1=" edge "
+option_2="󰓓 steam++"
+option_3=" zotero "
+option_4=" obsidian "
+option_5="󰇮 mail "
+option_6=" blueTooth "
+option_7=" wifi "
+option_8=" whale "
+option_9="󱄠 volume "
+option_10=" editor "
+option_11=" onedrive "
+option_12="󰌪 battery "
+option_13="󰘑 wechat"
+option_14=" rss reader"
+option_15="󰏆 office"
 
 
 # Rofi CMD

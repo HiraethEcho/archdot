@@ -9,20 +9,19 @@
 theme="~/.config/rofi/themes/quick.rasi"
 
 # Theme Elements
-prompt='Quick Web Links'
-mesg="Using '$BROWSER' as web browser"
+prompt='Links'
 
 efonts="Maple Mono NF 20"
 
 # Options
-option_1="󰟴 Bilibili"
-option_2="󰚩 GPT"
-option_3="󰖟 Blog"
-option_4=" Github"
-option_5="󰣇 Arch Wiki"
-option_6=" Apple"
-option_7=" PicX"
-option_8=" Twitter"
+option_1="󰟴 bilibili"
+option_2="󰚩 gpt"
+option_3="󰖟 blog"
+option_4=" github"
+option_5="󰣇 arch wiki"
+option_6=" apple"
+option_7=" picx"
+option_8=" twitter"
 
 # Rofi CMD
 rofi_cmd() {

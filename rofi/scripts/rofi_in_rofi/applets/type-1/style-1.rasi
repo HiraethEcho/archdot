@@ -13,11 +13,12 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
+@import                          "../shared/colors.rasi"
+@import                          "../shared/fonts.rasi"
 
-* {
-    font: "Maple Mono NF 20";
-}
-@import "~/.config/rofi/colors/nord.rasi"
+/*
+USE_ICON=NO
+*/
 
 /*****----- Main Window -----*****/
 window {
@@ -31,7 +32,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      1px solid;
-    border-radius:               12px;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -57,7 +58,7 @@ inputbar {
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "prompt" , "entry"];
+    children:                    [ "textbox-prompt-colon", "prompt"];
 }
 
 textbox-prompt-colon {
@@ -65,37 +66,25 @@ textbox-prompt-colon {
     expand:                      false;
     str:                         "";
     padding:                     10px 13px;
-    border-radius:               12px;
+    border-radius:               0px;
     background-color:            @urgent;
     text-color:                  @background;
 }
 prompt {
     enabled:                     true;
     padding:                     10px;
-    border-radius:               12px;
+    border-radius:               0px;
     background-color:            @active;
     text-color:                  @background;
 }
 
-entry {
-    enabled:                     true;
-    expand:                      false;
-    width:                       350px;
-    padding:                     10px 13px;
-    border-radius:               100%;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      text;
-    placeholder:                 "Search...";
-    placeholder-color:           inherit;
-}
 /*****----- Message -----*****/
 message {
     enabled:                     true;
     margin:                      0px;
     padding:                     10px;
     border:                      0px solid;
-    border-radius:               12px;
+    border-radius:               0px;
     border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
@@ -126,7 +115,7 @@ element {
     enabled:                     true;
     padding:                     10px;
     border:                      0px solid;
-    border-radius:               12px;
+    border-radius:               0px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;

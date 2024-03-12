@@ -50,7 +50,7 @@ mainbox {
     border-radius:               0px 0px 0px 0px;
     border-color:                @selected;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [  "listview" ];
 }
 
 /*****----- Inputbar -----*****/

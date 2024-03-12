@@ -15,10 +15,10 @@ export EDITOR=nvim
 export PAGER=sioyek
 export ALIYUNPAN_CONFIG_DIR=~/.config/aliyun
 # export SUDO_ASKPASS=~/scripts/dpass.sh
-export SUDO_ASKPASS=~/scripts/dpass.sh
+export SUDO_ASKPASS=~/scripts/rpass.sh
 export TERM=alacritty
 
-export PATH=/home/hiraeth/.local/share/gem/ruby/3.0.0/bin:$PATH
+# export PATH=/home/hiraeth/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 export LFS=/mnt/lfs
 
