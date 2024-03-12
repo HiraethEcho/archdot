@@ -41,8 +41,8 @@
   Shift + Mod4 + s
 "~/scripts/rofi/quickapps.sh"
   Mod4 + a
-
-
+" rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
+  Mod + v
 ## Control+Shift+a  release event starts rxvt
 #"rxvt"
 #  release+control+shift + a

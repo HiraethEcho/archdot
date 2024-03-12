@@ -13,14 +13,11 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-
-* {
-    font: "Maple Mono NF 20";
-}
-@import "~/.config/rofi/colors/nord.rasi"
+@import                          "../shared/colors.rasi"
+@import                          "../shared/fonts.rasi"
 
 /*
-USE_ICON=NO
+USE_ICON=YES
 */
 
 /*****----- Main Window -----*****/
@@ -29,12 +26,12 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       400px;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
     margin:                      0px;
     padding:                     0px;
-    border:                      1px solid;
+    border:                      0px solid;
     border-radius:               12px;
     border-color:                @selected;
     cursor:                      "default";
@@ -44,9 +41,9 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     15px;
     margin:                      0px;
-    padding:                     20px;
+    padding:                     30px;
     background-color:            transparent;
     children:                    [ "inputbar", "message", "listview" ];
 }
@@ -57,11 +54,11 @@ inputbar {
     spacing:                     10px;
     padding:                     0px;
     border:                      0px;
-    border-radius:               0px;
+    border-radius:               12px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "prompt" , "entry"];
+    children:                    [ "textbox-prompt-colon", "prompt"];
 }
 
 textbox-prompt-colon {
@@ -81,18 +78,6 @@ prompt {
     text-color:                  @background;
 }
 
-entry {
-    enabled:                     true;
-    expand:                      false;
-    width:                       350px;
-    padding:                     10px 13px;
-    border-radius:               100%;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      text;
-    placeholder:                 "Search...";
-    placeholder-color:           inherit;
-}
 /*****----- Message -----*****/
 message {
     enabled:                     true;
@@ -114,13 +99,13 @@ textbox {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
-    lines:                       6;
+    columns:                     6;
+    lines:                       1;
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
     
-    spacing:                     5px;
+    spacing:                     15px;
     background-color:            transparent;
     cursor:                      "default";
 }
@@ -128,7 +113,7 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     10px;
+    padding:                     30px 10px;
     border:                      0px solid;
     border-radius:               12px;
     border-color:                @selected;
@@ -137,16 +122,17 @@ element {
     cursor:                      pointer;
 }
 element-text {
+    font:                        "feather 28";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0.5;
 }
 
 element normal.normal,
 element alternate.normal {
-    background-color:            var(background);
+    background-color:            var(background-alt);
     text-color:                  var(foreground);
 }
 element normal.urgent,
