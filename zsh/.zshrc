@@ -12,25 +12,20 @@ fi
 # export LANGUAGE=zh_CN:en_US
 export LANGUAGE=en_US
 export EDITOR=nvim
-export PAGER=sioyek
-export ALIYUNPAN_CONFIG_DIR=~/.config/aliyun
-# export SUDO_ASKPASS=~/scripts/dpass.sh
-export SUDO_ASKPASS=~/scripts/dpass.sh
-export TERM=alacritty
+# export TERM=alacritty
 
-export PATH=/home/hiraeth/.local/share/gem/ruby/3.0.0/bin:$PATH
 
-export LFS=/mnt/lfs
 
 # plugs
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
+source ~/bin/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/bin/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/bin/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/bin/zsh/fzf-tab/fzf-tab.zsh
+eval "$(lua5.3 ~/bin/zsh/z.lua/z.lua --init zsh enhanced once echo)"
 
 # alias
-alias d="startx"
-alias ":q"="exit"
+# alias d="startx"
+# alias ":q"="exit"
 
 # tui
 alias r="ranger"
@@ -54,34 +49,23 @@ alias tp="tmux attach -t pad"
 alias tt="tmux attach -t tmp"
 alias tb="tmux attach -t blog"
 
-# snapper
-alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
 alias s="fastfetch"
 alias n="neofetch"
-alias B="sudo upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
-alias l="lsd -l"
-alias ll="lsd -la"
-alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
-alias weather="curl 'v2d.wttr.in/Beijing'"
-alias tran="trans -I -e bing :zh-CN"
-alias dict="trans -d -e bing :zh-CN"
+alias l="ls -l"
+alias ll="ls -la"
+# alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
+# alias weather="curl 'v2d.wttr.in/Beijing'"
+# alias tran="trans -I -e bing :zh-CN"
+# alias dict="trans -d -e bing :zh-CN"
 alias ho="hexo clean ; hexo g ; hexo s -o"
 alias h="hexo clean ; hexo g ; hexo s"
 # alias cat="bat"
 # alias renet="sudo systemctl restart NetworkManager"
 
-# pacman and yay
-alias syyu="yay -Syyu"
-alias syu="yay -Syu"
-alias rcs="sudo pacman -Rcs $(pacman -Qdtq) -"
-alias scc="yay -Scc"
-alias news="yay -Pww"
-alias Qi="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
 
 # double tap Esc to add sudo
 sudo-command-line() {
@@ -113,10 +97,10 @@ bindkey -v
 zstyle :compinstall filename '/home/hiraeth/.zshrc'
 
 autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
-eval "$(mcfly init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
