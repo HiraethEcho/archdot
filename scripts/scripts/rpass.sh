@@ -7,3 +7,4 @@ rofi -dmenu \
   -config ~/.config/rofi/themes/passwd.rasi \
 	-password \
 	-p "$1"
+# 󰌋

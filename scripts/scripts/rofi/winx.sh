@@ -1,41 +1,35 @@
 #!/usr/bin/env bash
-#
-theme="~/.config/rofi/themes/quick.rasi"
 
-option_1="󰟴 Bilibili"
-option_2="󰚩 GPT"
-option_3="󰖟 Blog"
+theme="~/.config/rofi/themes/winx.rasi"
+
+option_u="power u"
+option_k="gparted k"
+option_i="terminal i"
 
 rofi_cmd() {
-  rofi -theme-str "listview {columns: 1; lines: 4;}" \
-    -theme-str 'textbox-prompt-colon {str: "";}' \
+  rofi -theme-str "listview {columns: 1; lines: 3;}" \
     -dmenu \
-    -kb-select-1 1 \
+    -kb-select-1 u \
+    -kb-select-2 k \
+    -kb-select-3 i \
     -markup-rows \
     -theme ${theme}
 }
 
 run_rofi() {
-  echo -e "$option_1\n$option_2\n$option_3\n" | rofi_cmd
+  echo -e "$option_u\n$option_k\n$option_i\n" | rofi_cmd
 }
 
-run_cmd() {
-  if [[ "$1" == '--opt1' ]]; then
-    xdg-open 'https://www.bilibili.com/'
-  elif [[ "$1" == '--opt2' ]]; then
-    xdg-open 'https://chat.rawchen.com/'
-  fi
-}
 
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
-    run_cmd --opt1
+    $option_u)
+      ~/scripts/rofi/powermenu.sh
         ;;
-    $option_2)
-    run_cmd --opt2
+    $option_k)
+      sudo -A gparted
         ;;
-    $option_3)
-    run_cmd --opt3
+    $option_i)
+      alacritty
         ;;
 esac

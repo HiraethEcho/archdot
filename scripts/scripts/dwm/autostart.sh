@@ -11,9 +11,6 @@ blueman-applet &
 killall nm-applet 
 nm-applet &
 
-killall aw-qt
-aw-qt &
-
 killall dunst
 dunst &
 

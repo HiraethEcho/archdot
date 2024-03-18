@@ -12,7 +12,7 @@ fi
 # export LANGUAGE=zh_CN:en_US
 export LANGUAGE=en_US
 export EDITOR=nvim
-export PAGER=sioyek
+# export PAGER=sioyek
 export ALIYUNPAN_CONFIG_DIR=~/.config/aliyun
 # export SUDO_ASKPASS=~/scripts/dpass.sh
 export SUDO_ASKPASS=~/scripts/rpass.sh
@@ -23,6 +23,7 @@ export TERM=alacritty
 export LFS=/mnt/lfs
 
 # plugs
+source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -80,7 +81,8 @@ alias syu="yay -Syu"
 alias rcs="sudo pacman -Rcs $(pacman -Qdtq) -"
 alias scc="yay -Scc"
 alias news="yay -Pww"
-alias Qi="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
 
 # double tap Esc to add sudo

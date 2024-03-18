@@ -1,4 +1,4 @@
-sync_dir = "~/OneDrive_personal"
+sync_dir = "~/Desktop/OneDrive_personal"
 monitor_interval = "300"
 log_dir = "/var/log/onedrive/"
 drive_id = ""
