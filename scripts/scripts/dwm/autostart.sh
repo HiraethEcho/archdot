@@ -1,4 +1,5 @@
 #!/bin/sh
+
 killall xbindkeys
 xbindkeys &
 
@@ -14,13 +15,6 @@ nm-applet &
 killall dunst
 dunst &
 
-picom -b
-
-~/scripts/wallpapers.sh &
-
-~/scripts/dwm/battery_warning.sh &
-# onedrivegui &
-
 # killall pa-applet 
 # pa-applet &
 
@@ -29,8 +23,17 @@ picom -b
 
 # killall slstatus 
 # slstatus &
+# onedrivegui &
+
+picom -b &
+
+
 
 sleep 3
 
 # ~/.dwm/dwm_bar.sh &
 ~/scripts/dwm/dwm_bar_colored.sh &
+
+~/scripts/wallpapers.sh &
+
+~/scripts/dwm/battery_warning.sh &

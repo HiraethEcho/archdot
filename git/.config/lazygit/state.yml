@@ -5,7 +5,6 @@ recentrepos:
 - /home/hiraeth/.config/nvim
 - /home/hiraeth/.local/share/nvim/lazy/mkdnflow.nvim
 - /home/hiraeth/.local/share/nvim/lazy/markdown-preview.nvim
-- /home/hiraeth/.vim
 startuppopupversion: 5
 customcommandshistory:
 - git config pull.rebase true
