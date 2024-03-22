@@ -23,28 +23,28 @@
   Mod4 + l
 
 # scripts
-"~/scripts/touchpad.sh"
+"toggletouchbar"
   Mod4 + space
 
 # rofi
 "rofi -show run"
   Mod4 + r
-"~/scripts/rofi/allapps.sh"
+"rofi_allapps"
   Mod1 + space
-"~/scripts/rofi/powermenu.sh"
+"rofi_powermenu"
   Mod4 + u
-"~/scripts/rofi/windows.sh"
+"rofi_windows"
   Mod4 + Tab
-"~/scripts/rofi/quicklinks.sh"
+"rofi_quicklinks"
   Mod4 + w
-"~/scripts/rofi/screenshot.sh"
+"rofi_screenshot"
   Shift + Mod4 + s
-"~/scripts/rofi/quickapps.sh"
+"rofi_quickapps"
   Mod4 + a
 " rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
   Mod4 + v
 
-"~/scripts/rofi/winx.sh"
+"rofi_winx"
   Mod4 + x
 
 ## Control+Shift+a  release event starts rxvt

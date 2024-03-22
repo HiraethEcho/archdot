@@ -1,5 +1,5 @@
 #!/bin/bash
-pkill dunst
+killall dunst
 dunst -config ~/.config/dunst/dunstrc &
 
 notify-send -u critical "Test message: critical test 1" "a"

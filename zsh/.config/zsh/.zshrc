@@ -9,7 +9,6 @@ fi
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 
-# export ZDOTDIR="$HOME"/.config/zsh
 # export LANGUAGE=zh_CN:en_US
 export LANGUAGE=en_US
 export EDITOR=nvim
@@ -26,11 +25,19 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_RUNTIME_DIR="$HOME/.local/tmp"
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export _ZL_DATA="$XDG_DATA_HOME/zlua"
-# export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
+
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
 
 export PATH="$HOME/.local/bin:$PATH"
+# export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
 export LFS=/mnt/lfs
 
@@ -117,7 +124,6 @@ bindkey "\e\e" sudo-command-line
 
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v

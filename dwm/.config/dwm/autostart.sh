@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CONF_DIR=~/.config/dwm
+
 killall xbindkeys
 xbindkeys &
 
@@ -32,8 +34,7 @@ picom -b &
 sleep 3
 
 # ~/.dwm/dwm_bar.sh &
-~/scripts/dwm/dwm_bar_colored.sh &
-
-~/scripts/wallpapers.sh &
-
-~/scripts/dwm/battery_warning.sh &
+. "$CONF_DIR"/dwm_bar_colored.sh &
+# . "$CONF_DIR"/wallpapers.sh &
+wallpapersleep &
+. "$CONF_DIR"/battery_warning.sh &
