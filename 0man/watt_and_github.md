@@ -9,7 +9,7 @@ to verify. should return
 ... You've successfully authenicated, but GitHub does not provide shell acess.
 ```
 
-`nvim ~/.ssh/config' add following to 
+`nvim ~/.ssh/config` add following to 
 ```
 Host github.com
 Hostname ssh.github.com

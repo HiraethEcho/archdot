@@ -18,9 +18,6 @@ export EDITOR=nvim
 export SUDO_ASKPASS=~/scripts/rpass.sh
 export TERM=alacritty
 
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-export _ZL_DATA="$XDG_DATA_HOME/zlua"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -28,9 +25,12 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_RUNTIME_DIR="$HOME/.local/tmp"
 
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export _ZL_DATA="$XDG_DATA_HOME/zlua"
 # export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
-# export PATH=/home/hiraeth/.local/share/gem/ruby/3.0.0/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 export LFS=/mnt/lfs
 
@@ -43,7 +43,8 @@ eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 
 # alias
 alias d="sx"
-alias "Q"="exit"
+alias Q="exit"
+alias n="nvim"
 
 # tui
 alias r="ranger"
@@ -72,7 +73,7 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
 alias s="fastfetch"
-alias n="neofetch"
+# alias n="neofetch"
 alias B="sudo upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
@@ -82,8 +83,8 @@ alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
 alias weather="curl 'v2d.wttr.in/Beijing'"
 alias tran="trans -I -e bing :zh-CN"
 alias dict="trans -d -e bing :zh-CN"
-alias ho="hexo clean ; hexo g ; hexo s -o"
-alias h="hexo clean ; hexo g ; hexo s"
+alias hso="hexo clean ; hexo g ; hexo s -o"
+alias hs="hexo clean ; hexo g ; hexo s"
 # alias renet="sudo systemctl restart NetworkManager"
 
 # pacman and yay

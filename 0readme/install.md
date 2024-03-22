@@ -1,89 +1,141 @@
 # Arch cli install
 
-## 
+## init
 
-##
-
-## wifi
-
-sudo systemctl start wpa_supplicant.servicei
-nmcli dev wifi list
-
-
-nmcli device wifi connect "your wifi name"password "your wifi password"
-
-### csdn
-`pacman -S iw wireless_tools wpa_supplicant`
-
- 
-
-wifi的连接步骤为：
-
-•获取可用无线网卡，通过命令#ifconfig -a可以查看无线网卡，以下假设为wlan0
-
-•接口激活：#ifconfig wlan0 up或者#ip link set wlan0 up
-
-•配置wifi：使用iw,wireless_tools,wpa_supplicant等
-
-•ip地址分配：
-
-•动态IP，此时自动分配：#dhcpcd wlan0
-
-•静态IP，需要：
-
-#ip addr add 192.168.0.2/24 dev wlan0 也可以加入广播地址变成#ip addr add 192.168.0.10/24 broadcast 192.168.0.255 dev wlan0
-
-#ip route add default via 192.168.0.1
-
-其中192.168.0.2是IP地址，24是子网掩码
-
-•关闭wifi
-
- 
-
-下面介绍的是"配置wifi"和"关闭wifi"。
-
-2 配置wifi
-2.1 连接公共网络和WEP加密网络
-对于这种情况，只需要使用iw或者wireless_tools其一即可，以下是它们的终端命令解释：
-
-
-
-例如，假设要连接一个名为HIT-WLAN的公共网络，则只需用命令：
-
-`#iw dev wlan0 connect HIT-WLAN   或者   #iwconfig wlan0 essid HIT-WLAN`
-
-例如，扫描附近热点，可用命令：
-
-`#iw dev wlan0 scan    或者   #iwlist wlan0 scan`
-
-2.2 连接WPA2PSK或者WPA加密网络
-此时便是大多数wifi的情况，假设wifi的名称(即essid)是test，密码是123456，这时wpa_supplicant工具便派上用场，用以下命令依次配置即可：
-
-`#wpa_passphrase test "123456" > /etc/wpa_supplicant.conf~`
-
-`#wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf`
-
-其中-B表示后台运行
-
-3 关闭wifi
-若是动态ip地址，关闭的时候直接用命令
-
-`#ip link set dev wlan0 down   或者   #ifconfig wlan0 down`
-
-若是静态ip地址，为了更好的关闭，可以用以下指令
-```
-#ip addr flush dev wlp13s1
-
-#ip route flush dev wlp13s1
-
-#ip link set dev wlan0 down   或者   #ifconfig wlan0 down s
-```
-
-###
+### wifi
 
 pacman -S grub efibootmgr vim iwd dhcpcd sudo networkmanager
 
 systemctl enable dhcpcd NetworkManager iwd
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=<你想要在efi引导时显示的名字，建议为ArchLinux>
+
+### pacman etc
+
+`sudo vim /etc/pacman.d/mirrorlist`
+
+```
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+```
+
+```sh
+sudo pacman -S archlinux-keyring
+sudo pacman -Syyu
+```
+
+`sudo vim /etc/pacman.conf`, add
+
+```
+[archlinuxcn]
+SigLevel = Optional TrustAll
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+```
+
+```sh
+sudo pacman -S archlinuxcn-keyring
+```
+
+aur:
+
+```sh
+sudo pacman -S yay
+```
+
+clean pacman:
+
+```sh
+paccache -r # 清理缓存,仅包含最近的三个版本
+paccache -rk1 # 清理缓存,仅包含最近的1个版本
+pacman -Sc # 清理未安装软件包
+pacman -Scc # 清理缓存中所有内容
+sudo pacman -Rcsn $(pacman -Qdtq -)
+journalctl --vacuum-size=50M #限制日志
+```
+
+## DE
+
+### Display Manager
+
+[Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
+
+- sddm
+- lightDM
+- ly
+- GDM
+
+Or just start from tty.
+
+### windows manger
+
+dwm: This is great! But also hard to config.
+
+## web
+
+### watt-toolkit
+
+```shell
+yay -S watt-toolkit-bin
+```
+
+**certificate**
+
+```shell
+sudo setcap cap_net_bind_service=+eip /opt/watt-toolkit/Steam++
+sudo chmod a+r /etc/hosts
+sudo chmod a+w /etc/hosts
+```
+
+Arch 系的用户可能需要使用
+
+```sh
+sudo trust anchor --store SteamTools.Certificate.cer
+```
+
+> Steam 信任证书 ( Chrome 内核浏览器 )
+> 由于 Steam 使用 Chrome 内核浏览器，使用自管理证书库。
+> 需要使用 Chrome 打开 设置 - 隐私设置和安全性 - 安全 - 管理证书
+> 选择 授权机构( Authorities )
+> 在 Watt Toolkit 的设置 - 通用设置 - 存储空间 - 打开 AppData 目录中的.
+> SteamTools.Certificate.pem文件 导入
+> 注：如文件不存在可修改 SteamTools.Certificate.cer 为 SteamTools.Certificate.pem勾选 信任该证书，以标识网站身份
+> 火狐浏览器
+> 打开 设置 - 隐私与安全 - 安全 - 证书 - 查看证书
+> 选择 证书颁发机构( Authorities )
+> 在 Watt Toolkit 的设置 - 通用设置 - 存储空间 - 打开 AppData 目录中的
+> SteamTools.Certificate.pem文件 ( 火狐支持 cer 或者 pem 格式导入 )
+> 勾选 信任由此证书颁发机构来标识网站
+
+## Basic app
+
+### Terminal
+
+For Xorg:
+
+- st
+- kitty
+- alacritty
+- etc
+
+For wayland
+
+- foot
+
+### shell
+
+- zsh
+
+### vim/neovim
+
+## apps
+
+### wechat
+
+`yay -S electronic-wechat-uos-bin `
+
+`yay -S linuxqq`
+
+### zotero
+
+### pdf reader
+
+sioyek

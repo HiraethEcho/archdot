@@ -1,10 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/hiraeth/stow
-- /home/hiraeth/Desktop/github/blogs/hexo
+- /home/hiraeth/Desktop/github/linux
+- /home/hiraeth/Desktop/github/dots/dot
 - /home/hiraeth/.config/nvim
+- /home/hiraeth/Desktop/github/blogs/hexo
 - /home/hiraeth/.local/share/nvim/lazy/mkdnflow.nvim
-- /home/hiraeth/.local/share/nvim/lazy/markdown-preview.nvim
 startuppopupversion: 5
 customcommandshistory:
 - git config pull.rebase true
