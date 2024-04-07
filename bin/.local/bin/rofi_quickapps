@@ -15,7 +15,7 @@ list_col='3'
 list_row='5'
 
 # CMDs (add your apps here)
-web_cmd='microsoft-edge-stable'
+web_cmd='microsoft-edge-dev'
 watt_cmd='watt-toolkit'
 zotero_cmd='zotero'
 obsidian_cmd='obsidian'

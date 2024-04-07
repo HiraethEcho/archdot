@@ -23,7 +23,7 @@
   Mod4 + l
 
 # scripts
-"toggletouchbar"
+"toggletouchpad"
   Mod4 + space
 
 # rofi

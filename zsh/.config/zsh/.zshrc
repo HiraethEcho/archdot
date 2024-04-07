@@ -27,6 +27,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+# export LATEXINDENT_CONFIG="$XDG_CONFIG_HOME"/
 
 
 export GTK_IM_MODULE=fcitx5
