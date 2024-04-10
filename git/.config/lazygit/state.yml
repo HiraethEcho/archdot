@@ -1,12 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/hiraeth/stow
-- /home/hiraeth/ucas/thesis
+- /home/hiraeth/Documents/sp
 - /home/hiraeth/Desktop/github/blogs/hexo
+- /home/hiraeth/Desktop/github/reviung
 - /home/hiraeth/Desktop/bin/dwm
 - /home/hiraeth/Desktop/github/Suckless
 - /home/hiraeth/Documents/sp/FoliationSp
-- /home/hiraeth/Documents/sp
 - /home/hiraeth/.config/nvim
 - /home/hiraeth/Desktop/github/linux
 - /home/hiraeth/Desktop/github/dots/dot
@@ -14,6 +14,7 @@ recentrepos:
 startuppopupversion: 5
 lastversion: 0.41.0
 customcommandshistory:
+- q
 - git config pull.rebase true
 hidecommandlog: false
 ignorewhitespaceindiffview: false

@@ -15,6 +15,7 @@ export EDITOR=nvim
 # export PAGER=sioyek
 # export SUDO_ASKPASS=~/scripts/dpass.sh
 export SUDO_ASKPASS=~/scripts/rpass.sh
+export SUDO_ASKPASS="$HOME/.local/bin/rpass"
 export TERM=alacritty
 
 
@@ -27,9 +28,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-# export LATEXINDENT_CONFIG="$XDG_CONFIG_HOME"/
 
-
+# fcitx5
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx
@@ -52,7 +52,13 @@ eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 # alias
 alias d="sx"
 alias Q="exit"
+alias zshrc="nvim ~/.config/zsh/.zshrc"
+
 alias n="nvim"
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias mininvim="NVIM_APPNAME=mini nvim"
+alias astro="NVIM_APPNAME=astro nvim"
+alias kicknvim="NVIM_APPNAME=kicknvim nvim"
 
 # tui
 alias r="ranger"
@@ -69,12 +75,12 @@ alias gc1="git clone --depth 1"
 alias tn="tmux new -s "
 alias ta="tmux attach -t "
 alias tl="tmux list"
-alias pad="tmux new -s pad"
-alias tmp="tmux new -s tmp"
-alias blog="tmux new -s blog"
-alias tp="tmux attach -t pad"
-alias tt="tmux attach -t tmp"
-alias tb="tmux attach -t blog"
+# alias pad="tmux new -s pad"
+# alias tmp="tmux new -s tmp"
+# alias blog="tmux new -s blog"
+# alias tp="tmux attach -t pad"
+# alias tt="tmux attach -t tmp"
+# alias tb="tmux attach -t blog"
 
 # snapper
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -87,7 +93,8 @@ alias B="sudo upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 # cli
 alias l="lsd -l"
 alias ll="lsd -la"
-alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
+# alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
+
 alias weather="curl 'v2d.wttr.in/Beijing'"
 alias tran="trans -I -e bing :zh-CN"
 alias dict="trans -d -e bing :zh-CN"
@@ -97,13 +104,13 @@ alias hs="hexo clean ; hexo g ; hexo s"
 
 # pacman and yay
 alias syyu="yay -Syyu"
-alias syu="yay -Syu"
 alias rcs="sudo pacman -Rcs $(pacman -Qdtq) -"
-alias scc="yay -Scc"
 alias news="yay -Pww"
 alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
+# alias scc="yay -Scc"
+# alias syu="yay -Syu"
 
 # double tap Esc to add sudo
 sudo-command-line() {
