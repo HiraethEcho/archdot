@@ -1,7 +1,7 @@
 
 [greenclip]
   blacklisted_applications = []
-  enable_image_support = true
+  enable_image_support = false
   history_file = "/home/hiraeth/.cache/greenclip.history"
   image_cache_directory = "/tmp/greenclip"
   max_history_length = 50
@@ -9,3 +9,4 @@
   static_history = ["update your new config file at ~/.config/greenclip.toml"]
   trim_space_from_selection = true
   use_primary_selection_as_input = false
+
