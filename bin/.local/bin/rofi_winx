@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-theme="~/.onfig/rofi/themes/winx.rasi"
+theme="~/.config/rofi/themes/winx.rasi"
 
 option_u="power u"
 option_k="gparted k"
