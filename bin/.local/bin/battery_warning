@@ -10,26 +10,27 @@ note=""
 while true
 do
   left=$(acpi | awk '{print $5}' )
+  full=$(ibam | awk 'NR==1{print $4}')
   capacity=$(cat /sys/class/power_supply/BAT1/capacity)
   charging=$(cat /sys/class/power_supply/BAT1/status)
   if [ $capacity -le 20 ]; then
       note="Only $capacity% power left"
     if [ "$charging" == "Charging" ]; then
-      notify-send -u normal "$note" "Charging\nTime to empty: $left"
+      notify-send -u normal "$note" "Charging\nTime to full: $full"
     else
       notify-send -u critical "$note" "Not Charging\nTime to empty: $left"
     fi
   elif [ $capacity -le 40 ]; then
       note="$capacity% power left"
     if [ "$charging" == "Charging" ]; then
-      notify-send -u normal "$note" "Charging\nTime to empty: $left"
+      notify-send -u normal "$note" "Charging\nTime to full: $full"
     else
       notify-send -u normal "$note" "Not Charging\nTime to empty: $left"
     fi
   else
       note="$capacity% power left"
     if [ "$charging" == "Charging" ]; then
-      notify-send -u low "$note" "Charging\nTime to empty: $left"
+      notify-send -u low "$note" "Charging\nTime to full: $full"
     else
       notify-send -u low "$note" "Not Charging\nTime to empty: $left"
     fi

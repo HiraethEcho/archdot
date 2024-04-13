@@ -54,7 +54,7 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
   #     m=$[$val*60/$rate-$h*60] 
   #     printf "^f2^%sh%sm" "$h" "$m"
   #   fi
-  left=$(acpi | awk '{print $5}')
+  left=$(ibam | awk 'NR==1{print $4}')
        printf "^f2^%s" "$left"
 }
 
