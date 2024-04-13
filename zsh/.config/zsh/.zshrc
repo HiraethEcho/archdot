@@ -88,7 +88,7 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 # status
 alias s="fastfetch"
 # alias n="neofetch"
-alias B="sudo upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
+alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
 alias l="lsd -l"
@@ -104,7 +104,7 @@ alias hs="hexo clean ; hexo g ; hexo s"
 
 # pacman and yay
 alias syyu="yay -Syyu"
-alias rcs="sudo pacman -Rcs $(pacman -Qdtq) -"
+alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
 alias news="yay -Pww"
 alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
