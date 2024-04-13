@@ -61,8 +61,6 @@ alias astro="NVIM_APPNAME=astro nvim"
 alias kicknvim="NVIM_APPNAME=kicknvim nvim"
 
 # tui
-alias r="ranger"
-alias lg="lazygit"
 
 # git
 alias gx="git clean -xdf"
@@ -87,20 +85,21 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
 alias s="fastfetch"
-# alias n="neofetch"
 alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
 alias l="lsd -l"
 alias ll="lsd -la"
-# alias hotspot="pkexec create_ap wlan0 lo 'Hiraeth' 'wyz2024zxc'"
+alias r="ranger"
+alias lg="lazygit"
+alias zi="z -I"
 
+# usefule tools
 alias weather="curl 'v2d.wttr.in/Beijing'"
 alias tran="trans -I -e bing :zh-CN"
 alias dict="trans -d -e bing :zh-CN"
 alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
-# alias renet="sudo systemctl restart NetworkManager"
 
 # pacman and yay
 alias syyu="yay -Syyu"

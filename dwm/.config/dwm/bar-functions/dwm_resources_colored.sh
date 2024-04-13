@@ -19,10 +19,12 @@ dwm_resources () {
 
 	printf "^f3^^c#e39a83^"
 	if [ "$CPU_TEMP" -ge $WARNING_LEVEL ]; then
-		printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
+		printf "^f3^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$CPU" "$CPU_TEMP"
+		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
 		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C^f2^󰋊^f2^%s/%s^f2^%s" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP" "$STOUSED" "$STOTOT" "$STOPER"
   else
-		printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
+		printf "^f3^󰘚^f2^%s^f2^^f2^%s°C" "$CPU" "$CPU_TEMP"
+		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
 		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C^f2^󰋊^f2^%s/%s^f2^%s" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP" "$STOUSED" "$STOTOT" "$STOPER"
 	fi
 }

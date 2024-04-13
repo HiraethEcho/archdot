@@ -50,8 +50,8 @@ function upload_speed {
 function dwm_network_speed {
     get_bytes 'received_bytes' 'transmitted_bytes'
     now=$(date +%s%N)
-
-    printf "^c#89b482^" 
+    # printf "^c#89b482^" 
+    printf "^c#EBCB8B^" 
     printf "%s^f2^%s"  "$(download_speed)" "$(upload_speed)"
 }
 

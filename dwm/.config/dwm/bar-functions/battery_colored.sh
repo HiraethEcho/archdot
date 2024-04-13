@@ -47,13 +47,15 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
     fi
 
     printf "%s%%" "$capacity"
-      rate=$(cat /sys/class/power_supply/BAT1/current_now)
-      val=$(cat /sys/class/power_supply/BAT1/charge_now)
-		if [[ "$rate" > 0 ]]; then
-      h=$[$val/$rate] 
-      m=$[$val*60/$rate-$h*60] 
-      printf "^f2^%sh%sm" "$h" "$m"
-    fi
+  #     rate=$(cat /sys/class/power_supply/BAT1/current_now)
+  #     val=$(cat /sys/class/power_supply/BAT1/charge_now)
+		# if [[ "$rate" > 0 ]]; then
+  #     h=$[$val/$rate] 
+  #     m=$[$val*60/$rate-$h*60] 
+  #     printf "^f2^%sh%sm" "$h" "$m"
+  #   fi
+  left=$(acpi | awk '{print $5}')
+       printf "^f2^%s" "$left"
 }
 
 get_battery
