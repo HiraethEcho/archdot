@@ -24,10 +24,10 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (111, 444)
+    width = (100, 700)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 222
+    height = 400
 
     # Position the notification in the top right corner
     origin = top-right
@@ -67,7 +67,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 30
+    transparency = 20
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -75,7 +75,7 @@
     separator_height = 5
 
     # Padding between text and separator.
-    padding = 15
+    padding = 10
 
     # Horizontal padding.
     horizontal_padding = 15
@@ -85,7 +85,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 0
+    frame_width = 1
 
     # Defines color of the frame around the notification window.
     frame_color = "#16161E"
@@ -150,7 +150,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<b>%a:%s</b>\n%b%p"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -228,7 +228,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
+    corner_radius = 15
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -274,7 +274,7 @@
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
     mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
+    mouse_middle_click = do_action
     mouse_right_click = close_all
 
 # Experimental features that may or may not work correctly. Do not expect them
@@ -296,7 +296,7 @@
     background = "#1A1B26"
     foreground = "#ABE9B3"
     highlight  = "#A9B1D6"
-    timeout = 6
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 

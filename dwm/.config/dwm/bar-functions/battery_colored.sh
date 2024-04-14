@@ -36,7 +36,7 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
     printf "%s^f2^" "$ICON"
 
     a=$(( (100-capacity)/5))
-
+    # left=$(ibam | awk 'NR==1{print $4}')
 
     if [[ $capacity -ge 60 ]]; then
     printf "^r0,8,2,5^^r2,5,22,11^^c#000000^^r3,6,%s,9^^f26^^c#89b482^" "$a"
@@ -47,6 +47,17 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
     fi
 
     printf "%s%%" "$capacity"
+
+    left=$(acpi | awk '{print $5}' )
+    printf "^f2^%s" "$left"
+    # full=$(ibam | awk 'NR==1{print $4}')
+    
+		# if [[ "$charging" == "Charging" ]]; then
+  #   printf "^f2^%s" "$left"
+  #   else
+  #   printf "^f2^%s" "$full"
+  #   fi
+  #
   #     rate=$(cat /sys/class/power_supply/BAT1/current_now)
   #     val=$(cat /sys/class/power_supply/BAT1/charge_now)
 		# if [[ "$rate" > 0 ]]; then
@@ -54,8 +65,6 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
   #     m=$[$val*60/$rate-$h*60] 
   #     printf "^f2^%sh%sm" "$h" "$m"
   #   fi
-  left=$(ibam | awk 'NR==1{print $4}')
-       printf "^f2^%s" "$left"
 }
 
 get_battery

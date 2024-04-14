@@ -29,18 +29,18 @@
 # rofi
 "rofi -show run"
   Mod4 + r
-"rofi_allapps"
+"rofi_quickapps"
   Mod1 + space
-"rofi_powermenu"
-  Mod4 + u
+"rofi_allapps"
+  Mod4 + a
+# "rofi_powermenu"
+#   Mod4 + u
 "rofi_windows"
   Mod4 + Tab
 "rofi_quicklinks"
   Mod4 + w
 "rofi_screenshot"
   Shift + Mod4 + s
-"rofi_quickapps"
-  Mod4 + a
 " rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
   Mod4 + v
 

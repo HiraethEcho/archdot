@@ -251,7 +251,7 @@ INTEL_GPU_BOOST_FREQ_ON_BAT=900
 # Default: default
 # Defaults
 RADEON_POWER_PROFILE_ON_AC=default
-RADEON_POWER_PROFILE_ON_BAT=default
+RADEON_POWER_PROFILE_ON_BAT=low
 
 
 # Radeon dynamic power management method (DPM): battery, performance.
@@ -339,8 +339,8 @@ USB_AUTOSUSPEND=0
 # Note: input devices (usbhid) are excluded automatically
 # Default: <none>
 # Slimbook App
-USB_BLACKLIST="0bda:0411 0bda:8153"
-USB_DENYLIST="0bda:0411 0bda:8153"
+USB_BLACKLIST=0bda:0411 0bda:8153
+USB_DENYLIST=0bda:0411 0bda:8153
 
 # Bluetooth devices are excluded from USB autosuspend:
 #   0=do not exclude, 1=exclude.
@@ -396,7 +396,7 @@ RESTORE_DEVICE_STATE_ON_STARTUP=0
 # Default: <none>
 
 # Slimbook App
-DEVICES_TO_DISABLE_ON_STARTUP=""
+DEVICES_TO_DISABLE_ON_STARTUP=
 
 # Radio devices to enable on startup: bluetooth, wifi, wwan.
 # Separate multiple devices with spaces.
@@ -430,7 +430,7 @@ DEVICES_TO_ENABLE_ON_STARTUP=""
 #   bluetooth, wifi, wwan.
 # Default: <none>
 # Slimbook App
-DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth"
+DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE=bluetooth
 
 # Battery charge thresholds (ThinkPad only).
 # May require external kernel module(s), refer to the output of tlp-stat -b.
@@ -471,14 +471,14 @@ DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth"
 
 # Radio devices to disable on connect.
 # Slimbook App
-DEVICES_TO_DISABLE_ON_LAN_CONNECT=""
+DEVICES_TO_DISABLE_ON_LAN_CONNECT=
 
 #DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
 #DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
 
 # Radio devices to enable on disconnect.
 
-DEVICES_TO_ENABLE_ON_LAN_DISCONNECT=""
+DEVICES_TO_ENABLE_ON_LAN_DISCONNECT=
 
 #DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT=""
 #DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
