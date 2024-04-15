@@ -8,15 +8,16 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 
 # export LANGUAGE=zh_CN:en_US
 export LANGUAGE=en_US
 export EDITOR=nvim
 # export PAGER=sioyek
 # export SUDO_ASKPASS=~/scripts/dpass.sh
-export SUDO_ASKPASS=~/scripts/rpass.sh
-export SUDO_ASKPASS="$HOME/.local/bin/rpass"
-export TERM=alacritty
+# export SUDO_ASKPASS=~/scripts/rpass.sh
+# export SUDO_ASKPASS="$HOME/.local/bin/rpass"
+# export TERM=alacritty
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,17 +31,17 @@ export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 # fcitx5
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
+# export GTK_IM_MODULE=fcitx5
+# export QT_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx
+# export INPUT_METHOD=fcitx
+# export SDL_IM_MODULE=fcitx
+# export GLFW_IM_MODULE=ibus
 
 export PATH="$HOME/.local/bin:$PATH"
 # export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
-export LFS=/mnt/lfs
+# export LFS=/mnt/lfs
 
 # plugs
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
@@ -55,10 +56,10 @@ alias Q="exit"
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
 alias n="nvim"
-alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-alias mininvim="NVIM_APPNAME=mini nvim"
-alias astro="NVIM_APPNAME=astro nvim"
-alias kicknvim="NVIM_APPNAME=kicknvim nvim"
+# alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+# alias mininvim="NVIM_APPNAME=mini nvim"
+# alias astro="NVIM_APPNAME=astro nvim"
+# alias kicknvim="NVIM_APPNAME=kicknvim nvim"
 
 # tui
 
@@ -81,11 +82,10 @@ alias tl="tmux list"
 # alias tb="tmux attach -t blog"
 
 # snapper
-alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+# alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
 alias s="fastfetch"
-alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
 alias l="lsd -l"
@@ -96,8 +96,8 @@ alias zi="z -I"
 
 # usefule tools
 alias weather="curl 'v2d.wttr.in/Beijing'"
-alias tran="trans -I -e bing :zh-CN"
-alias dict="trans -d -e bing :zh-CN"
+# alias tran="trans -I -e bing :zh-CN"
+# alias dict="trans -d -e bing :zh-CN"
 alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
 
@@ -110,6 +110,9 @@ alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind '
 alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
 # alias scc="yay -Scc"
 # alias syu="yay -Syu"
+#
+# special for wsl
+alias display="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
 
 # double tap Esc to add sudo
 sudo-command-line() {
