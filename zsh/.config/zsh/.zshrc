@@ -24,18 +24,18 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # fcitx5
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
+# export GTK_IM_MODULE=fcitx5
+# export QT_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx
+# export INPUT_METHOD=fcitx
+# export SDL_IM_MODULE=fcitx
+# export GLFW_IM_MODULE=ibus
 
 
 # export LFS=/mnt/lfs
 
 # plugs
-source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+# source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -65,7 +65,8 @@ _fzf_compgen_dir() {
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
-alias D="sx exec dwm"
+# alias D="sx exec dwm_old"
+# alias D="sx exec dwm"
 # alias G="sx exec gnome-session"
 # alias k="sx exec startplasma-x11"
 alias X="startxfce4"
@@ -73,16 +74,10 @@ alias X="startxfce4"
 # tui
 # (n)vim
 alias n="nvim"
-alias nn="nvim ."
-alias vv="vim ."
-alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
-alias vf="fzf --preview 'less {}' --bind 'enter:become(vim {})'"
-
-alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+# alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 # alias mininvim="NVIM_APPNAME=mini nvim"
 # alias astro="NVIM_APPNAME=astro nvim"
 # alias kicknvim="NVIM_APPNAME=kicknvim nvim"
-# alias trynvim="NVIM_APPNAME=trynvim nvim"
 
 # git
 alias gx="git clean -xdf"
@@ -103,10 +98,10 @@ alias gc1="git clone --depth 1"
 # alias tb="tmux attach -t blog"
 
 # snapper
+# alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
-alias s="fastfetch"
-# alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
+alias s="screenfetch"
 
 # cli
 alias l="lsd -l"
@@ -124,12 +119,17 @@ alias hs="hexo clean ; hexo g ; hexo s"
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # pacman and yay
-alias syyu="paru -Syyu"
-alias tsyyu="sudo timeshift --create --comment 'before syyu' && paru -Syyu && sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
-alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
+# alias syyu="yay -Syyu"
+# alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
+# alias news="yay -Pww"
+# alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+# alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+# alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
+# alias scc="yay -Scc"
+# alias syu="yay -Syu"
+#
+# special for wsl
+# alias d="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
 
 # double tap Esc to add sudo
 sudo-command-line() {
@@ -170,7 +170,6 @@ bindkey -v
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" 
 # End of lines added by compinstall
-
 
 # eval "$(mcfly init zsh)"
 

@@ -1,50 +1,61 @@
-# To specify a key, you can use 'xbindkeys --key' or 'xbindkeys --multikey' and put one of the two lines in this file.
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h 
+# The XK_ is not needed. 
+#
+# List of modifier (on my keyboard): 
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+#
+# Another way to specifie a key is to use 'xev' and set the 
+# keycode with c:nnn or the modifier with m:nnn where nnn is 
+# the keycode or the state returned by xev 
+#
+# This file is created by xbindkey_config 
+# The structure is : 
+# # Remark 
+# "command" 
+# m:xxx + c:xxx 
+# Shift+... 
 
-# A list of keys is in /usr/include/X11/keysym.h and in /usr/include/X11/keysymdef.h The XK_ is not needed.
 
-# List of modifier: Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock), Mod3 (CapsLock), Mod4, Mod5 (Scroll).
 
-# The release modifier is not a standard X modifier, but you can use it if you want to catch release events instead of press events
-
-# By defaults, xbindkeys does not pay attention with the modifiers
-# NumLock, CapsLock and ScrollLock.
-# Uncomment the lines above if you want to pay attention to them.
 
 #keystate_numlock = enable
+#keystate_scrolllock = enable
 #keystate_capslock = enable
-#keystate_scrolllock= enable
 
-#   apps
-# "kitty ~"
-#   Mod4 + Return
 
-"thunar ~"
-  Mod4 + e
 
-"zotero"
-  Mod4 + z
+#file
+"pcmanfm"
+   Mod4 + e
 
-"neovide"
-  Mod4 + n
+"sudo -A gparted"
+   Mod4 + k
 
-"xfce4-settings-manager"
-  Mod4 + i
-# "sudo -A gparted"
-#   Mod4 + k
-
-# "i3lock --clock --blur 20"
-# "slock"
-#   Mod4 + l
+"i3lock --clock --blur 20"
+   Mod4 + l
 
 # scripts
 "toggletouchpad"
-  Mod4 + space
+   Mod4 + space
 
 # rofi
 "rofi -show run"
-  Mod4 + r
+   Mod4 + r
+
 "rofi_quickapps"
-  Mod1 + space
+   Mod1 + space
+
 "rofi_allapps"
   Mod4 + a
 
@@ -65,18 +76,7 @@
 #   Mod4 + v
 
 "rofi_winx"
-  Mod4 + x
+   Mod4 + x
 
-"kitty -e btop"
-  Control+Shift + Escape
-## Control+Shift+a  release event starts rxvt
-#"rxvt"
-#  release+control+shift + a
 #
-## Control + mouse button 2 release event starts rxvt
-#"rxvt"
-#  Control + b:2 + Release
-
-##################################
-# End of xbindkeys configuration #
-##################################
+# End of xbindkeys configuration
