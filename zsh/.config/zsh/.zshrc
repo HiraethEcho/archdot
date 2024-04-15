@@ -51,7 +51,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 
 # alias
-alias d="sx"
 alias Q="exit"
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
@@ -112,7 +111,7 @@ alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'e
 # alias syu="yay -Syu"
 #
 # special for wsl
-alias display="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
+alias d="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
 
 # double tap Esc to add sudo
 sudo-command-line() {
