@@ -28,6 +28,11 @@ rofi_cmd() {
   rofi -dmenu \
     -p "Uptime: $uptime" \
     -mesg "Uptime: $uptime" \
+    -kb-select-1 l \
+    -kb-select-2 s \
+    -kb-select-3 h \
+    -kb-select-4 r \
+    -kb-select-5 u \
     -theme ${theme}
 }
 
@@ -46,10 +51,13 @@ run_cmd() {
     elif [[ $1 == '--reboot' ]]; then
       systemctl reboot
     elif [[ $1 == '--suspend' ]]; then
-      mpc -q pause
+      # mpc -q pause
       pamixer -m
       systemctl suspend
-    # elif [[ $1 == '--logout' ]]; then
+    # elif [[ $1 == '--lock' ]]; then
+
+    elif [[ $1 == '--logout' ]]; then
+      systemctl hibernate
     #   if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
     #     openbox --exit
     #   elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then

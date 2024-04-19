@@ -10,11 +10,6 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
-    kb-select-1: "l";
-    kb-select-2: "s";
-    kb-select-3: "o";
-    kb-select-4: "r";
-    kb-select-5: "u";
 }
 
 /*****----- Global Properties -----*****/

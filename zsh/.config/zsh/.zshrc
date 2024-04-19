@@ -9,7 +9,8 @@ fi
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 
-# export LANGUAGE=zh_CN:en_US
+export LANGUAGE=zh_CN:en_US
+# 
 export LANGUAGE=en_US
 export EDITOR=nvim
 # export PAGER=sioyek
@@ -40,7 +41,7 @@ export GLFW_IM_MODULE=ibus
 export PATH="$HOME/.local/bin:$PATH"
 # export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
-export LFS=/mnt/lfs
+# export LFS=/mnt/lfs
 
 # plugs
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh

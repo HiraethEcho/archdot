@@ -17,9 +17,11 @@
 #   apps
 "pcmanfm"
   Mod4 + e
-"sudo -A gparted"
-  Mod4 + k
-"i3lock --clock --blur 20"
+# "sudo -A gparted"
+#   Mod4 + k
+
+# "i3lock --clock --blur 20"
+"slock"
   Mod4 + l
 
 # scripts
