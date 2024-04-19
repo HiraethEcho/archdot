@@ -10,12 +10,10 @@ fi
 # confirmations, etc.) must go above this block; everything else may go below.
 
 export LANGUAGE=zh_CN:en_US
-# 
-export LANGUAGE=en_US
+# export LANGUAGE=en_US
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek
-# export SUDO_ASKPASS=~/scripts/dpass.sh
-export SUDO_ASKPASS=~/scripts/rpass.sh
 export SUDO_ASKPASS="$HOME/.local/bin/rpass"
 export TERM=alacritty
 
@@ -38,7 +36,6 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
-export PATH="$HOME/.local/bin:$PATH"
 # export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
 # export LFS=/mnt/lfs
@@ -61,8 +58,6 @@ alias mininvim="NVIM_APPNAME=mini nvim"
 alias astro="NVIM_APPNAME=astro nvim"
 alias kicknvim="NVIM_APPNAME=kicknvim nvim"
 
-# tui
-
 # git
 alias gx="git clean -xdf"
 alias gl="git log --graph --oneline --decorate --all"
@@ -82,7 +77,6 @@ alias tl="tmux list"
 # alias tb="tmux attach -t blog"
 
 # snapper
-alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
 alias s="fastfetch"
@@ -101,6 +95,7 @@ alias tran="trans -I -e bing :zh-CN"
 alias dict="trans -d -e bing :zh-CN"
 alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
+alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # pacman and yay
 alias syyu="yay -Syyu"
