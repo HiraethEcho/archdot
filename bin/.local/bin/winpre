@@ -7,6 +7,7 @@ cur_size=0
 
 LOOP1=$(sudo losetup -f)
 # losetup ${LOOP1}  /home/hiraeth/.qemu/win_disk_pre.img
+# losetup ${LOOP1}  /home/hiraeth/Desktop/virt/win/localefi 
 losetup ${LOOP1}  /home/hiraeth/Desktop/virt/win/winefi1 --show
 sector_size=$(sudo blockdev --getsz $LOOP1)
 table+="$cur_size $sector_size linear $LOOP1 0"
@@ -31,6 +32,12 @@ table+="$cur_size $sector_size linear $win_share 0"
 table+=$'\n'
 cur_size=$((cur_size+sector_size))
 
+win_re="/dev/disk/by-label/WinRE"
+sector_size=$(sudo blockdev --getsz $win_re)
+table+="$cur_size $sector_size linear $win_re 0"
+table+=$'\n'
+cur_size=$((cur_size+sector_size))
+
 LOOP2=$(sudo losetup -f)
 # losetup ${LOOP2}  /home/user/.qemu/win_disk_post.img
 losetup ${LOOP2}  /home/hiraeth/Desktop/virt/win/winefi2 --show
@@ -46,16 +53,19 @@ mktable gpt \
 mkpart primary fat32 2048 204799 \
 mkpart primary ntfs 204800 84090879 \
 mkpart primary ntfs 84090880 167974911 \
-mkpart primary ntfs 167974912 -2049 \
+mkpart primary ntfs 167974912 251860991 \
+mkpart primary ntfs 251860992 -2049 \
 set 1 boot on \
 set 1 esp on \
 set 2 msftdata on \
 set 3 msftdata on \
 set 4 msftdata on \
+set 5 msftdata on \
 name 1 EFI \
 name 2 Windows \
 name 3 Data \
 name 4 Share \
+name 5 WinRE \
 
 chown hiraeth:hiraeth /dev/mapper/win
 

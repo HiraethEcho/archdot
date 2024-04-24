@@ -9,8 +9,8 @@ fi
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 
-export LANGUAGE=zh_CN:en_US
-# export LANGUAGE=en_US
+# export LANGUAGE=zh_CN:en_US
+export LANGUAGE=en_US
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek
