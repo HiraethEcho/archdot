@@ -1,4 +1,4 @@
-#files: 820	version: 5.9
+#files: 835	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -154,6 +154,7 @@ _comps=(
 'chcon' '_chcon'
 'chdir' '_cd'
 'cheat' '_cheat'
+'checkupdates' '_checkupdates'
 'chfn' '_users'
 'chgrp' '_chown'
 'chimera' '_webbrowser'
@@ -267,6 +268,7 @@ _comps=(
 'domainname' '_yp'
 'dos2unix' '_dos2unix'
 'dotnet' '_dotnet'
+'downgrade' '_downgrade'
 'drill' '_drill'
 'dropbox' '_dropbox'
 'dropdb' '_postgresql'
@@ -325,6 +327,7 @@ _comps=(
 'express' '_webbrowser'
 'extcheck' '_java'
 'extractres' '_psutils'
+'eza' '_eza'
 'fakeroot' '_fakeroot'
 'false' '_nothing'
 'fc' '_fc'
@@ -589,6 +592,7 @@ _comps=(
 'hostnamectl' '_hostnamectl'
 'hotjava' '_webbrowser'
 'htop' '_htop'
+'hugo' '_hugo'
 'iceweasel' '_mozilla'
 'icombine' '_ispell'
 'iconv' '_iconv'
@@ -886,14 +890,23 @@ _comps=(
 'p4' '_perforce'
 'p4d' '_perforce'
 'pacat' '_pulseaudio'
+'paccache' '_paccache'
+'pacdiff' '_pacdiff'
+'pacignore' '_pacignore'
 'pack' '_pack'
 'packf' '_mh'
+'paclist' '_paclist'
+'paclog-pkglist' '_paclog-pkglist'
 'pacman' '_pacman'
 'pacman-conf' '_pacman'
 'pacman-key' '_pacman'
 'pacman.static' '_pacman'
 'pacmd' '_pulseaudio'
+'pacscripts' '_pacscripts'
+'pacsearch' '_pacsearch'
+'pacsort' '_pacsort'
 'pactl' '_pulseaudio'
+'pactree' '_pactree'
 'padsp' '_pulseaudio'
 'pandoc' '_pandoc'
 'paplay' '_pulseaudio'
@@ -905,7 +918,6 @@ _comps=(
 'paste' '_paste'
 'pasuspender' '_pulseaudio'
 'patch' '_patch'
-'patchelf' '_patchelf'
 'pax' '_pax'
 'pcat' '_pack'
 'pcp-htop' '_htop'
@@ -1028,6 +1040,7 @@ _comps=(
 'quilt' '_quilt'
 'r' '_fc'
 'rake' '_rake'
+'rankmirrors' '_rankmirrors'
 'ranlib' '_ranlib'
 'rar' '_rar'
 'rc' '_sh'
@@ -1303,6 +1316,7 @@ _comps=(
 'typeset' '_typeset'
 'typst' '_typst'
 'udevadm' '_udevadm'
+'udisksctl' '_udisks2'
 'ulimit' '_ulimit'
 'uml_mconsole' '_uml'
 'uml_moo' '_uml'
@@ -1333,6 +1347,7 @@ _comps=(
 'unwrapdiff' '_patchutils'
 'unxz' '_xz'
 'unzip' '_zip'
+'updpkgsums' '_updpkgsums'
 'uptime' '_uptime'
 'urxvt' '_urxvt'
 'urxvt256c' '_urxvt'
@@ -1673,16 +1688,19 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _alacritty _bat _bluetoothctl _bootctl _busctl \
-            _bwrap _cheat _cht.sh _coredumpctl _curl \
-            _dotnet _dunst _dunstctl _fd _glow \
-            _hostnamectl _img2sixel _journalctl _kernel-install _libinput \
-            _localectl _loginctl _lsd _machinectl _mkinitcpio \
-            _mpv _networkctl _onedrive _oomctl _pacman \
-            _paru _patchelf _pulseaudio _qpdf _resolvectl \
-            _rg _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files \
-            _snapper _systemctl _systemd _systemd-analyze _systemd-delta \
-            _systemd-inhibit _systemd-nspawn _systemd-path _systemd-run _systemd-tmpfiles \
-            _timedatectl _typst _udevadm _yay _zathura \
+            _bwrap _cheat _checkupdates _cht.sh _coredumpctl \
+            _curl _dotnet _downgrade _dunst _dunstctl \
+            _eza _fd _glow _hostnamectl _hugo \
+            _img2sixel _journalctl _kernel-install _libinput _localectl \
+            _loginctl _lsd _machinectl _mkinitcpio _mpv \
+            _networkctl _onedrive _oomctl _paccache _pacdiff \
+            _pacignore _paclist _paclog-pkglist _pacman _pacscripts \
+            _pacsearch _pacsort _pactree _paru _pulseaudio \
+            _qpdf _rankmirrors _resolvectl _rg _sd_hosts_or_user_at_host \
+            _sd_machines _sd_outputmodes _sd_unit_files _snapper _systemctl \
+            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _typst \
+            _udevadm _udisks2 _updpkgsums _yay _zathura \
             _cdr _all_labels _all_matches _alternative _approximate \
             _arg_compile _arguments _bash_completions _cache_invalid _call_function \
             _combination _complete _complete_debug _complete_help _complete_help_generic \

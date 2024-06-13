@@ -38,7 +38,7 @@ sleep 3
 
 # ~/.dwm/dwm_bar.sh &
 # . "$CONF_DIR"/dwm_bar_colored.sh &
-killall dwmbard
+killall dwmbar
 dwmbar &
 # . "$CONF_DIR"/wallpapers.sh &
 killall wallpapersleep
@@ -46,4 +46,3 @@ wallpapersleep &
 # . "$CONF_DIR"/battery_warning.sh &
 killall battery_warning 
 battery_warning &
-

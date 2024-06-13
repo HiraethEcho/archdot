@@ -1,23 +1,25 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/hiraeth/stow
-- /home/hiraeth/Documents/sp
-- /home/hiraeth/Desktop/bin/dwm
-- /home/hiraeth/Desktop/github/blogs/hexo
-- /home/hiraeth/.config/nvim
-- /home/hiraeth/Desktop/github/reviung
-- /home/hiraeth/Desktop/github/Suckless
-- /home/hiraeth/Documents/sp/FoliationSp
-- /home/hiraeth/Desktop/github/dots/dot
-- /home/hiraeth/.local/share/nvim/lazy/mkdnflow.nvim
+    - /home/hiraeth/stow
+    - /home/hiraeth/Desktop/bin/dwm
+    - /home/hiraeth/Desktop/github/blogs/allons42
+    - /home/hiraeth/Documents/sp
+    - /home/hiraeth/Desktop/github/reviung
+    - /home/hiraeth/Desktop/github/dots/dot
+    - /home/hiraeth/Desktop/github/blogs/hexo
+    - /home/hiraeth/Desktop/github/blogs/hugo
+    - /home/hiraeth/.config/nvim
+    - /home/hiraeth/Desktop/github/Suckless
+    - /home/hiraeth/Documents/sp/FoliationSp
+    - /home/hiraeth/.local/share/nvim/lazy/mkdnflow.nvim
 startuppopupversion: 5
-lastversion: 0.41.0
+lastversion: 0.42.0
 customcommandshistory:
-- q
-- git config pull.rebase true
+    - q
+    - git config pull.rebase true
 hidecommandlog: false
 ignorewhitespaceindiffview: false
-diffcontextsize: 4
+diffcontextsize: 5
 localbranchsortorder: recency
 remotebranchsortorder: alphabetical
 gitlogorder: topo-order
