@@ -48,10 +48,14 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 
 # alias
-alias d="sx"
-alias Q="exit"
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
+alias d="sx"
+alias g="sx exec gnome-session"
+alias k="sx exec startplasma-x11"
+alias k="startxfce4"
+
+# tui
 alias n="nvim"
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mininvim="NVIM_APPNAME=mini nvim"
