@@ -50,10 +50,10 @@ eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
-alias d="sx"
+alias d="sx exec dwm"
 alias g="sx exec gnome-session"
-alias k="sx exec startplasma-x11"
-alias k="startxfce4"
+# alias k="sx exec startplasma-x11"
+# alias x="startxfce4"
 
 # tui
 alias n="nvim"
@@ -102,7 +102,7 @@ alias hs="hexo clean ; hexo g ; hexo s"
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # pacman and yay
-alias syyu="yay -Syyu"
+alias syyu="paru -Syyu"
 alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
 alias news="yay -Pww"
 alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
