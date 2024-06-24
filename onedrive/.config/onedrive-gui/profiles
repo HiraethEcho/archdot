@@ -2,7 +2,7 @@
 config_file = /home/hiraeth/.config/onedrive/accounts/wyz2016zxc@outlook.com/config
 auto_sync = True
 account_type = Personal
-free_space = 1.5GiB
+free_space = 1.6GiB
 
 [wyz2016zxc@icloud.com]
 config_file = /home/hiraeth/.config/onedrive/accounts/wyz2016zxc@icloud.com/config

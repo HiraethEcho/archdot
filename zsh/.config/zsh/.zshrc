@@ -53,7 +53,7 @@ alias zshrc="nvim ~/.config/zsh/.zshrc"
 alias d="sx"
 alias g="sx exec gnome-session"
 alias k="sx exec startplasma-x11"
-alias k="startxfce4"
+alias x="startxfce4"
 
 # tui
 alias n="nvim"
