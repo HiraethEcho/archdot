@@ -1,11 +1,12 @@
-import = ["/home/hiraeth/.config/alacritty/themes/themes/nord.toml"]
-
 [cursor.style]
 blinking = "On"
 shape = "Block"
 
+[window]
+opacity = 0.8
+
 [font]
-size = 8.0
+size = 12.0
 
 [font.bold]
 family = "Maple Mono NF"

@@ -15,7 +15,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek
 export SUDO_ASKPASS="$HOME/.local/bin/rpass"
-export TERM=alacritty
+export TERMINAL=alacritty
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -50,8 +50,9 @@ eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
+alias D="sx exec dwm_old"
 alias d="sx exec dwm"
-alias g="sx exec gnome-session"
+alias G="sx exec gnome-session"
 # alias k="sx exec startplasma-x11"
 # alias x="startxfce4"
 
@@ -95,8 +96,6 @@ alias zi="z -I"
 
 # usefule tools
 alias weather="curl 'v2d.wttr.in/Beijing'"
-alias tran="trans -I -e bing :zh-CN"
-alias dict="trans -d -e bing :zh-CN"
 alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -104,12 +103,9 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 # pacman and yay
 alias syyu="paru -Syyu"
 alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
-alias news="yay -Pww"
 alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
 alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
-# alias scc="yay -Scc"
-# alias syu="yay -Syu"
 
 # double tap Esc to add sudo
 sudo-command-line() {

@@ -14,8 +14,8 @@ fcitx5 &
 # killall blueman-applet 
 # blueman-applet &
 
-killall nm-applet 
-nm-applet &
+# killall nm-applet 
+# nm-applet &
 
 killall dunst
 dunst &
@@ -23,8 +23,8 @@ dunst &
 # killall pa-applet 
 # pa-applet &
 
-killall blueberry-tray
-blueberry-tray &
+# killall blueberry-tray
+# blueberry-tray &
 
 # killall slstatus 
 # slstatus &
@@ -32,14 +32,16 @@ blueberry-tray &
 
 picom -b &
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 
 sleep 3
 
 # ~/.dwm/dwm_bar.sh &
 # . "$CONF_DIR"/dwm_bar_colored.sh &
-killall dwmbar
-dwmbar &
+# killall dwmbar
+# dwmbar &
+
 # . "$CONF_DIR"/wallpapers.sh &
 killall wallpapersleep
 wallpapersleep &
