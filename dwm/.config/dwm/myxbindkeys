@@ -15,14 +15,14 @@
 #keystate_scrolllock= enable
 
 #   apps
-"pcmanfm"
+"nautilus"
   Mod4 + e
 # "sudo -A gparted"
 #   Mod4 + k
 
 # "i3lock --clock --blur 20"
-"slock"
-  Mod4 + l
+# "slock"
+#   Mod4 + l
 
 # scripts
 "toggletouchpad"
@@ -41,10 +41,12 @@
   Mod4 + Tab
 "rofi_quicklinks"
   Mod4 + w
-"rofi_screenshot"
-  Shift + Mod4 + s
-" rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
-  Mod4 + v
+
+# "rofi_screenshot"
+#   Shift + Mod4 + s
+
+# " rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
+#   Mod4 + v
 
 "rofi_winx"
   Mod4 + x

@@ -3,11 +3,13 @@
 # Prints out battery percentage
 
 case $BLOCK_BUTTON in
-	1) notify-send "battery" "try" ;;
+	1) notify-send "battery" "$BLOCK_BUTTON" ;;
+	2) notify-send "battery" "$BLOCK_BUTTON" ;;
+	3) notify-send "battery" "$BLOCK_BUTTON" ;;
+	4) notify-send "battery" "$BLOCK_BUTTON" ;;
+	5) notify-send "battery" "$BLOCK_BUTTON" ;;
 esac
 
-get_battery()
-{
 ICON=""
 # rate=$(cat /sys/class/power_supply/BAT1/current_now)
 # val=$(cat /sys/class/power_supply/BAT1/charge_now)
@@ -17,7 +19,6 @@ ICON=""
 # printf "rate:%s val:%s h:%s" "$rate" "$val" "$h" 
 capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 charging=$(cat /sys/class/power_supply/BAT1/status)
-    printf "^f3^"
 
     if [[ $capacity -ge 60 ]]; then
     printf "^c#89b482^"
@@ -50,24 +51,3 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
     fi
 
     printf "%s%%" "$capacity"
-
-    left=$(acpi | awk '{print $5}' )
-    printf "^f2^%s" "$left"
-    # full=$(ibam | awk 'NR==1{print $4}')
-    
-		# if [[ "$charging" == "Charging" ]]; then
-  #   printf "^f2^%s" "$left"
-  #   else
-  #   printf "^f2^%s" "$full"
-  #   fi
-  #
-  #     rate=$(cat /sys/class/power_supply/BAT1/current_now)
-  #     val=$(cat /sys/class/power_supply/BAT1/charge_now)
-		# if [[ "$rate" > 0 ]]; then
-  #     h=$[$val/$rate] 
-  #     m=$[$val*60/$rate-$h*60] 
-  #     printf "^f2^%sh%sm" "$h" "$m"
-  #   fi
-}
-
-get_battery

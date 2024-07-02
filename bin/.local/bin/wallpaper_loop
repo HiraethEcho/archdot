@@ -1,5 +1,5 @@
 #!/bin/sh
 while true; do
-  changewallpaper
+  wallpaper_change
 	sleep 10m
 done

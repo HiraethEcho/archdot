@@ -4,11 +4,13 @@
 # Joe Standring <git@joestandring.com>
 # GNU GPLv3
 
-# Date is formatted like like this: "[Mon 01-01-00 00:00:00]"
-dwm_date () {
-    printf "^f3^^c#bb9af7^" 
-    # printf "󰸗^f2^%s^f2^󰥔^f2^%s" "$(date "+%m-%d")" "$(date "+%R")"
-    printf "󰥔^f2^%s" "$(date "+%R")"
-}
+case $BLOCK_BUTTON in
+	1) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	2) setsid -f "$TERMINAL" -e calcurse ;;
+	3) notify-send "📅 Time/date module" "\- Left click to show upcoming appointments for the next three days via \`calcurse -d3\` and show the month via \`cal\`
+- Middle click opens calcurse if installed" ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
 
-dwm_date
+printf "^f3^^c#bb9af7^󰥔^f2^%s" "$(date "+%R")"
+
