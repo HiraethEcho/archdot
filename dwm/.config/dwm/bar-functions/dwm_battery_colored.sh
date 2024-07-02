@@ -3,7 +3,7 @@
 # Prints out battery percentage
 
 
-get_battery()
+dwm_battery()
 {
 ICON=""
 # rate=$(cat /sys/class/power_supply/BAT1/current_now)
@@ -67,4 +67,4 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
   #   fi
 }
 
-get_battery
+dwm_battery

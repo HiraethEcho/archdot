@@ -1,4 +1,10 @@
 #!/bin/sh
+
+CONF_DIR=~/.config/dwm
+
+# killall xbindkeys
+# xbindkeys &
+
 killall mykeys
 mykeys &
 
@@ -29,18 +35,16 @@ picom -b &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 
-# sleep 3
+sleep 3
 
 # ~/.dwm/dwm_bar.sh &
 # . "$CONF_DIR"/dwm_bar_colored.sh &
-# killall dwmbar
-# dwmbar &
+killall dwmbar
+dwmbar &
 
 # . "$CONF_DIR"/wallpapers.sh &
 killall wallpaper_loop
 wallpaper_loop &
 # . "$CONF_DIR"/battery_warning.sh &
-# killall battery_warning 
-# battery_warning &
-#
-dwmblocks &
+killall battery_warning 
+battery_warning &
