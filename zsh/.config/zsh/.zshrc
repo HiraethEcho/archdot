@@ -44,7 +44,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # export LFS=/mnt/lfs
 
 # plugs
-source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+# source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -84,7 +84,7 @@ alias tl="tmux list"
 # alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # status
-alias s="fastfetch"
+alias s="screenfetch"
 
 # cli
 alias l="lsd -l"
@@ -101,17 +101,17 @@ alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
 
 # pacman and yay
-alias syyu="yay -Syyu"
-alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
-alias news="yay -Pww"
-alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
+# alias syyu="yay -Syyu"
+# alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
+# alias news="yay -Pww"
+# alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+# alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+# alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
 # alias scc="yay -Scc"
 # alias syu="yay -Syu"
 #
 # special for wsl
-alias d="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
+# alias d="sudo rm -r /tmp/.X11-unix && ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix"
 
 # double tap Esc to add sudo
 sudo-command-line() {
@@ -145,7 +145,7 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" 
 # End of lines added by compinstall
 
-eval "$(mcfly init zsh)"
+# eval "$(mcfly init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
