@@ -14,7 +14,7 @@ ICON=""
 # printf "rate:%s val:%s h:%s" "$rate" "$val" "$h" 
 capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 charging=$(cat /sys/class/power_supply/BAT1/status)
-    printf "^f3^"
+    printf "^f3^\x02"
 
     if [[ $capacity -ge 60 ]]; then
     printf "^c#89b482^"

@@ -7,6 +7,9 @@
 WARNING_LEVEL=80
 # df_check_location='/'
 
+case "$BLOCK_BUTTON" in
+    1) alacritty -e top ;;
+esac
 	# df_output=$(df -h $df_check_location | tail -n 1)
   USED_RAM=$(free -mh --si | awk  {'print $3'} | head -n 2 | tail -1)
   TOTAL_RAM=$(free -mh --si | awk  {'print $2'} | head -n 2 | tail -1)

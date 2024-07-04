@@ -11,7 +11,7 @@ fi
 
 # export LANGUAGE=zh_CN:en_US
 export LANGUAGE=en_US
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek

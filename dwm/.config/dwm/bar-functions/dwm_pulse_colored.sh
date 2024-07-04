@@ -11,7 +11,7 @@ dwm_pulse () {
     STATE=$(pamixer --get-mute)
     # BLUETOOTH=$(bluetooth | awk {'print $3'})
 
-    printf "^f3^^c#96CDFB^" 
+    printf "\x01^f3^^c#96CDFB^" 
 
     if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
       printf "󰸈"

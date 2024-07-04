@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Dependencies: pamixer
+# case $BLOCK_BUTTON in
+case "$1" in
+	1) notify-send "vol" "$BLOCK_BUTTON" ;;
+	2) notify-send "vol" "$BLOCK_BUTTON" ;;
+	3) notify-send "vol" "$BLOCK_BUTTON" ;;
+	4) notify-send "vol" "$BLOCK_BUTTON" ;;
+	5) notify-send "vol" "$BLOCK_BUTTON" ;;
+esac
+
+    VOL=$(pamixer --get-volume)
+    STATE=$(pamixer --get-mute)
+    a=$[17*$VOL/100]
+    b=$[19-$a]
+
+    if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
+      printf "MUTE %s" "$VOL"
+    else
+      printf "%s" "$VOL"
+    fi
+# 󰥰 󱡏

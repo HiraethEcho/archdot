@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) notify-send "This Month" "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")";;
+	# 1) notify-send "cal$BUTTON" ;;
+	2) notify-send "cal$BUTTON" ;;
+	3) notify-send "cal$BUTTON" ;;
+	4) notify-send "cal$BUTTON" ;;
+	5) notify-send "cal$BUTTON" ;;
+esac
