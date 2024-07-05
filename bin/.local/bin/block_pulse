@@ -14,13 +14,12 @@ esac
 
     VOL=$(pamixer --get-volume)
     STATE=$(pamixer --get-mute)
-    a=$[17*$VOL/100]
-    b=$[19-$a]
+    a=$[$VOL/2]
     # BLUETOOTH=$(bluetooth | awk {'print $3'})
 
     if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
-      printf "^c#96CDFB^󰸈^f3^^c#96CDFB^^r0,1,7,19^^c#000000^^r1,2,5,17^^c#96CDFB^^r1,%s,5,%s^^f10^%s" "$b" "$a" "$VOL"
+      printf "^c#96CDFB^󰸈^f3^^r0,8,52,5^^c#000000^^r1,9,50,3^^c#96CDFB^^r1,9,%s,3^^f54^%s" "$a" "$VOL"
     else
-      printf "^c#96CDFB^󰕾^f3^^c#96CDFB^^r0,1,7,19^^c#000000^^r1,2,5,17^^c#96CDFB^^r1,%s,5,%s^^f10^%s" "$b" "$a" "$VOL"
+      printf "^c#96CDFB^󰕾^f3^^r0,8,52,5^^c#000000^^r1,9,50,3^^c#96CDFB^^r1,9,%s,3^^f54^%s" "$a" "$VOL"
     fi
 # 󰥰 󱡏

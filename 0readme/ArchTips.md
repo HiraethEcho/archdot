@@ -30,7 +30,7 @@ pamixer: cli mixer of PulseAudio
 pavucontrol: gui of PulseAudio
 
 ```
-sudo pacman -S alsa-ulti pulseaudio pavucontrol
+sudo pacman -S alsa-ultis pulseaudio pavucontrol
 pulseaudio --check
 pulseaudio -D
 ```

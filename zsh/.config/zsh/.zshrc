@@ -37,7 +37,6 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
-# export PATH="/usr/bin:/usr/local/bin:$HOME/.local/bin"
 
 # export LFS=/mnt/lfs
 
@@ -51,11 +50,11 @@ eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
-alias D="sx exec dwm_old"
-alias d="sx exec dwm"
-alias G="sx exec gnome-session"
+# alias D="sx exec dwm_old"
+alias D="sx exec dwm"
+# alias G="sx exec gnome-session"
 # alias k="sx exec startplasma-x11"
-# alias x="startxfce4"
+# alias X="startxfce4"
 
 # tui
 alias n="nvim"
@@ -86,7 +85,7 @@ alias tl="tmux list"
 
 # status
 alias s="fastfetch"
-alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
+# alias B="upower -i /org/freedesktop/UPower/devices/battery_BAT1 "
 
 # cli
 alias l="lsd -l"
