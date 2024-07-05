@@ -9,6 +9,8 @@ WARNING_LEVEL=80
 
 case "$BLOCK_BUTTON" in
     1) alacritty -e top ;;
+	4) notify-send "res" "$BLOCK_BUTTON" ;;
+	5) notify-send "res" "$BLOCK_BUTTON" ;;
 esac
 	# df_output=$(df -h $df_check_location | tail -n 1)
   USED_RAM=$(free -mh --si | awk  {'print $3'} | head -n 2 | tail -1)

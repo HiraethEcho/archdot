@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Dependencies: pamixer
-# case $BLOCK_BUTTON in
-case "$1" in
+case $BLOCK_BUTTON in
+# case "$1" in
 	1) notify-send "vol" "$BLOCK_BUTTON" ;;
 	2) notify-send "vol" "$BLOCK_BUTTON" ;;
 	3) notify-send "vol" "$BLOCK_BUTTON" ;;
-	4) notify-send "vol" "$BLOCK_BUTTON" ;;
-	5) notify-send "vol" "$BLOCK_BUTTON" ;;
+  4) pamixer -i 5 ;;
+  5) pamixer -d 5 ;;
 esac
 
     VOL=$(pamixer --get-volume)
