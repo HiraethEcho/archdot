@@ -9,8 +9,8 @@ case $BLOCK_BUTTON in
 ;;
   2) alacritty -e top ;;
   3) notify-send "Battery" "$(acpi)" ;;
-	4) xbacklight -inc 5 ;;
-	5) xbacklight -dec 5 ;;
+	4) xbacklight -inc 5 ; notify-send "Light" "$(xbacklight -get)"  ;;
+	5) xbacklight -dec 5 ; notify-send "Light" "$(xbacklight -get)";;
 esac
 
 ICON=""

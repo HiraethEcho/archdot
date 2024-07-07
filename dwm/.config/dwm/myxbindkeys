@@ -15,7 +15,7 @@
 #keystate_scrolllock= enable
 
 #   apps
-"nautilus"
+"thunar ~"
   Mod4 + e
 # "sudo -A gparted"
 #   Mod4 + k
@@ -29,7 +29,7 @@
   Mod4 + space
 
 # rofi
-"rofi -show run"
+"rofi -show run -theme ~/.config/rofi/themes/default.rasi"
   Mod4 + r
 "rofi_quickapps"
   Mod1 + space

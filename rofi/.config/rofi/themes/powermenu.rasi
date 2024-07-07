@@ -37,8 +37,9 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  true;
-    width:                       1366px;
+    fullscreen:                  false;
+    width:                       1680px;
+    height:                      1000px;
     x-offset:                    0px;
     y-offset:                    0px;
 

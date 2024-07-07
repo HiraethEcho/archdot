@@ -3,14 +3,32 @@
 # A dwm_bar function that shows the current date and time
 # Joe Standring <git@joestandring.com>
 # GNU GPLv3
+#!/bin/bash
+
+h=$(date +%H)
+m=$(date +%M)
+mm=$(( (h * 60) + m ))
+r=$(( mm * 100 / 1440 ))
+
+
 
 case $BLOCK_BUTTON in
-	1) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	1) notify-send -h int:value:$r "Calendar" "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
 	2) wallpaper_change ;;
-	3) thunar ~; ;;
+	3) thunar ~ ;;
 	4) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
 	5)  ;;
 esac
 
-printf "^c#bb9af7^󰸗^f2^%s^f2^󰥔^f2^%s" "$(date '+%m/%d')" "$(date '+%R')"
+printf "^c#bb9af7^󰸗^f2^%s" "$(date '+%m/%d')"
 
+if [[ $r -ge 75 ]]; then
+printf "^c#e06c75^"
+elif [[ $r -ge 50 ]]; then
+printf "^c#EBCB8B^"
+elif [[ $r -ge 25 ]]; then
+printf "^c#89b482^"
+else
+printf "^c#e06c75^"
+fi
+printf "^f2^󰥔^f2^%s" "$(date '+%R')"
