@@ -14,7 +14,7 @@ esac
 # "$(iwctl station wlan0 get-networks)"
 # 󰖪󰤭 󰤯󰤟󰤢󰤥󰤨 
 # 󰀂󰣽
-printf "^c#bbbbbb^"
+printf "^c#99CC32^"
 
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
   if [ $net -gt 80 ]; then

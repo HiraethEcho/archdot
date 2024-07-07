@@ -15,7 +15,7 @@ esac
 
 VOL=$(pamixer --get-volume)
 STATE=$(pamixer --get-mute)
-a=$[$VOL/2]
+a=$[$VOL/4]
     # BLUETOOTH=$(bluetooth | awk {'print $3'})
 printf "^c#96CDFB^"
 if ![ -z "$(bluetoothctl devices Connected | grep 'AirPods')" ]; then
@@ -23,9 +23,9 @@ if ![ -z "$(bluetoothctl devices Connected | grep 'AirPods')" ]; then
 fi
 
 if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
-    printf "󰸈^f3^^s0,8,52,5^^r1,9,%s,3^^f54^%s" "$a" "$VOL"
+    printf "󰸈^f3^^s0,8,27,5^^r1,9,%s,3^^f29^%s" "$a" "$VOL"
 else
-    printf "󰕾^f3^^s0,8,52,5^^r1,9,%s,3^^f54^%s" "$a" "$VOL"
+    printf "󰕾^f3^^s0,8,27,5^^r1,9,%s,3^^f29^%s" "$a" "$VOL"
 fi
 # 󰥰 󱡏 
       # printf "^c#96CDFB^󰸈^f3^^c#96CDFB^^r0,1,7,19^^c#000000^^r1,2,5,17^^c#96CDFB^^r1,%s,5,%s^^f10^%s" "$b" "$a" "$VOL"
