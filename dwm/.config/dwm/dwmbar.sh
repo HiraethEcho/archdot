@@ -19,7 +19,7 @@ DIR=$(dirname "$LOC")
 . "$DIR/bar-functions/dwm_pulse_colored.sh"
 . "$DIR/bar-functions/dwm_resources_colored.sh"
 . "$DIR/bar-functions/dwm_network_speed_colored.sh"
-. "$DIR/bar-functions/battery_colored.sh"
+. "$DIR/bar-functions/dwm_battery_colored.sh"
 
 # Update dwm status bar every second
 while true

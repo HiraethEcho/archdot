@@ -1,13 +1,13 @@
 #!/bin/sh
 
-read -r rate </sys/class/power_supply/BAT1/current_now
+read -r rate </sys/class/power_supply/BAT0/current_now
 [ "$rate" = 0 ] && notify-send "Battery fully charged" && exit
 
 read -r ac </sys/class/power_supply/AC/online
-read -r charge_now </sys/class/power_supply/BAT1/charge_now
+read -r charge_now </sys/class/power_supply/BAT0/charge_now
 
 if [ "$ac" = 1 ] ; then
-    read -r charge_full </sys/class/power_supply/BAT1/charge_full
+    read -r charge_full </sys/class/power_supply/BAT0/charge_full
     val="$(( charge_full-charge_now ))"
 else
     val="$charge_now"

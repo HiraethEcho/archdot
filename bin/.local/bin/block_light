@@ -6,10 +6,13 @@
 
 # Dependencies: xbacklight
 case $BLOCK_BUTTON in
+	1) xbacklight 25 ;;
+	2) xbacklight 75 ;;
+	3) xbacklight 50 ;;
 	4) xbacklight -inc 5 ;;
 	5) xbacklight -dec 5 ;;
 esac
-
+printf "^c#f8f8ff^"
 light=$(xbacklight -get) 
 a=$[$light/2]
-printf "^c#EBCB8B^^f2^^r0,8,52,5^^c#000000^^r1,9,50,3^^c#EBCB8B^^r1,9,%s,3^^f54^%s" "$a" "$light" 
+printf "^f2^^s0,8,52,5^^r1,9,%s,3^^f54^%s" "$a" "$light" 

@@ -3,7 +3,7 @@ blinking = "On"
 shape = "Block"
 
 [window]
-opacity = 0.8
+# opacity = 0.8
 
 [font]
 size = 8.0

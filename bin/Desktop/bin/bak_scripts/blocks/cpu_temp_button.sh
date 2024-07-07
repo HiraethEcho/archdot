@@ -1,8 +1,6 @@
 #!/bin/sh
 case "$1" in
-    1) notify-send "cpu$1" ;;
-    2) exec "$TERMINAL" -e top ;;
-    3) notify-send "cpu$1" ;;
-	4) notify-send "cpu$1" ;;
-	5) notify-send "cpu$1" ;;
+    1) exec "$TERMINAL" -e htop -s PERCENT_CPU ;;
+    2) exec "$TERMINAL" -e htop ;;
+    3) exec "$TERMINAL" -e htop -s PERCENT_MEM ;;
 esac

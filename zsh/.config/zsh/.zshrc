@@ -16,7 +16,7 @@ export LANGUAGE=en_US
 export EDITOR=nvim
 # export PAGER=sioyek
 export SUDO_ASKPASS="$HOME/.local/bin/rpass"
-export TERMINAL=alacritty
+export TERMINAL=st
 
 
 export XDG_CONFIG_HOME="$HOME/.config"

@@ -3,14 +3,17 @@
 # A dwm_bar function to display information regarding system memory, CPU temperature, and storage
 # Joe Standring <git@joestandring.com>
 # GNU GPLv3
+# free --mebi | sed -n '2{p;q}' | awk '{printf ("🧠%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
 
 WARNING_LEVEL=80
 # df_check_location='/'
 
 case "$BLOCK_BUTTON" in
     1) alacritty -e top ;;
-	4) notify-send "res" "$BLOCK_BUTTON" ;;
-	5) notify-send "res" "$BLOCK_BUTTON" ;;
+    2) alacritty -e top ;;
+    3) alacritty -e top ;;
+	# 4) notify-send "res" "$BLOCK_BUTTON" ;;
+	# 5) notify-send "res" "$BLOCK_BUTTON" ;;
 esac
 	# df_output=$(df -h $df_check_location | tail -n 1)
   USED_RAM=$(free -mh --si | awk  {'print $3'} | head -n 2 | tail -1)
@@ -23,11 +26,7 @@ esac
 
 	# printf "^f3^^c#e39a83^"
 	if [ "$CPU_TEMP" -ge $WARNING_LEVEL ]; then
-		printf "^c#e39a83^^f3^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$CPU" "$CPU_TEMP"
-		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
-		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C^f2^󰋊^f2^%s/%s^f2^%s" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP" "$STOUSED" "$STOTOT" "$STOPER"
+		printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^󰈸^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
   else
-		printf "^c#e39a83^^f3^󰘚^f2^%s^f2^^f2^%s°C" "$CPU" "$CPU_TEMP"
-		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
-		# printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C^f2^󰋊^f2^%s/%s^f2^%s" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP" "$STOUSED" "$STOTOT" "$STOPER"
+		printf "^f3^󰍛^f2^%s/%s^f2^󰘚^f2^%s^f2^^f2^%s°C" "$USED_RAM" "$TOTAL_RAM" "$CPU" "$CPU_TEMP"
 	fi

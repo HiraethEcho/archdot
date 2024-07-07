@@ -1,0 +1,38 @@
+#!/bin/sh
+net=$(awk '/^\s*w/ { print  int($3 * 100 / 70) }' /proc/net/wireless)
+interface=$(iw dev | awk '$1=="Interface"{print $2}')
+ssid=$(iw dev "$interface" link | awk '$1=="SSID:"{print $2}')
+
+case $BLOCK_BUTTON in
+	1) notify-send "Wifi" "$net% $ssid
+$(nmcli d wifi)
+" ;;
+2) notify-send -u critical "ip" "$(ip address)" ;;
+	3) iwgtk ;;
+esac
+
+# "$(iwctl station wlan0 get-networks)"
+# 󰖪󰤭 󰤯󰤟󰤢󰤥󰤨 
+# 󰀂󰣽
+printf "^c#bbbbbb^"
+
+if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
+  if [ $net -gt 80 ]; then
+      wifiicon="󰣺"
+  elif [ $value -gt 60 ]; then
+      wifiicon="󰣸"
+  elif [ $value -gt 40 ]; then
+      wifiicon="󰣶"
+  elif [ $value -gt 20 ]; then
+      wifiicon="󰣴"
+  else
+      wifiicon="󰣾"
+  fi
+  printf "%s^f2^%s" "$wifiicon" "$ssid"
+elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'down' ] ; then
+	[ "$(cat /sys/class/net/w*/flags 2>/dev/null)" = '0x1003' ] && wifiicon="󰖪 offine" || wifiicon="󰅖 disabled"
+  printf "%s" "$wifiicon"
+fi
+
+
+

@@ -1,11 +1,42 @@
 #!/bin/sh
-    VOL=$(pamixer --get-volume)
-    STATE=$(pamixer --get-mute)
-    a=$[17*$VOL/100]
-    b=$[19-$a]
-
-    if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
-      printf "MUTE %s" "$VOL"
-    else
-      printf "%s" "$VOL"
-    fi
+# (for pulseaudio users)
+# This script parses the output of `pacmd list-sinks' to find volume and mute
+# status of the default audio sink and whether headphones are plugged in or not
+# Also see ../daemons/pulse_daemon.sh
+pacmd list-sinks | awk '
+    BEGIN {
+        ICONsn = "\x0c\x0b" # headphone unplugged, not muted
+        ICONsm = "\x0d\x0b" # headphone unplugged, muted
+        ICONhn = "\x0c\x0b" # headphone plugged in, not muted
+        ICONhm = "\x0d\x0b" # headphone plugged in, muted
+    }
+    f {
+        if ($1 == "muted:" && $2 == "yes") {
+            m = 1
+        } else if ($1 == "volume:") {
+            if ($3 == $10) {
+                vb = $5
+            } else {
+                vl = $5
+                vr = $12
+            }
+        } else if ($1 == "active" && $2 == "port:") {
+            if (tolower($3) ~ /headphone/)
+                h = 1
+            exit
+        }
+        next
+    }
+    $1 == "*" && $2 == "index:" {
+        f = 1
+    }
+    END {
+        if (f) {
+            printf "%s", h ? (m ? ICONhm : ICONhn) : (m ? ICONsm : ICONsn)
+            if (vb)
+                print vb
+            else
+                printf "L%s R%s\n", vl, vr
+        }
+    }
+'
