@@ -25,7 +25,7 @@ configuration {
     inputbar-spacing:            0px;
     list-spacing:                30px;
     general-padding:             20px;
-    element-padding:             80px 10px;
+    element-padding:             50px 10px;
     element-radius:              100%;
     general-radius:              100%;
     element-font:                "feather 64";
