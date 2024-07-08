@@ -5,12 +5,13 @@ case $BLOCK_BUTTON in
 󰘚 CPU: $(top -bn1 | grep Cpu | awk '{print $2}')%
  Temp: $(acpi -t | awk '{print $4}') ℃
  Light: $(xbacklight -get)
-󰋊 Storage: $(btrfs filesystem usage / | awk '/Used/ {print $2}' | awk 'NR==1 {print}' )/$(btrfs filesystem usage / | awk '/Device size/ {print $3}') "
+󰋊 Storage: $(btrfs filesystem usage / | awk '/Used/ {print $2}' | awk 'NR==1 {print}' )/$(btrfs filesystem usage / | awk '/Device size/ {print $3}') 
+󰁹 Battery: $(acpi | cut -d ':' -f 2-)"
 ;;
   2) alacritty -e top ;;
-  3) notify-send "Battery" "$(acpi)" ;;
-	4) xbacklight -inc 5 ; notify-send "Light" "$(xbacklight -get)"  ;;
-	5) xbacklight -dec 5 ; notify-send "Light" "$(xbacklight -get)";;
+  3) nohup tlpui > /dev/null & ;;
+  4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
 esac
 
 ICON=""

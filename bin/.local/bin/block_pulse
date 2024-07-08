@@ -6,11 +6,11 @@
 
 # Dependencies: pamixer
 case $BLOCK_BUTTON in
-	1) pamixer -t ;;
-	2) blueman-manager ;;
-	3) pavucontrol ;;
-	4) pamixer -i 5 ;;
-	5) pamixer -d 5 ;;
+  1) pamixer -t ; notify-send "Station" "$(pamixer --get-mute | sed 's/true/Mute/g' | sed 's/false/Unmute/g') " ;;
+	2) nohup blueman-manager > /dev/null & ;;
+	3) pavucontrol ; pkill -RTMIN+2 dwmblocks ;;
+	4) pamixer -i 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
+	5) pamixer -d 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
 esac
 
 VOL=$(pamixer --get-volume)

@@ -150,11 +150,11 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b%p"
+    format = "<center><b>%s</b></center>\n%b\n%p"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = center
+    # alignment = left
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -176,7 +176,7 @@
     stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = false
+    hide_duplicate_count = true
 
     # Display indicators for URLs (U) and actions (A).
     show_indicators = true

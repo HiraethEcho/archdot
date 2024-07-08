@@ -13,11 +13,11 @@ r=$(( mm * 100 / 1440 ))
 
 
 case $BLOCK_BUTTON in
-	1) notify-send -h int:value:$r "Calendar" "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	1) notify-send -h int:value:$r "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
 	2) wallpaper_change ;;
-	3) thunar ~ ;;
-	4) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
-	5)  ;;
+	3) nohup thunar ~ > /dev/null & ;;
+	# 4) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	# 5)  ;;
 esac
 
 printf "^c#bb9af7^󰸗^f2^%s" "$(date '+%m/%d')"
@@ -29,6 +29,6 @@ printf "^c#EBCB8B^"
 elif [[ $r -ge 25 ]]; then
 printf "^c#89b482^"
 else
-printf "^c#e06c75^"
+printf "^c#000000^"
 fi
 printf "^f2^󰥔^f2^%s" "$(date '+%R')"

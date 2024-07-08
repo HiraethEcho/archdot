@@ -45,7 +45,9 @@ source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
+
+# eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
+eval "$(zoxide init zsh)"
 
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
@@ -91,6 +93,7 @@ alias s="fastfetch"
 alias l="lsd -l"
 alias ll="lsd -la"
 alias r="ranger"
+alias y="yazi"
 alias lg="lazygit"
 alias zi="z -I"
 
@@ -125,6 +128,14 @@ sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # Lines configured by zsh-newuser-install
 HISTSIZE=1000

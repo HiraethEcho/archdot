@@ -4,11 +4,9 @@ interface=$(iw dev | awk '$1=="Interface"{print $2}')
 ssid=$(iw dev "$interface" link | awk '$1=="SSID:"{print $2}')
 
 case $BLOCK_BUTTON in
-	1) notify-send "Wifi" "$net% $ssid
-$(nmcli d wifi)
-" ;;
-2) notify-send -u critical "ip" "$(ip address)" ;;
-	3) iwgtk ;;
+	1) notify-send "Wifi" "$net% $ssid" ;;
+  2) setsid -f st -e nmtui; pkill -RTMIN+1 dwmblocks ;;
+	3) nohup iwgtk > /dev/null & ;;
 esac
 
 # "$(iwctl station wlan0 get-networks)"
@@ -17,13 +15,13 @@ esac
 printf "^c#99CC32^"
 
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
-  if [ $net -gt 80 ]; then
+  if [ $net -ge 80 ]; then
       wifiicon="󰣺"
-  elif [ $value -gt 60 ]; then
+  elif [ $value -ge 60 ]; then
       wifiicon="󰣸"
-  elif [ $value -gt 40 ]; then
+  elif [ $value -ge 40 ]; then
       wifiicon="󰣶"
-  elif [ $value -gt 20 ]; then
+  elif [ $value -ge 20 ]; then
       wifiicon="󰣴"
   else
       wifiicon="󰣾"
