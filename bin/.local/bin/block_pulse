@@ -7,8 +7,9 @@
 # Dependencies: pamixer
 case $BLOCK_BUTTON in
   1) pamixer -t ; notify-send "Station" "$(pamixer --get-mute | sed 's/true/Mute/g' | sed 's/false/Unmute/g') " ;;
-	2) nohup blueman-manager > /dev/null & ;;
-	3) pavucontrol ; pkill -RTMIN+2 dwmblocks ;;
+	# 2) nohup blueberry > /dev/null & ;;
+  2) pamixer --set-volume $(rpass) ; notify-send -h int:value:$(pamxier --get-volume) "volume" ;;
+	3) nohup pavucontrol > /dev/null &  pkill -RTMIN+3 dwmblocks ;;
 	4) pamixer -i 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
 	5) pamixer -d 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
   6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;

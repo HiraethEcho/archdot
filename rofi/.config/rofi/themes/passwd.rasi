@@ -1,7 +1,7 @@
 @import "~/.config/rofi/colors/nord.rasi"
 
 configuration {
-  font:			"Maple Mono NF 15";
+  font:			"Maple Mono NF 30";
   window-thumbnail:	true;
 }
 
@@ -17,26 +17,22 @@ mainbox {
 
 window {
   transparency:		"real";
-  width:		150px;
+  width:		200px;
   border:		3px 3px 3px 3px;
   border-radius:	3px;
-  height:		50px;
+  height:		75px;
 }
+
 inputbar {
-  children:		["prompt","entry"];
+  children:		["entry"];
   expand:		false;
   padding:		0px 0px 0px 0px;
   text-color:                  @foreground;
 }
-prompt {
-    enabled:                     false;
-    padding:                     2px;
-    border-radius:               5px;
-    background-color:            @active;
-    text-color:                  @background;
-}
+
+
 entry {
-  placeholder:		"Password";
+  placeholder:		" ";
   expand:		true;
   padding:		5px;
   border-radius:	5px;

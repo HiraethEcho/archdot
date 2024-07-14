@@ -15,6 +15,9 @@
 #keystate_scrolllock= enable
 
 #   apps
+"kitty ~"
+  Mod4 + Return
+
 "thunar ~"
   Mod4 + e
 # "sudo -A gparted"

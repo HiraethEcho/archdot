@@ -22,12 +22,12 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font: "Maple Mono NF 20";
+    background-color: transparent;
 }
 @import "~/.config/rofi/colors/nord.rasi"
 
 /*****----- Main Window -----*****/
 window {
-    transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
@@ -40,9 +40,9 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               30px;
     border-color:                @selected;
-    background-color:            @background;
+    background-color:            @transparent;
     cursor:                      "default";
 }
 
@@ -53,9 +53,9 @@ mainbox {
     margin:                      0px;
     padding:                     60px;
     border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
+    border-radius:               30px;
     border-color:                @selected;
-    background-color:            transparent;
+    background-color:            @transparent;
     children:                    [ "inputbar", "listview" ];
 }
 
@@ -66,9 +66,8 @@ inputbar {
     margin:                      0px;
     padding:                     0px;
     border:                      0px;
-    border-radius:               0px;
+    border-radius:               30px;
     border-color:                @selected;
-    background-color:            @background;
     text-color:                  @foreground;
     children:                    [ "prompt", "entry" ];
 }
@@ -119,7 +118,7 @@ listview {
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
-    background-color:            transparent;
+    background-color:            @transparent;
     text-color:                  @foreground;
     cursor:                      "default";
 }
@@ -153,13 +152,13 @@ element selected.normal {
 }
 element-icon {
     padding:                     0px 0px 0px 0px;
-    background-color:            transparent;
+    background-color:            @transparent;
     text-color:                  inherit;
     size:                        32px;
     cursor:                      inherit;
 }
 element-text {
-    background-color:            transparent;
+    background-color:            @transparent;
     text-color:                  inherit;
     highlight:                   inherit;
     cursor:                      inherit;

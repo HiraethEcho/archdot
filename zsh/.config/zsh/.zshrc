@@ -79,10 +79,12 @@ alias D="sx exec dwm"
 alias n="nvim"
 alias nn="nvim ."
 alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
+
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mininvim="NVIM_APPNAME=mini nvim"
 alias astro="NVIM_APPNAME=astro nvim"
 alias kicknvim="NVIM_APPNAME=kicknvim nvim"
+alias trynvim="NVIM_APPNAME=trynvim nvim"
 
 # git
 alias gx="git clean -xdf"
@@ -110,7 +112,8 @@ alias s="fastfetch"
 
 # cli
 alias l="lsd -l"
-alias ll="lsd -la"
+alias ll="lsd -lA"
+alias tree="lsd --tree"
 alias r="ranger"
 # alias y="yazi"
 alias lg="lazygit"

@@ -10,6 +10,7 @@
     background:     #2E3440;
     background-alt: #383E4A;
     foreground:     #E5E9F0;
+    transparent:    rgba(46,52,64,0.30);
     selected:       #81A1C1;
     active:         #A3BE8C;
     urgent:         #BF616A;

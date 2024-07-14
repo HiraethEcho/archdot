@@ -6,9 +6,10 @@
 
 # Dependencies: xbacklight
 case $BLOCK_BUTTON in
-	1) xbacklight 25 ;;
-	2) xbacklight 75 ;;
-	3) xbacklight 50 ;;
+	1) xbacklight 35 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+	# 2) xbacklight 75 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  2) xbacklight $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+	3) xbacklight 70 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;

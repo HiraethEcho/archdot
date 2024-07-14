@@ -1,10 +1,8 @@
 configuration {
   display-drun: "";
   display-window: "";
-  display-windowcd: "cd";
-  display-ssh: "ssh";
   display-run: "" ;
-  show-icons: false;
+  show-icons: true;
   drun-display-format: "{icon} {name} {comment}";
 }
 
@@ -16,13 +14,14 @@ configuration {
   height: 300px;
   location: 0;
   spacing: 0;
-  transparent: rgba(34,62,79,0.80);
+  transparent:    rgba(46,52,64,0.50);
 }
 
 window {
     location: center;
     anchor:   center;
 
+    border-radius:	15px;
     background-color:@transparent;
     spacing: 0;
     children:  [mainbox];
@@ -60,6 +59,7 @@ listview {
 
 element {
   border: 0 0 1px 0;
+  border-radius:	15px;
   padding: 4px;
 }
 
@@ -70,10 +70,10 @@ element-text {
 }
 
 element selected {
-  background-color: rgba(34,82,99);
+  background-color: #81A1C1;
 }
 
 element-icon {
     size: 30px;
-    border: 0px;
+    border: 10px;
 }

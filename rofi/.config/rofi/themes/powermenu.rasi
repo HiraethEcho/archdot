@@ -15,6 +15,7 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font: "Maple Mono NF 20";
+    background-color: transparent;
 }
 @import "~/.config/rofi/colors/nord.rasi"
 
@@ -48,10 +49,10 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               30px;
     border-color:                @selected;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            @transparent;
 }
 
 /*****----- Main Box -----*****/
@@ -61,9 +62,9 @@ mainbox {
     margin:                      0px;
     padding:                     var(box-margin);
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               10px;
     border-color:                @selected;
-    background-color:            transparent;
+    background-color:            @transparent;
     children:                    [ "inputbar", "listview" ];
 }
 
