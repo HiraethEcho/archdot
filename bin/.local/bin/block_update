@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pkill -SIGUSR1 dwmblocks
+notify-send "State" "󰍛 RAM: $(free -mh --si | awk  {'print $3'} | head -n 2 | tail -1)/$(free -mh --si | awk  {'print $2'} | head -n 2 | tail -1) 
+󰘚 CPU: $(top -bn1 | grep Cpu | awk '{print $2}')%
+ Temp: $(acpi -t | awk '{print $4}') ℃
+ Light: $(xbacklight -get)
+󰋊 Storage: $(btrfs filesystem usage / | awk '/Used/ {print $2}' | awk 'NR==1 {print}' )/$(btrfs filesystem usage / | awk '/Device size/ {print $3}') 
+󰕾 VOL: $(pamixer --get-mute | sed 's/true/Mute/g' | sed 's/false/Unmute/g') $(pamixer --get-volume)%
+󰁹 Battery: $(acpi | cut -d ':' -f 2-)"

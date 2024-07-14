@@ -29,7 +29,7 @@
   Mod4 + space
 
 # rofi
-"rofi -show run -theme ~/.config/rofi/themes/default.rasi"
+"rofi -show run"
   Mod4 + r
 "rofi_quickapps"
   Mod1 + space

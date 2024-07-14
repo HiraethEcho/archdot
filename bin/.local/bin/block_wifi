@@ -1,12 +1,15 @@
 #!/bin/sh
+
 net=$(awk '/^\s*w/ { print  int($3 * 100 / 70) }' /proc/net/wireless)
 interface=$(iw dev | awk '$1=="Interface"{print $2}')
 ssid=$(iw dev "$interface" link | awk '$1=="SSID:"{print $2}')
 
 case $BLOCK_BUTTON in
-	1) notify-send "Wifi" "$net% $ssid" ;;
-  2) setsid -f st -e nmtui; pkill -RTMIN+1 dwmblocks ;;
+	1) notify-send -h int:value:$net "Wifi" "$ssid"  ;;
+  # 2) setsid -f st -e nmtui; pkill -RTMIN+1 dwmblocks ;;
+	2) nohup nm-connection-editor > /dev/null & ;;
 	3) nohup iwgtk > /dev/null & ;;
+  6) nohup $TERMINAL -e nvim  "$0" > /dev/null & ;;
 esac
 
 # "$(iwctl station wlan0 get-networks)"
@@ -17,11 +20,11 @@ printf "^c#99CC32^"
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
   if [ $net -ge 80 ]; then
       wifiicon="󰣺"
-  elif [ $value -ge 60 ]; then
+  elif [ $net -ge 60 ]; then
       wifiicon="󰣸"
-  elif [ $value -ge 40 ]; then
+  elif [ $net -ge 40 ]; then
       wifiicon="󰣶"
-  elif [ $value -ge 20 ]; then
+  elif [ $net -ge 20 ]; then
       wifiicon="󰣴"
   else
       wifiicon="󰣾"

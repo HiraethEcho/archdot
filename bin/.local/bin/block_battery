@@ -8,10 +8,12 @@ case $BLOCK_BUTTON in
 󰋊 Storage: $(btrfs filesystem usage / | awk '/Used/ {print $2}' | awk 'NR==1 {print}' )/$(btrfs filesystem usage / | awk '/Device size/ {print $3}') 
 󰁹 Battery: $(acpi | cut -d ':' -f 2-)"
 ;;
-  2) alacritty -e top ;;
+  # 2) alacritty -e top ;;
+	2) wallpaper_change ;;
   3) nohup tlpui > /dev/null & ;;
   4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
 esac
 
 ICON=""

@@ -1,1 +1,1 @@
-/usr/share/xsession
+/usr/share/xsessions

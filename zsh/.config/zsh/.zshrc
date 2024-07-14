@@ -16,7 +16,7 @@ export LANGUAGE=en_US
 export EDITOR=nvim
 # export PAGER=sioyek
 export SUDO_ASKPASS="$HOME/.local/bin/rpass"
-export TERMINAL=st
+export TERMINAL=alacritty
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -26,8 +26,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_RUNTIME_DIR="$HOME/.local/tmp"
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+# export _ZL_DATA="$XDG_DATA_HOME/zlua"
 
 # fcitx5
 export GTK_IM_MODULE=fcitx5
@@ -45,9 +45,25 @@ source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source <(fzf --zsh)
 
 # eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 eval "$(zoxide init zsh)"
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
+# export FZF_COMPLETION_TRIGGER='~~'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
@@ -59,7 +75,10 @@ alias D="sx exec dwm"
 # alias X="startxfce4"
 
 # tui
+# nvim
 alias n="nvim"
+alias nn="nvim ."
+alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mininvim="NVIM_APPNAME=mini nvim"
 alias astro="NVIM_APPNAME=astro nvim"
@@ -93,9 +112,9 @@ alias s="fastfetch"
 alias l="lsd -l"
 alias ll="lsd -la"
 alias r="ranger"
-alias y="yazi"
+# alias y="yazi"
 alias lg="lazygit"
-alias zi="z -I"
+# alias zi="z -I"
 
 # usefule tools
 alias weather="curl 'v2d.wttr.in/Beijing'"
@@ -128,7 +147,7 @@ sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 
-function yy() {
+function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -150,7 +169,8 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" 
 # End of lines added by compinstall
 
-eval "$(mcfly init zsh)"
+
+# eval "$(mcfly init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

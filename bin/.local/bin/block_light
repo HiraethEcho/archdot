@@ -9,10 +9,11 @@ case $BLOCK_BUTTON in
 	1) xbacklight 25 ;;
 	2) xbacklight 75 ;;
 	3) xbacklight 50 ;;
-	4) xbacklight -inc 5 ;;
-	5) xbacklight -dec 5 ;;
+  4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
 esac
 printf "^c#f8f8ff^"
 light=$(xbacklight -get) 
-a=$[$light/2]
-printf "^f2^^s0,8,52,5^^r1,9,%s,3^^f54^%s" "$a" "$light" 
+a=$[$light/4]
+printf "^f2^^s0,8,27,5^^r1,9,%s,3^^f29^%s" "$a" "$light" 

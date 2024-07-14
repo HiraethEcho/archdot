@@ -11,6 +11,7 @@ case $BLOCK_BUTTON in
 	3) pavucontrol ; pkill -RTMIN+2 dwmblocks ;;
 	4) pamixer -i 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
 	5) pamixer -d 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
+  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
 esac
 
 VOL=$(pamixer --get-volume)
@@ -18,7 +19,7 @@ STATE=$(pamixer --get-mute)
 a=$[$VOL/4]
     # BLUETOOTH=$(bluetooth | awk {'print $3'})
 printf "^c#96CDFB^"
-if ![ -z "$(bluetoothctl devices Connected | grep 'AirPods')" ]; then
+if ! [ -z "$(bluetoothctl devices Connected | grep 'AirPods')"  ]; then
     printf "󱡏^f2^"
 fi
 
