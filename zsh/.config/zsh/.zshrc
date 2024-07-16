@@ -75,10 +75,12 @@ alias D="sx exec dwm"
 # alias X="startxfce4"
 
 # tui
-# nvim
+# (n)vim
 alias n="nvim"
 alias nn="nvim ."
+alias vv="vim ."
 alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
+alias vf="fzf --preview 'less {}' --bind 'enter:become(vim {})'"
 
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mininvim="NVIM_APPNAME=mini nvim"
@@ -114,7 +116,7 @@ alias s="fastfetch"
 alias l="lsd -l"
 alias ll="lsd -lA"
 alias tree="lsd --tree"
-alias r="ranger"
+# alias r="ranger"
 # alias y="yazi"
 alias lg="lazygit"
 # alias zi="z -I"
@@ -150,7 +152,7 @@ sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 
-function y() {
+function r() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
