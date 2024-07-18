@@ -8,13 +8,14 @@
 case $BLOCK_BUTTON in
   1) xbacklight $(( ($(xbacklight -get) + 20) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
 	# 2) xbacklight 75 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-	2) wallpaper_change ;;
-  3) xbacklight $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+	# 2) wallpaper_change ;;
+  2) xbacklight $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  3) xbacklight $(( ($(xbacklight -get) + 80) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
 esac
-printf "^c#f8f8ff^"
+printf "^c#ffd900^"
 light=$(xbacklight -get) 
 a=$[$light/4]
-printf "^f2^^s0,8,27,5^^r1,9,%s,3^^f29^%s" "$a" "$light" 
+printf "^f2^^s0,9,27,7^^r1,10,%s,5^^f29^%s" "$a" "$light" 

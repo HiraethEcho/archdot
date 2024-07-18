@@ -9,15 +9,16 @@ killall dunst
 dunst &
 
 killall picom
-picom -b &
+picom &
 
 killall blueberry-tray
 blueberry-tray
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-killall wallpaper_loop
-wallpaper_loop &
+# killall wallpaper_loop
+# wallpaper_loop &
+wallpaper_change
 
 # killall battery_warning 
 # battery_warning &

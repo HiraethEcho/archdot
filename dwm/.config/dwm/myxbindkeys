@@ -15,11 +15,14 @@
 #keystate_scrolllock= enable
 
 #   apps
-"kitty ~"
-  Mod4 + Return
+# "kitty ~"
+#   Mod4 + Return
 
 "thunar ~"
   Mod4 + e
+
+"xfce4-settings-manager"
+  Mod4 + i
 # "sudo -A gparted"
 #   Mod4 + k
 
@@ -38,10 +41,12 @@
   Mod1 + space
 "rofi_allapps"
   Mod4 + a
+
 # "rofi_powermenu"
 #   Mod4 + u
-"rofi_windows"
-  Mod4 + Tab
+# "rofi_windows"
+#   Mod4 + Tab
+
 "rofi_quicklinks"
   Mod4 + w
 
