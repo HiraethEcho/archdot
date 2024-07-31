@@ -48,8 +48,9 @@ vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
 # printf "^c#99CC32^"
-printf "^c#d08770^"
-printf "^f2^%s^f2^^f2^%s" "$vel_recv" "$vel_trans"
+#
+# printf "^c#d08770^"
+# printf "^f2^%s^f2^^f2^%s" "$vel_recv" "$vel_trans"
 
 
 printf "^c#b5d6e0^"

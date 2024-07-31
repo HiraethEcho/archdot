@@ -21,6 +21,12 @@
 "thunar ~"
   Mod4 + e
 
+"zotero"
+  Mod4 + z
+
+"neovide"
+  Mod4 + n
+
 "xfce4-settings-manager"
   Mod4 + i
 # "sudo -A gparted"

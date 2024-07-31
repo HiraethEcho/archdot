@@ -28,9 +28,9 @@ if ! [ -z "$(bluetoothctl devices Connected | grep 'BT')"  ]; then
 fi
 
 if [ "$STATE" = "true" ] || [ "$VOL" -eq 0 ]; then
-    printf "󰸈^f3^^s0,9,27,7^^r1,10,%s,5^^f29^%s" "$a" "$VOL"
+    printf "󰸈^f3^^s0,10,27,6^^r1,11,%s,4^^f29^%s" "$a" "$VOL"
 else
-    printf "󰕾^f3^^s0,9,27,7^^r1,10,%s,5^^f29^%s" "$a" "$VOL"
+    printf "󰕾^f3^^s0,10,27,6^^r1,11,%s,4^^f29^%s" "$a" "$VOL"
 fi
 # 󰥰 󱡏 
       # printf "^c#96CDFB^󰸈^f3^^c#96CDFB^^r0,1,7,19^^c#000000^^r1,2,5,17^^c#96CDFB^^r1,%s,5,%s^^f10^%s" "$b" "$a" "$VOL"

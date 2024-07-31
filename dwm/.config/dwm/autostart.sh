@@ -1,27 +1,39 @@
 #!/bin/sh
 killall xbindkeys
 mykeys &
+# if [ -z $(pidof xbindkeys)]; then
+# fi
 
 killall fcitx5
 fcitx5 &
+# if [ -z $(pidof fcitx5)]; then
+# fi
 
 killall dunst
 dunst &
+# if [ -z $(pidof dunst)]; then
+# fi
 
 killall picom
-picom &
+picom -b &
+# if [ -z $(pidof picom)]; then
+# fi
 
-killall blueberry-tray
-blueberry-tray
+# killall blueberry-tray
+blueberry-tray &
+# if [ -z $(pidof blueberry-tray) ]; then
+# fi
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # killall wallpaper_loop
 # wallpaper_loop &
-wallpaper_change
+wallpaper_change &
 
 # killall battery_warning 
 # battery_warning &
 
 killall dwmblocks
 dwmblocks &
+# if [ -z $(pidof dwmblocks) ]; then
+# fi

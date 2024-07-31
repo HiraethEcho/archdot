@@ -46,5 +46,5 @@ charging=$(cat /sys/class/power_supply/BAT1/status)
     printf "%s^f2^" "$ICON"
 
     a=$(( (capacity)/5))
-    printf "^s0,6,22,12^^r1,7,%s,10^^r22,9,2,6^^f26^%s%" "$a" "$capacity"
+    printf "^s0,7,22,12^^r1,8,%s,10^^r22,10,2,6^^f26^%s" "$a" "$capacity"
 

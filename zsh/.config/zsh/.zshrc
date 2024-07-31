@@ -49,7 +49,8 @@ source <(fzf --zsh)
 
 # eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 eval "$(zoxide init zsh)"
-export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
+# export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
+export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"
 # export FZF_COMPLETION_TRIGGER='~~'
 export FZF_COMPLETION_OPTS='--border --info=inline'
 

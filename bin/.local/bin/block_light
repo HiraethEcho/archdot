@@ -18,4 +18,4 @@ esac
 printf "^c#ffd900^"
 light=$(xbacklight -get) 
 a=$[$light/4]
-printf "^f2^^s0,9,27,7^^r1,10,%s,5^^f29^%s" "$a" "$light" 
+printf "^f2^^s0,10,27,6^^r1,11,%s,4^^f29^%s" "$a" "$light" 
