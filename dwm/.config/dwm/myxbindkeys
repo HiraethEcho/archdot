@@ -53,11 +53,13 @@
 # "rofi_windows"
 #   Mod4 + Tab
 
-"rofi_quicklinks"
+# "rofi_quicklinks"
+"microsoft-edge-stable"
   Mod4 + w
 
 # "rofi_screenshot"
-#   Shift + Mod4 + s
+"xfce4-screenshooter"
+  Shift + Mod4 + s
 
 # " rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
 #   Mod4 + v
@@ -65,6 +67,8 @@
 "rofi_winx"
   Mod4 + x
 
+"xfce4-taskmanager"
+  Control+Shift + Escape
 ## Control+Shift+a  release event starts rxvt
 #"rxvt"
 #  release+control+shift + a

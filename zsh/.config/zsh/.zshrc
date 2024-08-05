@@ -1,16 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-
+export LANGUAGE=en_US:zh_CN
 # export LANGUAGE=zh_CN:en_US
-export LANGUAGE=en_US
+# export LANGUAGE=en_US
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"
 export EDITOR=nvim
@@ -69,11 +63,10 @@ _fzf_compgen_dir() {
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
 
-# alias D="sx exec dwm_old"
 alias D="sx exec dwm"
 # alias G="sx exec gnome-session"
 # alias k="sx exec startplasma-x11"
-# alias X="startxfce4"
+alias X="startxfce4"
 
 # tui
 # (n)vim

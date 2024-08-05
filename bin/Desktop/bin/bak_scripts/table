@@ -1,0 +1,16 @@
+/dev/loop0
+/dev/loop1
+0 2048 linear /dev/nvme0n1 0
+2048 409600 linear /dev/loop0 0
+411648 83886080 linear /dev/disk/by-label/Windows 0
+84297728 67108864 linear /dev/disk/by-label/Data 0
+151406592 2048 linear /dev/loop1 0
+
+# 设备                起点       末尾      扇区   大小 类型
+# /dev/nvme0n1p1      2048     411647    409600   200M EFI 系统
+# /dev/nvme0n1p2    411648     444415     32768    16M Microsoft 保留
+# /dev/nvme0n1p3    444416   84330495  83886080    40G Microsoft 基本数据
+# /dev/nvme0n1p4  84330496  151439359  67108864    32G Microsoft 基本数据
+# /dev/nvme0n1p5 168214528  252100607  83886080    40G Linux 文件系统
+# /dev/nvme0n1p6 252100608  998115327 746014720 355.7G Microsoft 基本数据
+# /dev/nvme0n1p7 998117376 1000214527   2097152     1G Windows 恢复环境

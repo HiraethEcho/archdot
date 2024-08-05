@@ -1,0 +1,34 @@
+#!/bin/bash
+
+modprobe loop
+table="0 2048 linear /dev/nvme0n1 0"
+table+=$'\n'
+cur_size=2048
+
+LOOP1=$(sudo losetup -f)
+losetup ${LOOP1}  /home/hiraeth/Desktop/virtual/win/winefi --show
+sector_size=$(sudo blockdev --getsz $LOOP1)
+table+="$cur_size $sector_size linear $LOOP1 0"
+table+=$'\n'
+cur_size=$((cur_size+sector_size))
+
+win_sys="/dev/disk/by-label/Windows"
+sector_size=$(sudo blockdev --getsz $win_sys)
+table+="$cur_size $sector_size linear $win_sys 0"
+table+=$'\n'
+cur_size=$((cur_size+sector_size))
+
+win_data="/dev/disk/by-label/Data"
+sector_size=$(sudo blockdev --getsz $win_data)
+table+="$cur_size $sector_size linear $win_data 0"
+table+=$'\n'
+cur_size=$((cur_size+sector_size))
+LOOP2=$(sudo losetup -f)
+losetup ${LOOP2}  /home/hiraeth/Desktop/virtual//win/end --show
+sector_size=$(sudo blockdev --getsz $LOOP2)
+table+="$cur_size $sector_size linear $LOOP2 0"
+cur_size=$((cur_size+sector_size))
+
+echo "$table" 
+
+echo "$table" | dmsetup create win
