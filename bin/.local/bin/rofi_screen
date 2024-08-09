@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+theme="~/.config/rofi/themes/winx.rasi"
+
+option_f="fullscreen f"
+option_r="region     r"
+option_w="window     w"
+
+rofi_cmd() {
+  rofi -theme-str "listview {columns: 1; lines: 3;}" \
+    -dmenu \
+    -kb-select-1 f \
+    -kb-select-2 r \
+    -kb-select-3 w \
+    -markup-rows \
+    -theme ${theme}
+}
+
+run_rofi() {
+  echo -e "$option_f\n$option_r\n$option_w\n" | rofi_cmd
+}
+
+
+chosen="$(run_rofi)"
+case ${chosen} in
+    $option_f)
+      xfce4-screenshooter -f
+        ;;
+    $option_r)
+      xfce4-screenshooter -r
+        ;;
+    $option_w)
+      xfce4-screenshooter -w
+        ;;
+esac

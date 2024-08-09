@@ -1,0 +1,18 @@
+#!/bin/sh
+
+sudo qemu-system-x86_64 \
+-boot menu=on \
+-bios /usr/share/ovmf/x64/OVMF_CODE.fd \
+-L /usr/share/qemu/ \
+-cpu host -enable-kvm -m 8G -smp 4 --enable-kvm \
+-drive file=/dev/nvme0n1p1,index=0,media=disk,format=raw \
+-drive file=/dev/nvme0n1p3,index=1,media=disk,format=raw \
+-drive file=/dev/nvme0n1p4,index=2,media=disk,format=raw \
+
+# -boot c \
+# sudo qemu-system-x86_64 
+# -bios /usr/share/ovmf/x64/OVMF_CODE.fd 
+# -drive file=/dev/sda,format=raw,if=virtio 
+# -L /usr/share/qemu  
+# -device qemu-xhci -device usb-tablet 
+# -boot menu=on -drive file=/path/to/your_physical_disk/bootx64.efi,index=0,media=disk

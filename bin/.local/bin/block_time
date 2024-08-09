@@ -1,16 +1,16 @@
 #!/bin/sh
 
-hh="1$(date +%H)"
-h=$(($hh % 100))
-mm="1$(date +%M)"
-m=$(($mm % 100))
-a=$((h * 60 + m))
-r=$((a * 100 / 1440))
+# hh="1$(date +%H)"
+# h=$(($hh % 100))
+# mm="1$(date +%M)"
+# m=$(($mm % 100))
+# a=$((h * 60 + m))
+# r=$((a * 100 / 1440))
 # printf "r%s" "$r"
 
 case $BLOCK_BUTTON in
-  1) notify-send -h int:value:$r "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
-	# 1) notify-send  "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+  # 1) notify-send -h int:value:$r "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	1) notify-send  "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
   2) nohup st -t tasks -g 100x30 -e nvim ~/Desktop/tasks/test.md > /dev/null & ;;
   3) nohup st -t tasks -g 80x20 -e slides ~/Desktop/tasks/test.md > /dev/null & ;;
 	# 3) nohup thunar ~ > /dev/null & ;;
@@ -18,16 +18,5 @@ case $BLOCK_BUTTON in
   6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
 esac
 
-printf "^c#dfe3ee^"
-printf "󰸗^f2^%s" "$(date '+%m/%d')"
 printf "^c#a8fd12^"
 printf "^f2^󰥔^f2^%s" "$(date '+%R')"
-# if [[ $r -ge 75 ]]; then
-# printf "^c#e06c75^"
-# elif [[ $r -ge 50 ]]; then
-# printf "^c#EBCB8B^"
-# elif [[ $r -ge 25 ]]; then
-# printf "^c#89b482^"
-# else
-# printf "^c#000000^"
-# fi

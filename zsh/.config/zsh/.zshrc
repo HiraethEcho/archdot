@@ -2,9 +2,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export LANGUAGE=en_US:zh_CN
+# export LANGUAGE=en_US:zh_CN
 # export LANGUAGE=zh_CN:en_US
-# export LANGUAGE=en_US
+export LANGUAGE=en_US
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"
 export EDITOR=nvim

@@ -19,15 +19,16 @@ web_cmd='microsoft-edge-stable'
 watt_cmd='watt-toolkit'
 zotero_cmd='zotero'
 obsidian_cmd='obsidian'
-file_cmd='nautilus'
+file_cmd='thunar'
 blue_tooth_cmd='blueberry'
 wifi_cmd='iwgtk'
 download_cmd='xdman'
 volume_cmd='pavucontrol'
-text_cmd='alacritty -e nvim'
+text_cmd='neovide'
 onedrive_cmd='onedrivegui'
 battery_cmd='tlpui'
-wechat_cmd='wechat-uos'
+# wechat_cmd='wechat-uos'
+win_cmd='sudo virtualbox'
 rss_cmd='fluent-reader'
 office_cmd='libreoffice'
 mail_cmd='evolution'
@@ -45,7 +46,8 @@ option_9="󱄠 volume "
 option_10=" nvim "
 option_11=" onedrive "
 option_12="󰌪 battery "
-option_13="󰘑 wechat"
+# option_13="󰘑 wechat"
+option_13=" windows"
 option_14=" rss reader"
 option_15="󰏆 office"
 
@@ -94,7 +96,8 @@ run_cmd() {
   elif [[ "$1" == '--opt12' ]]; then
     ${battery_cmd}
   elif [[ "$1" == '--opt13' ]]; then
-    ${wechat_cmd}
+    # ${wechat_cmd}
+    ${win_cmd}
   elif [[ "$1" == '--opt14' ]]; then
     ${rss_cmd}
   elif [[ "$1" == '--opt15' ]]; then

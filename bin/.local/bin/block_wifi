@@ -37,16 +37,16 @@ function get_velocity {
     fi
 }
 
-get_bytes
-old_received_bytes=$received_bytes
-old_transmitted_bytes=$transmitted_bytes
-old_time=$now
-
-get_bytes
-
-vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
-vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
-
+# get_bytes
+# old_received_bytes=$received_bytes
+# old_transmitted_bytes=$transmitted_bytes
+# old_time=$now
+#
+# get_bytes
+#
+# vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
+# vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+#
 # printf "^c#99CC32^"
 #
 # printf "^c#d08770^"

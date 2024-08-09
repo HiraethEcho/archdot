@@ -5,8 +5,12 @@ if [[ x"$1" == x ]]; then
   echo "Usage: rollback [snapshot to rollback]" 1>&2
   exit 1
 fi
+
 root_dev=`findmnt -n -o SOURCE / | sed 's/\[.*\]//g'`
 root_subvol=`findmnt -n -o SOURCE / | sed 's/.*\[\(.*\)\].*/\1/'`
+echo "root_dev = $root_dev"
+echo "root_subvol = $root_subvol"
+
 echo ">= Rollback to #$1 on device $root_dev"
 # create snapshot before
 sudo snapper create --read-only --type single -d "Before rollback to #$1" --userdata important=yes
@@ -16,11 +20,11 @@ if [[ x"$root_subvol" == x/@ ]]; then
   echo "Warning: Not run in a snapshot, a subvolume @old will be created. You should consider remove it after reboot." 1>&2
   if [[ -d /mnt/rollback/@old ]]; then
     echo "Found last @old, remove it."
-    sudo btrfs subvolume delete /mnt/rollback/@old >/dev/null
+    sudo btrfs subvolume delete /mnt/rollback/@old # >/dev/null
   fi
   sudo mv /mnt/rollback/@ /mnt/rollback/@old
 else
-  sudo btrfs subvolume delete /mnt/rollback/@ >/dev/null
+  sudo btrfs subvolume delete /mnt/rollback/@ # >/dev/null
 fi
-sudo btrfs subvolume snapshot /mnt/rollback/@snap/$1/snapshot /mnt/rollback/@ >/dev/null
+sudo btrfs subvolume snapshot /mnt/rollback/@snap/$1/snapshot /mnt/rollback/@ # >/dev/null
 sudo umount /mnt/rollback

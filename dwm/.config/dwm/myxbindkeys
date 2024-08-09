@@ -58,7 +58,7 @@
   Mod4 + w
 
 # "rofi_screenshot"
-"xfce4-screenshooter"
+"rofi_screen"
   Shift + Mod4 + s
 
 # " rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' "
@@ -67,7 +67,7 @@
 "rofi_winx"
   Mod4 + x
 
-"xfce4-taskmanager"
+"kitty -e btop"
   Control+Shift + Escape
 ## Control+Shift+a  release event starts rxvt
 #"rxvt"
