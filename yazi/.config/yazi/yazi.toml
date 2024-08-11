@@ -3,7 +3,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-ratio          = [ 1, 4, 3 ]
+ratio          = [ 1, 4, 4 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
 sort_reverse   = false
@@ -81,7 +81,6 @@ suppress_preload = false
 [plugin]
 
 preloaders = [
-	{ name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
 	# Image
 	{ mime = "image/*", run = "image" },
 	# Video

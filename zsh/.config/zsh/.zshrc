@@ -9,7 +9,7 @@ export LANGUAGE=en_US
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek
-export SUDO_ASKPASS="$HOME/.local/bin/rpass"
+# export SUDO_ASKPASS="$HOME/.local/bin/rpass"
 export TERMINAL=kitty
 
 
@@ -18,11 +18,11 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_RUNTIME_DIR="$HOME/.local/tmp"
-
+export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # export _ZL_DATA="$XDG_DATA_HOME/zlua"
-
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # fcitx5
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
@@ -42,6 +42,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source <(fzf --zsh)
 
 # eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
+eval $(thefuck --alias f)
 eval "$(zoxide init zsh)"
 # export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
 export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"

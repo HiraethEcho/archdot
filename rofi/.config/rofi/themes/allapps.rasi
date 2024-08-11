@@ -147,18 +147,18 @@ element normal.normal {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            @background-alt;
+    background-color:            var(selected);
     text-color:                  @foreground;
 }
 element-icon {
     padding:                     0px 0px 0px 0px;
-    background-color:            @transparent;
+    background-color:            transparent;
     text-color:                  inherit;
     size:                        32px;
     cursor:                      inherit;
 }
 element-text {
-    background-color:            @transparent;
+    background-color:            transparent;
     text-color:                  inherit;
     highlight:                   inherit;
     cursor:                      inherit;

@@ -32,9 +32,9 @@ case ${chosen} in
       sudo -A gparted
         ;;
     $option_i)
-      alacritty
+      kitty
         ;;
     $option_s)
-      sudo -A btrfs-assistant
+      btrfs-assistant-launcher
         ;;
 esac

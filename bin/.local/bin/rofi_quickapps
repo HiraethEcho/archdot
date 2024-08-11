@@ -22,15 +22,15 @@ obsidian_cmd='obsidian'
 file_cmd='thunar'
 blue_tooth_cmd='blueberry'
 wifi_cmd='iwgtk'
-download_cmd='xdman'
+# download_cmd='xdman'
 volume_cmd='pavucontrol'
 text_cmd='neovide'
 onedrive_cmd='onedrivegui'
 battery_cmd='tlpui'
-# wechat_cmd='wechat-uos'
-win_cmd='sudo virtualbox'
+wechat_cmd='electronic-wechat-uos-bin'
+win_cmd='sudo -A virtualbox'
 rss_cmd='fluent-reader'
-office_cmd='libreoffice'
+office_cmd='onlyoffice-desktopeditors'
 mail_cmd='evolution'
 #  
 # Options
@@ -41,12 +41,12 @@ option_4=" obsidian "
 option_5="󰇮 mail "
 option_6=" bluetooth "
 option_7=" wifi "
-option_8=" download "
+# option_8=" download "
+option_8="󰘑 wechat"
 option_9="󱄠 volume "
 option_10=" nvim "
 option_11=" onedrive "
 option_12="󰌪 battery "
-# option_13="󰘑 wechat"
 option_13=" windows"
 option_14=" rss reader"
 option_15="󰏆 office"
@@ -86,7 +86,7 @@ run_cmd() {
   elif [[ "$1" == '--opt7' ]]; then
     ${wifi_cmd}
   elif [[ "$1" == '--opt8' ]]; then
-    ${download_cmd}
+    ${wechat_cmd}
   elif [[ "$1" == '--opt9' ]]; then
     ${volume_cmd}
   elif [[ "$1" == '--opt10' ]]; then

@@ -1,4 +1,5 @@
 #!/bin/sh
+
 killall xbindkeys
 mykeys &
 # if [ -z $(pidof xbindkeys)]; then
@@ -14,13 +15,13 @@ dunst &
 # if [ -z $(pidof dunst)]; then
 # fi
 
-killall picom
-picom -b &
+# killall picom
+# picom -b
 # if [ -z $(pidof picom)]; then
 # fi
 
 # killall blueberry-tray
-blueberry-tray &
+# blueberry-tray &
 # if [ -z $(pidof blueberry-tray) ]; then
 # fi
 
@@ -28,6 +29,7 @@ blueberry-tray &
 
 # killall wallpaper_loop
 # wallpaper_loop &
+
 wallpaper_change &
 
 # killall battery_warning 
@@ -35,5 +37,6 @@ wallpaper_change &
 
 killall dwmblocks
 dwmblocks &
+
 # if [ -z $(pidof dwmblocks) ]; then
 # fi

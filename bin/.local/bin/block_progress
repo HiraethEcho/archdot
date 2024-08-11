@@ -5,8 +5,7 @@ h=$(($hh % 100))
 mm="1$(date +%M)"
 m=$(($mm % 100))
 a=$((h * 60 + m))
-r=$((a * 100 / 1440))
-# printf "r%s" "$r"
+r=$((a * 72 / 1440))
 
 case $BLOCK_BUTTON in
   1) notify-send -h int:value:$r "Calendar" "$(cal -m | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
@@ -19,16 +18,16 @@ case $BLOCK_BUTTON in
 esac
 
 
-if [[ $r -ge 75 ]]; then
-printf "^c#e06c75^"
-elif [[ $r -ge 50 ]]; then
+if [[ $r -ge 63 ]]; then
+printf "^c#000000^"
+elif [[ $r -ge 42 ]]; then
 printf "^c#EBCB8B^"
-elif [[ $r -ge 25 ]]; then
+elif [[ $r -ge 21 ]]; then
 printf "^c#89b482^"
 else
-printf "^c#000000^"
+printf "^c#e06c75^"
 fi
-printf "^s0,10,102,6^^r1,11,%s,4^^f104^%s%%" "$r" "$r" 
+printf "^s0,10,74,6^^r1,11,%s,4^^f76^%s%%" "$r" "$r" 
 
 printf "^c#dfe3ee^"
 printf "^f3^󰸗^f2^%s" "$(date '+%m/%d')"
