@@ -20,8 +20,8 @@ dunst &
 # if [ -z $(pidof picom)]; then
 # fi
 
-# killall blueberry-tray
-# blueberry-tray &
+killall blueberry-tray
+blueberry-tray &
 # if [ -z $(pidof blueberry-tray) ]; then
 # fi
 

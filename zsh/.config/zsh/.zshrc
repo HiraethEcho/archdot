@@ -4,7 +4,7 @@ fi
 
 # export LANGUAGE=en_US:zh_CN
 # export LANGUAGE=zh_CN:en_US
-export LANGUAGE=en_US
+# export LANGUAGE=en_US
 # export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"
 export EDITOR=nvim
@@ -42,10 +42,11 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source <(fzf --zsh)
 
 # eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
-eval $(thefuck --alias f)
+# eval $(thefuck --alias f)
 eval "$(zoxide init zsh)"
 # export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
-export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"
+# export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"
+export FZF_DEFAULT_OPTS="--reverse --border"
 # export FZF_COMPLETION_TRIGGER='~~'
 export FZF_COMPLETION_OPTS='--border --info=inline'
 
@@ -78,10 +79,10 @@ alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
 alias vf="fzf --preview 'less {}' --bind 'enter:become(vim {})'"
 
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-alias mininvim="NVIM_APPNAME=mini nvim"
-alias astro="NVIM_APPNAME=astro nvim"
-alias kicknvim="NVIM_APPNAME=kicknvim nvim"
-alias trynvim="NVIM_APPNAME=trynvim nvim"
+# alias mininvim="NVIM_APPNAME=mini nvim"
+# alias astro="NVIM_APPNAME=astro nvim"
+# alias kicknvim="NVIM_APPNAME=kicknvim nvim"
+# alias trynvim="NVIM_APPNAME=trynvim nvim"
 
 # git
 alias gx="git clean -xdf"
@@ -91,9 +92,9 @@ alias gc="git clone "
 alias gc1="git clone --depth 1"
 
 # tmux
-alias tn="tmux new -s "
-alias ta="tmux attach -t "
-alias tl="tmux list"
+# alias tn="tmux new -s "
+# alias ta="tmux attach -t "
+# alias tl="tmux list"
 # alias pad="tmux new -s pad"
 # alias tmp="tmux new -s tmp"
 # alias blog="tmux new -s blog"
@@ -113,7 +114,7 @@ alias ll="lsd -lA"
 alias tree="lsd --tree"
 # alias r="ranger"
 # alias y="yazi"
-alias lg="lazygit"
+alias gg="lazygit"
 # alias zi="z -I"
 
 # usefule tools

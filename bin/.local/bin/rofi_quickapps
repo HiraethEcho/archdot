@@ -17,40 +17,42 @@ list_row='5'
 # CMDs (add your apps here)
 web_cmd='microsoft-edge-stable'
 watt_cmd='watt-toolkit'
+steam_cmd='steam-native'
 zotero_cmd='zotero'
 obsidian_cmd='obsidian'
-file_cmd='thunar'
+file_cmd='thunar ~'
 blue_tooth_cmd='blueberry'
 wifi_cmd='iwgtk'
-# download_cmd='xdman'
+download_cmd='xunlei'
 volume_cmd='pavucontrol'
 text_cmd='neovide'
 onedrive_cmd='onedrivegui'
 battery_cmd='tlpui'
-wechat_cmd='electronic-wechat-uos-bin'
-win_cmd='sudo -A virtualbox'
+wechat_cmd='wechat-universal'
+# win_cmd='sudo -A virtualbox'
 rss_cmd='fluent-reader'
 office_cmd='onlyoffice-desktopeditors'
 mail_cmd='evolution'
 #  
+#
 # Options
 option_1=" edge "
-option_2="󰓓 steam++"
+option_2=" watt"
 option_3=" zotero "
 option_4=" obsidian "
 option_5="󰇮 mail "
 option_6=" bluetooth "
 option_7=" wifi "
-# option_8=" download "
+option_8=" download "
 option_8="󰘑 wechat"
 option_9="󱄠 volume "
 option_10=" nvim "
 option_11=" onedrive "
 option_12="󰌪 battery "
-option_13=" windows"
-option_14=" rss reader"
+option_13="󰓓 steam"
+option_14=" rss"
 option_15="󰏆 office"
-
+# 
 
 # Rofi CMD
     # -mesg "$mesg" \
@@ -86,7 +88,7 @@ run_cmd() {
   elif [[ "$1" == '--opt7' ]]; then
     ${wifi_cmd}
   elif [[ "$1" == '--opt8' ]]; then
-    ${wechat_cmd}
+    ${download_cmd}
   elif [[ "$1" == '--opt9' ]]; then
     ${volume_cmd}
   elif [[ "$1" == '--opt10' ]]; then
@@ -96,8 +98,7 @@ run_cmd() {
   elif [[ "$1" == '--opt12' ]]; then
     ${battery_cmd}
   elif [[ "$1" == '--opt13' ]]; then
-    # ${wechat_cmd}
-    ${win_cmd}
+    ${steam_cmd}
   elif [[ "$1" == '--opt14' ]]; then
     ${rss_cmd}
   elif [[ "$1" == '--opt15' ]]; then

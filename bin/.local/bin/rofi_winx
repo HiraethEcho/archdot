@@ -29,7 +29,7 @@ case ${chosen} in
       rofi_powermenu
         ;;
     $option_k)
-      sudo -A gparted
+      gparted
         ;;
     $option_i)
       kitty
