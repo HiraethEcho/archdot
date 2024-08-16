@@ -164,7 +164,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/hiraeth/.zshrc'
+# zstyle :compinstall filename '/home/hiraeth/.zshrc'
 
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" 
