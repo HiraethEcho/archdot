@@ -40,11 +40,11 @@ option_1=" edge "
 option_2=" watt"
 option_3=" zotero "
 option_4=" obsidian "
-option_5="󰇮 mail "
+# option_5="󰇮 mail "
+option_5="󰘑 wechat"
 option_6=" bluetooth "
 option_7=" wifi "
 option_8=" download "
-option_8="󰘑 wechat"
 option_9="󱄠 volume "
 option_10=" nvim "
 option_11=" onedrive "
@@ -82,7 +82,7 @@ run_cmd() {
   elif [[ "$1" == '--opt4' ]]; then
     ${obsidian_cmd}
   elif [[ "$1" == '--opt5' ]]; then
-    ${mail_cmd}
+    ${wechat_cmd}
   elif [[ "$1" == '--opt6' ]]; then
     ${blue_tooth_cmd}
   elif [[ "$1" == '--opt7' ]]; then

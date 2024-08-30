@@ -25,7 +25,8 @@ blueberry-tray &
 # if [ -z $(pidof blueberry-tray) ]; then
 # fi
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce-polkit/xfce-polkit &
 
 # killall wallpaper_loop
 # wallpaper_loop &
