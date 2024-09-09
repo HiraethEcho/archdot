@@ -31,7 +31,7 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
-
+# XCURSOR_THEME="Nordzy-cursors"
 # export LFS=/mnt/lfs
 
 # plugs
