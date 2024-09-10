@@ -17,7 +17,7 @@ list_row='5'
 # CMDs (add your apps here)
 web_cmd='microsoft-edge-stable'
 watt_cmd='watt-toolkit'
-steam_cmd='steam-native'
+steam_cmd='steam -silent'
 zotero_cmd='zotero'
 obsidian_cmd='obsidian'
 file_cmd='thunar ~'

@@ -24,12 +24,12 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # fcitx5
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
+# export GTK_IM_MODULE=fcitx5
+# export QT_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx
+# export INPUT_METHOD=fcitx
+# export SDL_IM_MODULE=fcitx
+# export GLFW_IM_MODULE=ibus
 
 # XCURSOR_THEME="Nordzy-cursors"
 # export LFS=/mnt/lfs
