@@ -153,6 +153,11 @@ keymap = [
   { on = [ "~" ], run = "help", desc = "Open help" },
 ]
 
+[[manager.prepend_keymap]]
+on   = "P"
+run  = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+
 [tasks]
 
 keymap = [
@@ -254,7 +259,7 @@ keymap = [
   { on = [ "x" ], run = [ "delete --cut", "move 1 --in-operating" ], desc = "Cut the current character" },
   { on = [ "y" ], run = "yank",           desc = "Copy the selected characters" },
   { on = [ "p" ], run = "paste",          desc = "Paste the copied characters after the cursor" },
-  { on = [ "P" ], run = "paste --before", desc = "Paste the copied characters before the cursor" },
+  # { on = [ "P" ], run = "paste --before", desc = "Paste the copied characters before the cursor" },
 
   # Undo/Redo
   { on = [ "u" ],     run = "undo", desc = "Undo the last operation" },
