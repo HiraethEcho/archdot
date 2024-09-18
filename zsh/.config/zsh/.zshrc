@@ -44,6 +44,8 @@ source <(fzf --zsh)
 # eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced once echo)"
 # eval $(thefuck --alias f)
 eval "$(zoxide init zsh)"
+eval "$(gh copilot alias -- zsh)"
+
 # export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
 # export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"
 export FZF_DEFAULT_OPTS="--reverse --border"
@@ -64,10 +66,9 @@ _fzf_compgen_dir() {
 
 # alias
 alias zshrc="nvim ~/.config/zsh/.zshrc"
-
 alias D="sx exec dwm"
 # alias G="sx exec gnome-session"
-# alias k="sx exec startplasma-x11"
+# alias K="sx exec startplasma-x11"
 alias X="startxfce4"
 
 # tui
@@ -78,7 +79,7 @@ alias vv="vim ."
 alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
 alias vf="fzf --preview 'less {}' --bind 'enter:become(vim {})'"
 
-alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+# alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 # alias mininvim="NVIM_APPNAME=mini nvim"
 # alias astro="NVIM_APPNAME=astro nvim"
 # alias kicknvim="NVIM_APPNAME=kicknvim nvim"
