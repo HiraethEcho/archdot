@@ -13,7 +13,7 @@ case $BLOCK_BUTTON in
   3) nohup tlpui > /dev/null & ;;
   # 4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   # 5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
+  6) nohup kitty -e nvim "$0" > /dev/null &;;
 esac
 
 ICON=""

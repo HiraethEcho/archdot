@@ -15,7 +15,7 @@ case $BLOCK_BUTTON in
   3) nohup st -t tasks -g 80x20 -e slides ~/Desktop/tasks/test.md > /dev/null & ;;
 	# 3) nohup thunar ~ > /dev/null & ;;
 	# 4) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
-  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
+  6) nohup kitty -e nvim "$0" > /dev/null &;;
 esac
 
 printf "^c#a8fd12^"

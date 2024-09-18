@@ -15,18 +15,18 @@ case $BLOCK_BUTTON in
   3) nohup st -t tasks -g 80x20 -e slides ~/Desktop/tasks/test.md > /dev/null & ;;
 	# 3) nohup thunar ~ > /dev/null & ;;
 	# 4) notify-send " " "$(cal | sed "s/\<$(date +'%e'|sed 's/ //g')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
-  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
+  6) nohup kitty -e nvim "$0" > /dev/null &;;
 esac
 
 
-if [[ $l -ge 71 ]]; then
+if [[ $l -ge 69 ]]; then
 printf "^c#e06c75^"
 elif [[ $l -ge 63 ]]; then
 printf "^c#000000^"
 elif [[ $l -ge 42 ]]; then
 printf "^c#89b482^"
 elif [[ $l -ge 27 ]]; then
-printf "^c#982BFF^"
+printf "^c#01e9f1^"
 elif [[ $l -ge 18 ]]; then
 printf "^c#4169e1^"
 else

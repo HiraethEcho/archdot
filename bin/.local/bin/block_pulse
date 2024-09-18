@@ -11,7 +11,7 @@ case $BLOCK_BUTTON in
 	3) nohup pavucontrol > /dev/null &  pkill -RTMIN+3 dwmblocks ;;
 	4) pamixer -i 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
 	5) pamixer -d 5 ; notify-send -h int:value:$(pamixer --get-volume) "volume";;
-  6) nohup $TERMINAL -e nvim "$0" > /dev/null &;;
+  6) nohup kitty -e nvim "$0" > /dev/null &;;
 esac
 
 VOL=$(pamixer --get-volume)
