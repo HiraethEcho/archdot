@@ -23,6 +23,7 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export GOPROXY=goproxy.io
 # fcitx5
 # export GTK_IM_MODULE=fcitx5
 # export QT_IM_MODULE=fcitx5
