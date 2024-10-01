@@ -19,7 +19,6 @@ btrfs-assistant
 btrfs-progs
 dhcpcd
 dmenu
-dnsmasq
 dunst
 efibootmgr
 fastfetch
@@ -36,18 +35,13 @@ feh
 fluent-reader-bin
 fzf
 fzf-tab-git
-gcc
 git
-gitg
 github-cli
 glow
 gparted
 grub
 grub-btrfs
 gvfs
-hugo
-inetutils
-iptables-nft
 iwd
 iwgtk
 kitty
@@ -63,7 +57,6 @@ linux-headers
 lsd
 microsoft-edge-stable-bin
 mpv
-neovide
 neovim
 networkmanager
 nm-connection-editor
@@ -71,7 +64,7 @@ nordzy-cursors
 npm
 ntfs-3g
 obsidian
-onedriver-git
+onedrivegui
 onlyoffice-bin
 os-prober
 pacman-contrib
