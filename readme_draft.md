@@ -1,55 +1,50 @@
 ## backup
 
-首先运行 `pacman -Qe`，这个命令可以列出系统中所有手动指定安装的包，运行 `pacman -Qe >> list.txt` 可以将这个软件包名单保存到 `list.txt` 文件里面，再将这个文件保存到方便查看的地方，比如自己的手机里什么的，方便重装后参照这个名单将软件装回来。
+备份整个家目录，以便重装完后恢复绝大多数的个人数据。我找到一个闲置的空的移动硬盘，不是空的也没关系，只要剩余空间够放下家目录的内容就行，将其挂载在 `/mnt` 目录下，并新建一个空文件夹 `backup`。为了在恢复数据时保留所有文件的权限，我使用 rsync 命令：
 
-之后是备份整个家目录，以便重装完后恢复绝大多数的个人数据。我找到一个闲置的空的移动硬盘，不是空的也没关系，只要剩余空间够放下家目录的内容就行，将其挂载在 `/mnt` 目录下，并新建一个空文件夹 `backup`。为了在恢复数据时保留所有文件的权限，我使用 rsync 命令：
-
-```
+```sh
 sudo rsync -avrh --progress /home/ /mnt/backup/
 ```
 
 重启进入新系统后，因为还未安装图形界面，会进入 tty，因为之后要恢复家目录文件，所以这里暂时先不用普通用户登录，而是登录进 root 用户，开始着手恢复家目录文件，将之前用于备份家目录的移动硬盘重新挂载到 `/mnt` 目录，一样使用 rsync 恢复文件，只需将之前备份命令里两个路径互换位置即可：
 
-```
+```sh
 rsync -avrh --progress /mnt/backup/ /home/
 ```
 
 恢复过程同样需要较长时间，请耐心等待，恢复完成后退出 root 登录，使用普通用户登录。参照之前备份的软件包列表将所需的软件包装回来，再启用一些需要的服务，就可以正常使用了，就和重装前一样。
 
-## snapper
-快照/子卷GUI管理，没啥好说的，安装就行了
 
-`sudo pacman -S btrfs-assistant`
-
-### Arch Linux 风格特有的配置
-虽然看着很麻烦，但其实基本照做即可（假设目标分区是 /dev/nvme0n1p1）。大致的操作就是把 Snapper 创建的 @/.snapshots 删掉，替换成独立的子卷 @snapshots。
-
+### Arch Linux 风格特有的snapper配置
+虽然看着很麻烦，但其实基本照做即可（假设目标分区是 /dev/nvme0n1p5）。大致的操作就是把 Snapper 创建的 @/.snapshots 删掉，替换成独立的子卷 @snapshots。
+```sh
 sudo umount /.snapshots
 sudo rm -r /.snapshots
 sudo btrfs subvolume delete /.snapshots
 sudo mkdir /.snapshots
-sudo mount -o subvol=/ /dev/nvme0n1p1 /mnt
+sudo mount -o subvol=/ /dev/nvme0n1p5 /mnt
 sudo btrfs subvolume create /mnt/@snapshots
+```
 然后修改 /etc/fstab，参考子卷的方式增加一条将子卷 subvol=@snapshots 挂载到 /.snapshots 的即可。运行 sudo mount -a 生效。
 
-### 从快照中恢复
+### 用live恢复快照
 假设我们已经为`/`创建了快照，如果想要从快照中恢复系统，可以先进入Arch Linux live USB，然后挂载Btrfs分区
 ```sh
-sudo mount /dev/nvme0n1p6 /mnt
+sudo mount /dev/nvme0n1p5 /mnt
 cd /mnt
 sudo mv /mnt/@ /mnt/@.broken
 sudo btrfs subvolume snapshot /mnt/@snapshots/{number}/snapshot /mnt/@
 sudo btrfs subvolume delete /mnt/@.broken
 ```
 
-### Another rollback
+### 在当前系统rollback
 ```sh
-sudo mount -o subvol=/ /dev/nvme0n1p1 /mnt
+sudo mount -o subvol=/ /dev/nvme0n1p5 /mnt
 sudo btrfs subvolume snapshot /mnt/@ /mnt/@bad
 sudo btrfs subvolume delete /mnt/@
 sudo btrfs subvolume snapshot /mnt/@snapshots/要恢复的快照号/snapshot /mnt/@
 ```
-
+用sh脚本实现：
 ```sh
 #!/bin/sh
 set -e
@@ -79,25 +74,16 @@ sudo btrfs subvolume snapshot /mnt/@snapshots/$1/snapshot /mnt/@ >/dev/null
 sudo umount /mnt
 ```
 
-## Reference
-
-1.  [ArchWiki-Btrfs](https://wiki.archlinux.org/title/Btrfs)
-2.  [Working with Btrfs – General Concepts](https://fedoramagazine.org/working-with-btrfs-general-concepts/)
-3.  [Working with Btrfs – Subvolumes](https://fedoramagazine.org/working-with-btrfs-subvolumes/)
-4.  [Working with Btrfs – Snapshots](https://fedoramagazine.org/working-with-btrfs-snapshots/)
-5.  [ArchWiki-Snapper](https://wiki.archlinux.org/title/snapper)
-6.  [BTRFS snapshots and system rollbacks on Arch Linux](https://www.dwarmstrong.org/btrfs-snapshots-rollbacks/)
 # Tips about Arch
 
 ## sh
-
+后台挂起
 ```sh
 nohup onedrivegui & > /dev/null
 ```
 
-## dev
-### net
-
+## configuration
+**net**
 Using iwd as backend of NetworkManager:
 
 /etc/NetworkManager/NetworkManager.conf :
@@ -111,12 +97,11 @@ systemctl mask wpa_supplicant
 systemctl enable iwd
 ```
 
-### sound
-
-ALSA: is a set of built-in Linux kernel modules.
-PulseAudio: is a general purpose sound server intended to run as a middleware between your applications and your hardware devices, either using ALSA or OSS.
-pamixer: cli mixer of PulseAudio
-pavucontrol: gui of PulseAudio
+**sound**
+- ALSA: is a set of built-in Linux kernel modules.
+- PulseAudio: is a general purpose sound server intended to run as a middleware between your applications and your hardware devices, either using ALSA or OSS.
+- pamixer: cli mixer of PulseAudio
+- pavucontrol: gui of PulseAudio
 
 ```
 sudo pacman -S alsa-ultis pulseaudio pavucontrol
@@ -124,76 +109,34 @@ pulseaudio --check
 pulseaudio -D
 ```
 
-### light
+**light**
+```sh
 
-`sudo pacman -S acpilight`
-
-`sudo gpasswd video -a _username_ `
-
-### power
-
-```
-upower -e
-
-/org/freedesktop/UPower/devices/line_power_ACAD
-/org/freedesktop/UPower/devices/battery_BAT1
-/org/freedesktop/UPower/devices/DisplayDevice
+sudo pacman -S acpilight
+sudo gpasswd video -a _username_ # 或者
+sudo usermod -aG video _username_
 ```
 
-check battery `sudo upower -i /org/freedesktop/UPower/devices/battery_BAT1 `
+**keyboard**:
 
-### keyboard
-
-find id of touchpad
-
+find id of touchpad:
 ```
 xinput list | grep -i "Touchpad" | awk '{print $6}' | sed 's/[^0-9]//g'
 ```
 
-keys:
-
+config keys, <kbd>caps</kbd> as <kbd>escape</kbd> and <kbd>ctrl</kbd>
 ```sh
 setxkbmap -option ctrl:nocaps &
 xcape -e 'Control_L=Return' &
 xcape -e 'Alt_L=Escape' &
 ```
 
-## pacman
-
-```sh
-pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'
-```
-
-```sh
-pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse
-```
-
-```sh
-pacman -D --asdeps $(pacman -Qqe)
-```
-
-```sh
-pacman -D --asexplicit base linux linux-firmware
-```
-
-```sh
-cat explicit | sudo pacman -D --asexplicit -
-```
-
-```sh
-pacman -Qii | awk '/^MODIFIED/ {print $2}'
-```
-# Arch cli install
-
-## init
 
 ### wifi
 
 pacman -S grub efibootmgr vim iwd dhcpcd sudo networkmanager
 
 systemctl enable dhcpcd NetworkManager iwd
-
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=<你想要在efi引导时显示的名字，建议为ArchLinux>
 
 ### pacman etc
 
@@ -220,12 +163,6 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 sudo pacman -S archlinuxcn-keyring
 ```
 
-aur:
-
-```sh
-sudo pacman -S yay
-```
-
 clean pacman:
 
 ```sh
@@ -242,19 +179,12 @@ journalctl --vacuum-size=50M #限制日志
 ### Display Manager
 
 [Arch wiki for DE](https://wiki.archlinux.org/title/Display_manager)
-
-- sddm
 - lightDM
-- ly
-- GDM
-
-Or just start from tty.
 
 ### windows manger
 
-dwm: This is great! But also hard to config.
+dwm: This is great! But also difficult to config.
 
-## web
 
 ### watt-toolkit
 
@@ -290,7 +220,10 @@ sudo trust anchor --store SteamTools.Certificate.cer
 > SteamTools.Certificate.pem文件 ( 火狐支持 cer 或者 pem 格式导入 )
 > 勾选 信任由此证书颁发机构来标识网站
 
-## Basic app
+可能导致pacman更新时的curl ssl certification问题。安装证书后用
+```sh
+update-ca-trust
+```
 
 ### Terminal
 
@@ -313,82 +246,20 @@ For wayland
 
 ## apps
 
-### wechat
-
-`yay -S electronic-wechat-uos-bin `
-
-`yay -S linuxqq`
-
 ### zotero
 
 ### pdf reader
+
 `sioyek`
 
 mail services:
 ```json
 {
-    "1und1": {
-        "host": "smtp.1und1.de",
-        "port": 465,
-        "secure": true,
-        "authMethod": "LOGIN"
-    },
-    
     "Aliyun": {
         "domains": ["aliyun.com"],
         "host": "smtp.aliyun.com",
         "port": 465,
         "secure": true
-    },
-    
-    "AOL": {
-        "domains": ["aol.com"],
-        "host": "smtp.aol.com",
-        "port": 587
-    },
-
-    "Bluewin": {
-        "host": "smtpauths.bluewin.ch",
-        "domains": ["bluewin.ch"],
-        "port": 465
-    },
-
-    "DebugMail": {
-        "host": "debugmail.io",
-        "port": 25
-    },
-
-    "DynectEmail": {
-        "aliases": ["Dynect"],
-        "host": "smtp.dynect.net",
-        "port": 25
-    },
-
-    "Ethereal": {
-        "aliases": ["ethereal.email"],
-        "host": "smtp.ethereal.email",
-        "port": 587
-    },
-
-    "FastMail": {
-        "domains": ["fastmail.fm"],
-        "host": "smtp.fastmail.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "Forward Email": {
-        "aliases": ["FE", "ForwardEmail"],
-        "domains": ["forwardemail.net"],
-        "host": "smtp.forwardemail.net",
-        "port": 465,
-        "secure": true
-    },
-
-    "GandiMail": {
-        "aliases": ["Gandi", "Gandi Mail"],
-        "host": "mail.gandi.net",
-        "port": 587
     },
 
     "Gmail": {
@@ -397,25 +268,6 @@ mail services:
         "host": "smtp.gmail.com",
         "port": 465,
         "secure": true
-    },
-
-    "Godaddy": {
-        "host": "smtpout.secureserver.net",
-        "port": 25
-    },
-
-    "GodaddyAsia": {
-        "host": "smtp.asia.secureserver.net",
-        "port": 25
-    },
-
-    "GodaddyEurope": {
-        "host": "smtp.europe.secureserver.net",
-        "port": 25
-    },
-
-    "hot.ee": {
-        "host": "mail.hot.ee"
     },
 
     "Hotmail": {
@@ -432,69 +284,6 @@ mail services:
         "port": 587
     },
 
-    "Infomaniak": {
-        "host": "mail.infomaniak.com",
-        "domains": ["ik.me", "ikmail.com", "etik.com"],
-        "port": 587
-    },
-
-    "mail.ee": {
-        "host": "smtp.mail.ee"
-    },
-
-    "Mail.ru": {
-        "host": "smtp.mail.ru",
-        "port": 465,
-        "secure": true
-    },
-
-    "Mailcatch.app": {
-        "host": "sandbox-smtp.mailcatch.app",
-        "port": 2525
-    },
-
-    "Maildev": {
-        "port": 1025,
-        "ignoreTLS": true
-    },
-
-    "Mailgun": {
-        "host": "smtp.mailgun.org",
-        "port": 465,
-        "secure": true
-    },
-
-    "Mailjet": {
-        "host": "in.mailjet.com",
-        "port": 587
-    },
-
-    "Mailosaur": {
-        "host": "mailosaur.io",
-        "port": 25
-    },
-
-    "Mailtrap": {
-        "host": "smtp.mailtrap.io",
-        "port": 2525
-    },
-
-    "Mandrill": {
-        "host": "smtp.mandrillapp.com",
-        "port": 587
-    },
-
-    "Naver": {
-        "host": "smtp.naver.com",
-        "port": 587
-    },
-
-    "One": {
-        "host": "send.one.com",
-        "port": 465,
-        "secure": true
-    },
-
     "OpenMailBox": {
         "aliases": ["OMB", "openmailbox.org"],
         "host": "smtp.openmailbox.org",
@@ -506,24 +295,6 @@ mail services:
         "host": "smtp.office365.com",
         "port": 587,
         "secure": false
-    },
-
-    "OhMySMTP": {
-        "host": "smtp.ohmysmtp.com",
-        "port": 587,
-        "secure": false
-    },
-
-    "Postmark": {
-        "aliases": ["PostmarkApp"],
-        "host": "smtp.postmarkapp.com",
-        "port": 2525
-    },
-
-    "qiye.aliyun": {
-        "host": "smtp.mxhichina.com",
-        "port": "465",
-        "secure": true
     },
 
     "QQ": {
@@ -541,101 +312,6 @@ mail services:
         "secure": true
     },
 
-    "SendCloud": {
-        "host": "smtp.sendcloud.net",
-        "port": 2525
-    },
-
-    "SendGrid": {
-        "host": "smtp.sendgrid.net",
-        "port": 587
-    },
-
-    "SendinBlue": {
-        "aliases": ["Brevo"],
-        "host": "smtp-relay.brevo.com",
-        "port": 587
-    },
-
-    "SendPulse": {
-        "host": "smtp-pulse.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES": {
-        "host": "email-smtp.us-east-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-US-EAST-1": {
-        "host": "email-smtp.us-east-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-US-WEST-2": {
-        "host": "email-smtp.us-west-2.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-EU-WEST-1": {
-        "host": "email-smtp.eu-west-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-SOUTH-1": {
-        "host": "email-smtp.ap-south-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-NORTHEAST-1": {
-        "host": "email-smtp.ap-northeast-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-NORTHEAST-2": {
-        "host": "email-smtp.ap-northeast-2.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-NORTHEAST-3": {
-        "host": "email-smtp.ap-northeast-3.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-SOUTHEAST-1": {
-        "host": "email-smtp.ap-southeast-1.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "SES-AP-SOUTHEAST-2": {
-        "host": "email-smtp.ap-southeast-2.amazonaws.com",
-        "port": 465,
-        "secure": true
-    },
-
-    "Sparkpost": {
-        "aliases": ["SparkPost", "SparkPost Mail"],
-        "domains": ["sparkpost.com"],
-        "host": "smtp.sparkpostmail.com",
-        "port": 587,
-        "secure": false
-    },
-
-    "Tipimail": {
-        "host": "smtp.tipimail.com",
-        "port": 587
-    },
-
     "Yahoo": {
         "domains": ["yahoo.com"],
         "host": "smtp.mail.yahoo.com",
@@ -650,13 +326,6 @@ mail services:
         "secure": true
     },
 
-    "Zoho": {
-        "host": "smtp.zoho.com",
-        "port": 465,
-        "secure": true,
-        "authMethod": "LOGIN"
-    },
-
     "126": {
         "host": "smtp.126.com",
         "port": 465,
@@ -669,9 +338,10 @@ mail services:
         "secure": true
     }
 }
-
 ```
 
+```config
+# MODIFIED
 /etc/fstab
 /etc/group
 /etc/hosts
@@ -681,13 +351,15 @@ mail services:
 /etc/default/grub
 /etc/mkinitcpio.conf
 /etc/NetworkManager/NetworkManager.conf
+/etc/ssh/sshd_config
 ```
+
+```config
 [device]
 wifi.backend=iwd
 ```
-/etc/ssh/sshd_config
 /etc/pacman.conf
-```
+```config
 # Misc options
 #UseSyslog
 Color
@@ -702,91 +374,105 @@ LocalFileSigLevel = Never
 #RemoteFileSigLevel = Required
 ```
 /etc/zsh/zshenv
-```
+```config
 export ZDOTDIR="$HOME"/.config/zsh
 export PATH="$HOME/.local/bin:$PATH"
 ```
-# Pacman Manual PACMAN(8)
+# Pacman
 
-## SYNOPSIS
+## EXAMPLES
+pacman -U /home/user/ceofhack-0.6-1-x86_64.pkg.tar.gz
+Install ceofhack-0.6-1 package from a local file.
+
+pacman -Syu
+Update package list and upgrade all packages afterwards.
+
+pacman -Syu gpm
+Update package list, upgrade all packages, and then install gpm if it wasn’t already installed.
+
+```sh
+pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'
+```
+
+```sh
+pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse
+```
+
+```sh
+pacman -D --asdeps $(pacman -Qqe)
+```
+
+```sh
+pacman -D --asexplicit base linux linux-firmware
+```
+
+```sh
+cat explicit | sudo pacman -D --asexplicit -
+```
+
+```sh
+pacman -Qii | awk '/^MODIFIED/ {print $2}'
+```
+
+## Usage
 
 pacman **operation** [options] [targets]
 
-## OPERATIONS
-
--D, --database
-
--Q, --query
-
--R, --remove
-
--S, --sync
-
--T, --deptest
+OPERATIONS:
+- -D, --database
+- -Q, --query
+- -R, --remove
+- -S, --sync
+- -T, --deptest
 Check dependencies; this is useful in scripts such as makepkg to check installed packages. This operation will check each dependency
 specified and return a list of dependencies that are not currently satisfied on the system. This operation accepts no other options.
 Example usage: pacman -T qt "bash>=3.2".
-
--U, --upgrade
+- -U, --upgrade
 Upgrade or add package(s) to the system and install the required dependencies from sync repositories. Either a URL or file path can be
 specified. This is a “remove-then-add” process. See Upgrade Options below; also see Handling Config Files for an explanation on how
 pacman takes care of configuration files.
-
--F, --files
+- -F, --files
 Query the files database. This operation allows you to look for packages owning certain files or display files owned by certain
 packages. Only packages that are part of your sync databases are searched. See File Options below.
 
-## OPTIONS
-
--b, --dbpath **path**
+OPTIONS:
+- -b, --dbpath **path**
 Specify an alternative database location (the default is /var/lib/pacman). This should not be used unless you know what you are doing.
 NOTE: If specified, this is an absolute path, and the root path is not automatically prepended.
-
--r, --root **path**
+- -r, --root **path**
 Specify an alternative installation root (default is /). This should not be used as a way to install software into /usr/local instead
 of /usr.  NOTE: If database path or log file are not specified on either the command line or in pacman.conf(5), their default location
 will be inside this root path.  NOTE: This option is not suitable for performing operations on a mounted guest system. See --sysroot
 instead.
-
--v, --verbose
+- -v, --verbose
 Output paths such as the Root, Conf File, DB Path, Cache Dirs, etc.
-
---cachedir **dir**
+- --cachedir **dir**
 Specify an alternative package cache location (the default is /var/cache/pacman/pkg). Multiple cache directories can be specified, and
 they are tried in the order they are passed to pacman.  NOTE: This is an absolute path, and the root path is not automatically
 prepended.
-
---config **file**
+- --config **file**
 Specify an alternate configuration file.
-
---debug
+- --debug
 Display debug messages. When reporting bugs, this option is recommended to be used.
-
---gpgdir **dir**
+- --gpgdir **dir**
 Specify a directory of files used by GnuPG to verify package signatures (the default is /etc/pacman.d/gnupg). This directory should
 contain two files: pubring.gpg and trustdb.gpg.  pubring.gpg holds the public keys of all packagers.  trustdb.gpg contains a so-called
 trust database, which specifies that the keys are authentic and trusted.  NOTE: This is an absolute path, and the root path is not
 automatically prepended.
-
---hookdir **dir**
+- --hookdir **dir**
 Specify a alternative directory containing hook files (the default is /etc/pacman.d/hooks). Multiple hook directories can be specified
 with hooks in later directories taking precedence over hooks in earlier directories.  NOTE: This is an absolute path, and the root path
 is not automatically prepended.
-
---logfile **file**
+- --logfile **file**
 Specify an alternate log file. This is an absolute path, regardless of the installation root setting.
-
---noconfirm
+- --noconfirm
 Bypass any and all “Are you sure?” messages. It’s not a good idea to do this unless you want to run pacman from a script.
-
---confirm
+- --confirm
 Cancels the effects of a previous --noconfirm.
-
---disable-download-timeout
+- --disable-download-timeout
 Disable defaults for low speed limit and timeout on downloads. Use this if you have issues downloading files with proxy and/or security
 gateway.
-
---sysroot **dir**
+- --sysroot **dir**
 Specify an alternative system root. Pacman will chroot and chdir into the system root prior to running. This allows mounted guest
 systems to be properly operated on. Any other paths given will be interpreted as relative to the system root. Requires root privileges.
 
@@ -819,23 +505,7 @@ dependency checks.
 --assume-installed **package=version**
 Add a virtual package "package" with version "version" to the transaction to satisfy dependencies. This allows to disable specific
 dependency checks without affecting all dependency checks. To disable all dependency checking, see the --nodeps option.
-
---dbonly
-Adds/removes the database entry only, leaving all files in place.
-
---noprogressbar
-Do not show a progress bar when downloading files. This can be useful for scripts that call pacman and capture the output.
-
---noscriptlet
-If an install scriptlet exists, do not execute it. Do not use this unless you know what you are doing.
-
--p, --print
-Only print the targets instead of performing the actual operation (sync, remove or upgrade). Use --print-format to specify how targets
-are displayed. The default format string is "%l", which displays URLs with -S, file names with -U, and pkgname-pkgver with -R.
-
---print-format **format**
-Specify a printf-like format to control the output of the --print operation. The possible attributes are: "%n" for pkgname, "%v" for
-pkgver, "%l" for location, "%r" for repository, and "%s" for size. Implies --print.
+%l" for location, "%r" for repository, and "%s" for size. Implies --print.
 
 ### UPGRADE OPTIONS (APPLY TO -S AND -U)
 
@@ -1041,68 +711,8 @@ original=NULL, current=Y, new=Z
 The package was not previously installed, and the file already exists on the file system. Install the new file with a .pacnew extension
 and warn the user. The user must then manually merge any necessary changes into the original file.
 
-## EXAMPLES
 
-`pacman -Ss ne.hack`
-
-Search for regexp "ne.hack" in package database.
-
-pacman -S gpm
-Download and install gpm including dependencies.
-
-pacman -U /home/user/ceofhack-0.6-1-x86_64.pkg.tar.gz
-Install ceofhack-0.6-1 package from a local file.
-
-pacman -Syu
-Update package list and upgrade all packages afterwards.
-
-pacman -Syu gpm
-Update package list, upgrade all packages, and then install gpm if it wasn’t already installed.
-
-## CONFIGURATION
-See pacman.conf(5) for more details on configuring pacman using the pacman.conf file.
-
-SEE ALSO
-alpm-hooks(5), libalpm(3), makepkg(8), pacman.conf(5)
-
-See the pacman website at https://archlinux.org/pacman/ for current information on pacman and its related tools.
-
-## BUGS
-Bugs? You must be kidding; there are no bugs in this software. But if we happen to be wrong, submit a bug report with as much detail as
-possible at the Arch Linux Bug Tracker in the Pacman section.
-
-## AUTHORS
-Current maintainers:
-
-•   Allan McRae **allan@archlinux.org**
-
-•   Andrew Gregory **andrew.gregory.8@gmail.com**
-
-•   Eli Schwartz **eschwartz@archlinux.org**
-
-•   Morgan Adamiec **morganamilo@archlinux.org**
-
-Past major contributors:
-
-•   Judd Vinet **jvinet@zeroflux.org**
-
-
-•   Aurelien Foret **aurelien@archlinux.org**
-
-•   Aaron Griffin **aaron@archlinux.org**
-
-•   Dan McGee **dan@archlinux.org**
-
-•   Xavier Chantry **shiningxc@gmail.com**
-
-•   Nagy Gabor **ngaba@bibl.u-szeged.hu**
-
-•   Dave Reisner **dreisner@archlinux.org**
-
-For additional contributors, use git shortlog -s on the pacman.git repository.
-
-Pacman 6.0.2 2024-02-06 PACMAN(8)
-
+# stow MAN
 stow(8)                                                 User Contributed Perl Documentation                                                stow(8)
 
 NAME
@@ -1288,48 +898,6 @@ SEE ALSO
            info stow
 
        should give you access to the complete manual.
-
-BUGS
-       Please report bugs in Stow using the Debian bug tracking system.
-
-       Currently known bugs include:
-
-       •   The empty-directory problem.
-
-           If  package  foo includes an empty directory -- say, foo/bar -- then if no other package has a bar subdirectory, everything's fine.  If
-           another stowed package quux, has a bar subdirectory, then when stowing, targetdir/bar will be "split open" and the contents of quux/bar
-           will be individually stowed.  So far, so good. But when unstowing quux, targetdir/bar will be removed, even though foo/bar needs it  to
-           remain.   A workaround for this problem is to create a file in foo/bar as a placeholder. If you name that file .placeholder, it will be
-           easy to find and remove such files when this bug is fixed.
-
-       •   When using multiple stow directories (see "Multiple stow directories" in the info manual), Stow  fails  to  "split  open"  tree-folding
-           symlinks  (see  "Installing  packages"  in the info manual) that point into a stow directory which is not the one in use by the current
-           Stow command. Before failing, it should search the target of the link to see whether any element of the path contains a .stow file.  If
-           it finds one, it can "learn" about the cooperating stow directory to short-circuit the .stow search the next time it encounters a tree-
-           folding symlink.
-
-AUTHOR
-       This  man  page  was  originally constructed by Charles Briscoe-Smith from parts of Stow's info manual, and then converted to POD format by
-       Adam Spiers.  The info manual contains the following notice, which, as it says, applies to this manual page, too.  The text of the  section
-       entitled "GNU General Public License" can be found in the file /usr/share/common-licenses/GPL on any Debian GNU/Linux system.  If you don't
-       have  access  to a Debian system, or the GPL is not there, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
-       MA, 02111-1307, USA.
-
-COPYRIGHT
-       Copyright (C) 1993, 1994, 1995, 1996 by Bob Glickstein <bobg+stow@zanshin.com>; 2000, 2001 by Guillaume Morin; 2007 by Kahlil Hodgson; 2011
-       by Adam Spiers; and others.
-
-       Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this  permission  notice  are
-       preserved on all copies.
-
-       Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided also that
-       the section entitled "GNU General Public License" is included with the modified manual, and provided that the entire resulting derived work
-       is distributed under the terms of a permission notice identical to this one.
-
-       Permission  is  granted  to  copy and distribute translations of this manual into another language, under the above conditions for modified
-       versions, except that this permission notice may be stated in a translation approved by the Free Software Foundation.
-
-perl v5.26.1                                                        2019-07-28                                                             stow(8)
 # tmux
 
 ## prefix
@@ -1379,7 +947,6 @@ Ctrl+b l        // switch between windows
 ## pane
 
 pane in tmux is like window in vim.
-
 ```
 horizontal Ctrl+b ”               // vsplit pane
 vertical Ctrl+b %                 // split pane
@@ -1397,6 +964,7 @@ Ctrl+b !                          // move pane to a new window
 Ctrl+b :join-pane -t $window_name // move pane into a window
 Ctrl+b q                          // show pane index
 ```
+
 # ssh
 after add sshkey, if using watt to connect github, there are problems with port.
 use 
@@ -1408,10 +976,19 @@ to verify. should return
 ... You've successfully authenicated, but GitHub does not provide shell acess.
 ```
 
-`nvim ~/.ssh/config` add following to 
+add following to `~/.ssh/config` 
 ```
 Host github.com
 Hostname ssh.github.com
 Port 443
 User git
 ```
+
+# Reference
+
+1.  [ArchWiki-Btrfs](https://wiki.archlinux.org/title/Btrfs)
+2.  [Working with Btrfs – General Concepts](https://fedoramagazine.org/working-with-btrfs-general-concepts/)
+3.  [Working with Btrfs – Subvolumes](https://fedoramagazine.org/working-with-btrfs-subvolumes/)
+4.  [Working with Btrfs – Snapshots](https://fedoramagazine.org/working-with-btrfs-snapshots/)
+5.  [ArchWiki-Snapper](https://wiki.archlinux.org/title/snapper)
+6.  [BTRFS snapshots and system rollbacks on Arch Linux](https://www.dwarmstrong.org/btrfs-snapshots-rollbacks/)
