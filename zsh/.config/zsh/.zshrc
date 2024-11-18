@@ -94,6 +94,9 @@ alias gpatch="git format-patch -1"
 alias gc="git clone "
 alias gc1="git clone --depth 1"
 
+alias rmtex="rm *.aux *.log *.out  *.synctex.gz"
+# alias rmtex="rm *.aux *.log *.out *.toc  *.blg *.bcf *.run.xml *.synctex.gz *.fdb_latexmk *.fls"
+
 # tmux
 # alias tn="tmux new -s "
 # alias ta="tmux attach -t "
