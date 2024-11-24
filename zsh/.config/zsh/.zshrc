@@ -133,9 +133,9 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias syyu="paru -Syyu"
 alias tsyyu="sudo timeshift --create --comment 'before syyu' && paru -Syyu && sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias qdtq="pacman -Qdttq | sudo pacman -Rscn -"
-alias Qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
-alias Sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
+alias qei="pacman -Qqe | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+alias qi="pacman -Qq | fzf --preview 'pacman -Qiil {}' --layout=reverse --bind 'enter:execute(pacman -Qiil {} | less)'"
+alias sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'enter:execute(pacman -Si {} | less)'"
 
 # double tap Esc to add sudo
 sudo-command-line() {
