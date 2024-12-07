@@ -5,9 +5,9 @@ fi
 # export LANGUAGE=en_US:zh_CN
 # export LANGUAGE=zh_CN:en_US
 # export LANGUAGE=en_US
-# export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 # export PATH="$HOME/.config/dwm/dwm_functions:$HOME/.local/bin:$PATH"  
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+# PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export EDITOR=nvim
 # export PAGER=sioyek
 # export SUDO_ASKPASS="$HOME/.local/bin/rpass"
@@ -81,10 +81,10 @@ alias vv="vim ."
 alias nf="fzf --preview 'less {}' --bind 'enter:become(nvim {})'"
 alias vf="fzf --preview 'less {}' --bind 'enter:become(vim {})'"
 
-# alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 # alias mininvim="NVIM_APPNAME=mini nvim"
 # alias astro="NVIM_APPNAME=astro nvim"
-# alias kicknvim="NVIM_APPNAME=kicknvim nvim"
+# alias kick="NVIM_APPNAME=kick nvim"
 # alias trynvim="NVIM_APPNAME=trynvim nvim"
 
 # git
@@ -94,7 +94,7 @@ alias gpatch="git format-patch -1"
 alias gc="git clone "
 alias gc1="git clone --depth 1"
 
-alias rmtex="rm *.aux *.log *.out  *.synctex.gz"
+# alias rmtex="rm *.aux *.log *.out  *.synctex.gz"
 # alias rmtex="rm *.aux *.log *.out *.toc  *.blg *.bcf *.run.xml *.synctex.gz *.fdb_latexmk *.fls"
 
 # tmux

@@ -8,11 +8,11 @@
 # Import Current Theme
 theme="~/.config/rofi/themes/quick.rasi"
 
-win_width='690px'
+win_width='500px'
 # Theme Elements
-prompt='Applications'
-list_col='3'
-list_row='3'
+prompt='App'
+list_col='2'
+list_row='4'
 
 # CMDs (add your apps here)
 web_cmd='microsoft-edge-stable'
@@ -76,7 +76,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9\n" | rofi_cmd
+  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n" | rofi_cmd
 }
 
 # Actions
@@ -107,7 +107,7 @@ case ${chosen} in
     $option_8)
     ${cmd_8}
         ;;
-    $option_9)
-    ${cmd_9}
-        ;;
+    # $option_9)
+    # ${cmd_9}
+    #     ;;
 esac
