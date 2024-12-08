@@ -114,7 +114,6 @@ sort_bookmarks_by_location	1
 
 ## Semicolon-separated list of command to execute upon sioyek startup
 #startup_commands    toggle_visual_scroll;toggle_dark_mode
-
 ## Background color to use when executing `toggle_custom_color`
 custom_background_color 0.180 0.204 0.251
 ## Text color to use when executing `toggle_custom_color`

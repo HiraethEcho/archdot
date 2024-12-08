@@ -2,5 +2,15 @@ set synctex true
 # set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %{line} '%set synctex true
 # set synctex-editor-command "/home/hiraeth/.local/share/nvim/mason/bin/texlab inverse-search -i %{input} -l %{line}"
 # set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
-map D set "first-page-column 1:1"
-map <C-d> set "first-page-column 1:2"
+# map D set "first-page-column 1:1"
+# map <C-d> set "first-page-column 1:2"
+map <C-6> feedkeys ":set recolor-lightcolor \#c0d3d7<Return>" #仿墨水屏
+map <C-5> feedkeys ":set recolor-lightcolor \#eefaee<Return>" #淡绿
+set show-v-scrollbar true
+set adjust-open width
+map F toggle_fullscreen
+map [fullscreen] F toggle_fullscreen
+map r reload
+set show-scrollbars true
+set window-title-basename true
+set window-title-page true
