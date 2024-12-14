@@ -36,6 +36,6 @@ export UNISON="$XDG_DATA_HOME"/unison
 
 # export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'  --height 60% --reverse --border"
 # export FZF_DEFAULT_OPTS=" --height 60% --reverse --border"
-export FZF_DEFAULT_OPTS="--reverse --border --bind=ctrl-d:preview-down,ctrl-u:preview-up"
+export FZF_DEFAULT_OPTS="--reverse --border --bind=ctrl-d:preview-down,ctrl-u:preview-up --preview 'bat {}'"
 export FZF_COMPLETION_OPTS='--border --info=inline'
 # export FZF_COMPLETION_TRIGGER='~~'

@@ -41,5 +41,7 @@ wallpaper_change &
 killall dwmblocks
 dwmblocks &
 
+xnl
+
 # if [ -z $(pidof dwmblocks) ]; then
 # fi
