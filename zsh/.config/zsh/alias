@@ -1,5 +1,7 @@
 # alias
-alias zshrc="nvim ~/.config/zsh/.zshrc"
+alias zrc="nvim ~/.config/zsh/.zshrc"
+alias zalias="nvim ~/.config/zsh/alias"
+alias zexport="nvim ~/.config/zsh/export"
 alias D="sx exec dwm"
 # alias G="sx exec gnome-session"
 # alias K="sx exec startplasma-x11"
