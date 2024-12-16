@@ -1,55 +1,28 @@
 #!/bin/bash
 
 # Define the two folders to synchronize
-hexo="/home/hiraeth/Desktop/github/hexo/source/_posts/"
-wiki="/home/hiraeth/Desktop/github/wiki/docs/"
-obhexo="/home/hiraeth/Documents/obsidian/hexo/"
-obwiki="/home/hiraeth/Documents/obsidian/wiki/"
+hexo="$HOME/Desktop/github/hexo/source/_posts/"
+wiki="$HOME/Desktop/github/wiki/docs/"
+obhexo="$HOME/Documents/obsidian/hexo/"
+obwiki="$HOME/Documents/obsidian/wiki/"
 
 # Check if inotify-tools and unison are installed
 if ! command -v inotifywait &>/dev/null; then
-    echo "inotify-tools is not installed. Please install it:"
-    echo "Ubuntu/Debian: sudo apt install inotify-tools"
-    echo "Arch Linux: sudo pacman -S inotify-tools"
+    notify-send "inotify-tools is not installed. Please install it:"
+    notify-send "Ubuntu/Debian: sudo apt install inotify-tools"
+    notify-send "Arch Linux: sudo pacman -S inotify-tools"
     exit 1
 fi
 
 if ! command -v unison &>/dev/null; then
-    echo "Unison is not installed. Please install it:"
-    echo "Ubuntu/Debian: sudo apt install unison"
-    echo "Arch Linux: sudo pacman -S unison"
+    notify-send "Unison is not installed. Please install it:"
+    notify-send "Ubuntu/Debian: sudo apt install unison"
+    notify-send "Arch Linux: sudo pacman -S unison"
     exit 1
 fi
 
-# Function to trigger Unison synchronization
-sync_folders() {
-    echo "Changes detected. Synchronizing folders..."
-    unison "$wiki" "$obwiki" \
-        -auto \
-        -batch \
-        -prefer newer \
-        -ignore "Path stylesheets" \
-        -ignore "Path javascripts" \
-        -fastcheck true \
-        -log=true \
-        -logfile "$HOME/.cache/unison_sync.log"
-    unison "$hexo" "$obhexo" \
-        -auto \
-        -batch \
-        -prefer newer \
-        -fastcheck true \
-        -log=true \
-        -logfile "$HOME/.cache/unison_sync.log"
-
-    if [ $? -eq 0 ]; then
-        echo "Synchronization completed successfully."
-    else
-        echo "Synchronization failed. Check logs for details."
-    fi
-}
-
 sync_hexo() {
-    echo "Changes detected. Synchronizing folders..."
+    notify-send " " "Synchronizing folders <b><span color='red'>hexo</span></b>"
     unison "$hexo" "$obhexo" \
         -auto \
         -batch \
@@ -58,15 +31,13 @@ sync_hexo() {
         -log=true \
         -logfile "$HOME/.cache/unison_sync.log"
 
-    if [ $? -eq 0 ]; then
-        echo "Synchronization completed successfully."
-    else
-        echo "Synchronization failed. Check logs for details."
+    if [ $? -ne 0 ]; then
+        notify-send -u critical "Synchronization failed. Check logs for details."
     fi
 }
 
 sync_wiki() {
-    echo "Changes detected. Synchronizing folders..."
+    notify-send " " "Synchronizing folders <b><span color='red'>wiki</span></b>"
     unison "$wiki" "$obwiki" \
         -auto \
         -batch \
@@ -77,24 +48,69 @@ sync_wiki() {
         -log=true \
         -logfile "$HOME/.cache/unison_sync.log"
 
-    if [ $? -eq 0 ]; then
-        echo "Synchronization completed successfully."
-    else
-        echo "Synchronization failed. Check logs for details."
+    if [ $? -ne 0 ]; then
+        notify-send -u critical "Synchronization failed. Check logs for details."
     fi
 }
+# Function to trigger Unison synchronization
+sync_folders() {
+    # notify-send "Changes detected. Synchronizing folders..."
+    # unison "$wiki" "$obwiki" \
+    #     -auto \
+    #     -batch \
+    #     -prefer newer \
+    #     -ignore "Path stylesheets" \
+    #     -ignore "Path javascripts" \
+    #     -fastcheck true \
+    #     -log=true \
+    #     -logfile "$HOME/.cache/unison_sync.log"
+    # unison "$hexo" "$obhexo" \
+    #     -auto \
+    #     -batch \
+    #     -prefer newer \
+    #     -fastcheck true \
+    #     -log=true \
+    #     -logfile "$HOME/.cache/unison_sync.log"
+    #
+    # if [ $? -eq 0 ]; then
+    #     notify-send "Synchronization completed successfully."
+    # else
+    #     notify-send "Synchronization failed. Check logs for details."
+    # fi
+    sync_hexo
+    sync_wiki
+}
+
 
 # Initial synchronization
-echo "Performing initial synchronization..."
+notify-send "Performing initial synchronization..."
+
 sync_folders
 
 # Monitor the folders for changes using inotifywait
-echo "Monitoring $wiki $obwiki $hexo $obhexo for changes..."
+# notify-send "Monitoring $wiki $obwiki $hexo $obhexo for changes..."
+# while true; do
+#     # Monitor both folders for file modifications, creations, deletions
+#     notify-send "monitoring $hexo $wiki $obhexo $obwiki"
+#     inotifywait -r -e modify,create,delete "$hexo" "$wiki"  "$obhexo" "$obwiki"
+#     sync_folders
+# done
+
+monitor_hexo() {
+    notify-send "monitoring hexo"
 while true; do
-    # Monitor both folders for file modifications, creations, deletions
-    echo "monitoring $hexo $wiki $obhexo $obwiki"
-    inotifywait -r -e modify,create,delete "$hexo" "$wiki"  "$obhexo" "$obwiki"
-    # sync_wiki
-    # sync_hexo
-    sync_folders
+    inotifywait -r -e modify,create,delete "$hexo" "$obhexo"
+    sync_hexo
 done
+}
+
+monitor_wiki() {
+  notify-send "monitoring wiki"
+  while true; do
+  inotifywait -r -e modify,create,delete "$wiki" "$obwiki"
+  sync_wiki
+  done
+}
+
+monitor_wiki &
+monitor_hexo &
