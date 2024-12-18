@@ -1,4 +1,5 @@
 set synctex true
+set synctex-editor-command "vim -v --not-a-term -T dumb -c \"VimtexInverseSearch %{line}:%{column} '%{input}'\""
 # set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %{line} '%set synctex true
 # set synctex-editor-command "/home/hiraeth/.local/share/nvim/mason/bin/texlab inverse-search -i %{input} -l %{line}"
 # set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"

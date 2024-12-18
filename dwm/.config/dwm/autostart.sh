@@ -41,7 +41,11 @@ wallpaper_change &
 killall dwmblocks
 dwmblocks &
 
-xnl
+xnl &
+
+# if [ -z "$GNOME_KEYRING_CONTROL" ]; then
+#     eval $(gnome-keyring-daemon --start)
+# fi
 
 # if [ -z $(pidof dwmblocks) ]; then
 # fi

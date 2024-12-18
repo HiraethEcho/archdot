@@ -22,7 +22,7 @@ if ! command -v unison &>/dev/null; then
 fi
 
 sync_hexo() {
-    notify-send " " "Synchronizing folders <b><span color='red'>hexo</span></b>"
+    notify-send "Synchronizing " " folders <b><span color='green'>hexo</span></b>"
     unison "$hexo" "$obhexo" \
         -auto \
         -batch \
@@ -33,11 +33,13 @@ sync_hexo() {
 
     if [ $? -ne 0 ]; then
         notify-send -u critical "Synchronization failed. Check logs for details."
+      else
+        notify-send "Succed"
     fi
 }
 
 sync_wiki() {
-    notify-send " " "Synchronizing folders <b><span color='red'>wiki</span></b>"
+    notify-send "Synchronizing " " folders <b><span color='green'>wiki</span></b>"
     unison "$wiki" "$obwiki" \
         -auto \
         -batch \
@@ -50,6 +52,8 @@ sync_wiki() {
 
     if [ $? -ne 0 ]; then
         notify-send -u critical "Synchronization failed. Check logs for details."
+      else
+        notify-send "Succed"
     fi
 }
 # Function to trigger Unison synchronization

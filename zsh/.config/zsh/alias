@@ -74,7 +74,7 @@ alias sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'e
 # fzf
 alias fn="fzf --preview 'bat {}' --bind='enter:execute(nvim {+}),ctrl-d:preview-down,ctrl-u:preview-up'"
 alias ftree="realpath * | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='ftree: ' --reverse --preview 'lsd --tree --depth 1 {}'"
-alias fptree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='reverse depends: ' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
+alias fprtree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='required by' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
+alias fptree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='depends on: ' --preview-window=70%:bottom: --preview 'pactree -d2 {}'"
 alias fpinfo="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
-alias fpcache="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-[0-9]*.pkg.tar.zst'"
 ### abbreviation ###

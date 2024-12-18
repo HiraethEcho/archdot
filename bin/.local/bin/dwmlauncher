@@ -1,0 +1,52 @@
+#!/bin/bash
+case "$1" in
+    0) 
+      case "$2" in 
+        1) rofi_allapps ;;
+        2) kitty -e btop ;;
+        3) rofi_powermenu ;;
+      esac
+      ;;
+    1) 
+      case "$2" in 
+        1) microsoft-edge-stable ;;
+        2) onedrivegui ;;
+        3) wechat-universal ;;
+      esac
+      ;;
+    2) 
+      case "$2" in 
+        1) kitty ;;
+        2) obsidian ;;
+        3) zotero ;;
+      esac
+      ;;
+    3) 
+      case "$3" in 
+        1) thunar ;;
+        2) btop ;;
+        3) neovide ;;
+      esac
+      ;;
+    4) 
+      case "$4" in 
+        1) gitg ;;
+        2) btop ;;
+        3) neovide ;;
+      esac
+      ;;
+    5) 
+      case "$5" in 
+        1) kitty ;;
+        2) btop ;;
+        3) neovide ;;
+      esac
+      ;;
+    6) 
+      case "$6" in 
+        1) xnl ;;
+        2) xoff ;;
+        3) xnr ;;
+      esac
+      ;;
+esac
