@@ -1,0 +1,8 @@
+#!/bin/bash
+case "$1" in
+  1) wallpaper_change ;;
+  2) rofi -show run ;;
+  3) rofi_allapps ;;
+  4) xbacklight -inc 5; pkill -SIGUSR1 dwmblocks ;;
+  5) xbacklight -dec 5; pkill -SIGUSR1 dwmblocks ;;
+esac
