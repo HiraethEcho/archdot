@@ -27,9 +27,19 @@ local function match(line)
 end
 
 local function root(cwd)
+	local is_worktree = function(url)
+		local file, head = io.open(tostring(url)), nil
+		if file then
+			head = file:read(8)
+			file:close()
+		end
+		return head == "gitdir: "
+	end
+
 	repeat
-		local cha = fs.cha(cwd:join(".git"))
-		if cha and cha.is_dir then
+		local next = cwd:join(".git")
+		local cha = fs.cha(next)
+		if cha and (cha.is_dir or is_worktree(next)) then
 			return tostring(cwd)
 		end
 		cwd = cwd:parent()
@@ -144,8 +154,11 @@ local function setup(st, opts)
 	end, opts.order)
 end
 
-local function fetch(self)
-	local cwd = self.files[1].url:parent()
+local function fetch(self, job)
+	-- TODO: remove this once Yazi 0.4 is released
+	job = job or self
+
+	local cwd = job.files[1].url:parent()
 	local repo = root(cwd)
 	if not repo then
 		remove(tostring(cwd))
@@ -153,7 +166,7 @@ local function fetch(self)
 	end
 
 	local paths = {}
-	for _, f in ipairs(self.files) do
+	for _, f in ipairs(job.files) do
 		paths[#paths + 1] = tostring(f.url)
 	end
 
@@ -179,7 +192,7 @@ local function fetch(self)
 		end
 	end
 
-	if self.files[1].cha.is_dir then
+	if job.files[1].cha.is_dir then
 		ya.dict_merge(changed, bubble_up(changed))
 		ya.dict_merge(changed, propagate_down(ignored, cwd, Url(repo)))
 	else

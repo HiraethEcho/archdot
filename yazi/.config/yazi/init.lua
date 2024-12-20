@@ -19,10 +19,11 @@ Header:children_add(function()
   return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
 end, 500, Header.LEFT)
 
--- require("git"):setup({
---   show_branch = true,
--- })
+require("git"):setup({
+  show_branch = true,
+})
 
 require("session"):setup {
 	sync_yanked = true,
 }
+require("eza-preview"):setup()
