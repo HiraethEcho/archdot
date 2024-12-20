@@ -9,6 +9,7 @@ export EDITOR=nvim
 # export PAGER=sioyek
 # export SUDO_ASKPASS="$HOME/.local/bin/rpass"
 export TERMINAL=kitty
+export TERM=kitty
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
