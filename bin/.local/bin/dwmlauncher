@@ -23,8 +23,8 @@ case "$1" in
     ;;
   4) # clouds & sync
     case "$2" in 
-      1) ;;
-      2) rclone-browser ;;#koofr rclone
+      # 1) alist ;;
+      2) unison-gui ;;
       3) gitg ;;
       4) ;; #upload
       5) ;; #download
