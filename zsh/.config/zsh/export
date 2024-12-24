@@ -1,4 +1,3 @@
-
 # export LANGUAGE=en_US:zh_CN
 # export LANGUAGE=zh_CN:en_US
 # export LANGUAGE=en_US
@@ -24,6 +23,16 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export GOPROXY=goproxy.io
 export UNISON="$XDG_CONFIG_HOME/unison"
+
+
+# The meaning of these options can be found in man page of `zshoptions`.
+export HISTSIZE=1000
+export SAVEHIST=1000
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt EXTENDED_HISTORY  # record command start time
 # fcitx5
 # export GTK_IM_MODULE=fcitx5
 # export QT_IM_MODULE=fcitx5

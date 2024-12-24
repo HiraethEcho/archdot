@@ -2,19 +2,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-HISTSIZE=1000
-SAVEHIST=1000
 bindkey -v
 # source
 source $HOME/.config/zsh/export
 source $HOME/.config/zsh/alias
 
+# plugins
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source <(fzf --zsh)
-
 # eval $(thefuck --alias f)
 eval "$(zoxide init zsh)"
 eval "$(gh copilot alias -- zsh)"

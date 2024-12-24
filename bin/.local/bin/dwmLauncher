@@ -1,0 +1,37 @@
+#!/bin/bash
+case "$1" in
+  1) # general
+    case "$2" in 
+      1) rofi_allapps ;;
+      2) kitty -e btop ;;
+      3) rofi_powermenu ;;
+    esac
+    ;;
+  2) # win app
+    case "$2" in 
+      1) microsoft-edge-stable ;;
+      # 2) onedrivegui ;;
+      3) wechat-universal ;;
+    esac
+    ;;
+  3) # files
+    case "$2" in 
+      1) thunar ;;
+      2) obsidian ;;
+      3) zotero ;;
+      4) zotero ;;
+    esac
+    ;;
+  4) # clouds & sync
+    case "$2" in 
+      # 1) alist ;;
+      # 2) unison-gui ;;
+      # 3) gitg ;;
+      # 1) rclone sync ~/Documents/ koofr:/kDocuments/ --suffix "_remote" --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send "push finished";; #upload
+      # 2) rclone sync ~/Documents/ koofr:/kDocuments/ --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send "force push" ;; #upload
+      # 3) rclone sync koofr:/kDocuments/ ~/Documents/ --suffix "_local" --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send "pull finished";; #downloads
+      # 6) rclone sync ~/Documents/ koofr:/kDocuments/ --suffix "_remote" --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P;; #upload
+      # 5) rclone sync koofr:/kDocuments/ ~/Documents/ --suffix "_local" --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P;; #downloads
+    esac
+    ;;
+esac

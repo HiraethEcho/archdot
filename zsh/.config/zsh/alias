@@ -1,4 +1,5 @@
 # alias
+
 alias zrc="nvim ~/.config/zsh/.zshrc"
 alias zalias="nvim ~/.config/zsh/alias"
 alias zexport="nvim ~/.config/zsh/export"
@@ -17,6 +18,7 @@ alias vf="fzf --preview 'bat {}' --bind 'enter:become(vim {})'"
 
 # alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mn="NVIM_APPNAME=mininvim nvim"
+alias nativim="NVIM_APPNAME=nativim nvim"
 # alias astro="NVIM_APPNAME=astro nvim"
 # alias kick="NVIM_APPNAME=kick nvim"
 # alias trynvim="NVIM_APPNAME=trynvim nvim"
@@ -62,6 +64,11 @@ alias weather="curl 'v2d.wttr.in/Beijing'"
 alias hso="hexo clean ; hexo g ; hexo s -o"
 alias hs="hexo clean ; hexo g ; hexo s"
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+
+# rclone
+alias rdpush="rclone sync ~/Documents/ koofr:/kDocuments/ --suffix '_remote' --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send 'rclone' 'push ~/Documents to kDocuments'"
+alias rdpushf="rclone sync ~/Documents/ koofr:/kDocuments/  --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send 'rclone' 'force push ~/Documents to kDocuments'"
+alias rdpull="rclone sync koofr:/kDocuments/ ~/Documents/ --suffix '_local' --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -P && notify-send 'rclone' 'pull from kDocuments to ~/Documents'"
 
 # pacman and yay
 alias syyu="paru -Syyu"
