@@ -22,9 +22,10 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # export _ZL_DATA="$XDG_DATA_HOME/zlua"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export GOPROXY=goproxy.io
-export UNISON="$XDG_CONFIG_HOME/unison"
-
-
+# export UNISON="$XDG_CONFIG_HOME/unison"
+export UNISON="$XDG_DATA_HOME"/unison
+# export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 # The meaning of these options can be found in man page of `zshoptions`.
 export HISTSIZE=1000
 export SAVEHIST=1000

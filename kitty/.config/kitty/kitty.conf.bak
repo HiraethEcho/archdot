@@ -251,6 +251,7 @@ disable_ligatures cursor
 #: }}}
 
 #: Cursor customization {{{
+
 cursor none
 
 #: Default cursor color. If set to the special value none the cursor
@@ -2530,9 +2531,3 @@ shell_integration no-title
 #: }}}
 
 
-
-
-# BEGIN_KITTY_THEME
-# Everforest Dark Soft
-include current-theme.conf
-# END_KITTY_THEME
