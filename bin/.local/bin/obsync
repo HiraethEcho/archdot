@@ -27,7 +27,7 @@ sync_hexo() {
         -auto \
         -batch \
         -prefer newer \
-        -copyonconflict true \
+        -copyonconflict \
         -fastcheck true \
         -log=true \
         -logfile "$HOME/.cache/unison_sync.log"
