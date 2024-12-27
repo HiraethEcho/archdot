@@ -2,6 +2,7 @@
 + projects/
 - */.obsidian/
 - WeChat_Data/
+- .git/
 - */.git/
 - *.log
 - *.aux
@@ -11,3 +12,4 @@
 - *.toc
 - *.out
 - *.xdv
+- .gitignore
