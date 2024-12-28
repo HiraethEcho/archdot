@@ -66,8 +66,10 @@
 
 "rofi_winx"
   Mod4 + x
+"slock & sleep .5; xset dpms force off"
+  Mod4 + l
 
-"kitty -e btop"
+"st -e btop"
   Control+Shift + Escape
 ## Control+Shift+a  release event starts rxvt
 #"rxvt"
