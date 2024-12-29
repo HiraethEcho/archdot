@@ -8,8 +8,8 @@ sort_by        = "alphabetical"
 sort_sensitive = false
 sort_reverse   = false
 sort_dir_first = true
-linemode       = "none"
-show_hidden    = false
+linemode       = "mtime"
+show_hidden    = true
 show_symlink   = true
 scrolloff      = 5
 
@@ -20,6 +20,7 @@ max_height      = 900
 cache_dir       = ""
 image_filter    = "triangle"
 image_quality   = 75
+image_delay     = 0
 sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
@@ -43,8 +44,8 @@ reveal = [
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-	{ run = 'unar "$1"', desc = "Extract here", for = "unix" },
-	{ run = 'unar "%1"', desc = "Extract here", for = "windows" },
+	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
 ]
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
@@ -65,6 +66,7 @@ rules = [
 	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [ "extract", "reveal" ] },
 
 	{ mime = "application/json", use = [ "edit", "reveal" ] },
+	{ mime = "application/postscripts", use = [ "edit","open", "reveal" ] },
 	{ mime = "*/javascript",     use = [ "edit", "reveal" ] },
 
 	{ mime = "*", use = [ "open", "reveal" ] },
@@ -79,7 +81,16 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
-
+prepend_previewers = [
+  { name = "*.md", run = "mdcat" },
+	# Archive previewer
+	{ mime = "application/*zip",            run = "ouch" },
+	{ mime = "application/x-tar",           run = "ouch" },
+	{ mime = "application/x-bzip2",         run = "ouch" },
+	{ mime = "application/x-7z-compressed", run = "ouch" },
+	{ mime = "application/x-rar",           run = "ouch" },
+	{ mime = "application/x-xz",            run = "ouch" },
+]
 preloaders = [
 	# Image
 	{ mime = "image/*", run = "image" },
@@ -108,6 +119,7 @@ previewers = [
 	# Fallback
 	{ name = "*", run = "file" },
 ]
+
 
 [[plugin.prepend_fetchers]]
 id   = "git"

@@ -3,10 +3,14 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [manager]
+prepend_keymap = [
+  { on = ["C"], run = "plugin ouch --args=zip", desc = "Compress with ouch" },
+  { on = ["g","i"], run = "plugin lazygit", desc = "run lazygit" },
+	# { on = [ "E" ], run = "plugin eza-preview",  desc = "Toggle tree/list dir preview" },
+]
 
 keymap = [
   { on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
-	{ on = [ "E" ], run = "plugin eza-preview",  desc = "Toggle tree/list dir preview" },
   # { on = [ "<C-[>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
   { on = [ "Q" ],     run = "quit",               desc = "Exit the process" },
   { on = [ "q" ],     run = "quit --no-cwd-file", desc = "Exit the process without writing cwd-file" },
