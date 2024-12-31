@@ -1,6 +1,7 @@
 + notes/
 + projects/
-- */.obsidian/
+- **/.obsidian/
+- **/.trash/
 - WeChat_Data/
 - .git/
 - */.git/
