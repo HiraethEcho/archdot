@@ -66,8 +66,8 @@ alias hs="hexo clean ; hexo g ; hexo s"
 alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # rclone
-alias rdpush="rclone sync ~/Documents/ koofr:/kDocuments/  --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -i && notify-send 'rclone' 'force push ~/Documents to kDocuments'"
-alias rdpull="rclone sync koofr:/kDocuments/ ~/Documents/ --suffix '_local' --suffix-keep-extension --track-renames --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -i && notify-send 'rclone' 'download from kDocuments to ~/Documents'"
+alias rdpush="rclone sync ~/Documents/ koofr:/kDocuments/  --track-renames --filter-from ~/.config/rclone/filter-list.txt --no-update-dir-modtime --no-update-modtime --transfers 20 -i && notify-send 'rclone' 'force push ~/Documents to kDocuments'"
+alias rdpull="rclone sync koofr:/kDocuments/ ~/Documents/ --backup-dir ~/Documents/conflicts --suffix '_local' --suffix-keep-extension --track-renames  --no-update-dir-modtime --no-update-modtime --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -i && notify-send 'rclone' 'download from kDocuments to ~/Documents'"
 
 # pacman and yay
 alias syyu="paru -Syyu"
@@ -80,7 +80,7 @@ alias sl="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --bind 'e
 # fzf
 alias fn="fzf --preview 'bat {}' --bind='enter:execute(nvim {+}),ctrl-d:preview-down,ctrl-u:preview-up'"
 alias ftree="realpath * | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='ftree: ' --reverse --preview 'lsd --tree --depth 1 {}'"
-alias fprtree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='required by' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
-alias fptree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='depends on: ' --preview-window=70%:bottom: --preview 'pactree -d2 {}'"
+alias fprtree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='depends on ' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
+alias fptree="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='required by ' --preview-window=70%:bottom: --preview 'pactree -d2 {}'"
 alias fpinfo="pacman -Qq | fzf --bind=ctrl-d:preview-down,ctrl-u:preview-up --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
 ### abbreviation ###
