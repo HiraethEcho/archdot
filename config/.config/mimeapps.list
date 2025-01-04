@@ -1,0 +1,23 @@
+[Default Applications]
+x-scheme-handler/mailto=microsoft-edge.desktop
+x-scheme-handler/http=xfce4-web-browser.desktop
+x-scheme-handler/https=xfce4-web-browser.desktop
+application/pdf=org.pwmt.zathura.desktop
+text/x-tex=nvim.desktop
+image/vnd.djvu+multipage=sioyek.desktop
+text/markdown=nvim.desktop
+text/plain=nvim.desktop
+application/postscript=neovide.desktop
+text/html=microsoft-edge.desktop
+
+[Added Associations]
+x-scheme-handler/mailto=xfce4-mail-reader.desktop;
+x-scheme-handler/http=xfce4-web-browser.desktop;
+x-scheme-handler/https=xfce4-web-browser.desktop;
+application/pdf=microsoft-edge.desktop;
+image/vnd.djvu+multipage=sioyek.desktop;
+application/x-bittorrent=motrix.desktop;
+text/markdown=neovide.desktop;nvim.desktop;
+text/plain=nvim.desktop;
+text/x-tex=nvim.desktop;
+application/postscript=neovide.desktop;

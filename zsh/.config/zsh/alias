@@ -16,7 +16,7 @@ alias vv="vim ."
 alias nf="fzf --preview 'bat {}' --bind 'enter:become(nvim {})'"
 alias vf="fzf --preview 'bat {}' --bind 'enter:become(vim {})'"
 
-# alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias mn="NVIM_APPNAME=mininvim nvim"
 alias nativim="NVIM_APPNAME=nativim nvim"
 # alias astro="NVIM_APPNAME=astro nvim"
@@ -67,7 +67,7 @@ alias sg="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # rclone
 alias rdpush="rclone sync ~/Documents/ koofr:/kDocuments/  --track-renames --filter-from ~/.config/rclone/filter-list.txt --no-update-dir-modtime --no-update-modtime --transfers 20 -i && notify-send 'rclone' 'force push ~/Documents to kDocuments'"
-alias rdpull="rclone sync koofr:/kDocuments/ ~/Documents/ --backup-dir ~/Documents/conflicts --suffix '_local' --suffix-keep-extension --track-renames  --no-update-dir-modtime --no-update-modtime --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -i && notify-send 'rclone' 'download from kDocuments to ~/Documents'"
+alias rdpull="rclone sync koofr:/kDocuments/ ~/Documents/ --backup-dir ~/conflicts --suffix '_local' --suffix-keep-extension --track-renames  --no-update-dir-modtime --no-update-modtime --filter-from ~/.config/rclone/filter-list.txt --transfers 20 -i && notify-send 'rclone' 'download from kDocuments to ~/Documents'"
 
 # pacman and yay
 alias syyu="paru -Syyu"
