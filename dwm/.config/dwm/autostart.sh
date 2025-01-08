@@ -20,8 +20,8 @@ dunst &
 # if [ -z $(pidof picom)]; then
 # fi
 
-killall blueman-applet
-blueman-applet &
+# killall blueman-applet
+# blueman-applet &
 # killall blueberry-tray
 # blueberry-tray &
 # if [ -z $(pidof blueberry-tray) ]; then
@@ -33,7 +33,7 @@ blueman-applet &
 # killall wallpaper_loop
 # wallpaper_loop &
 
-wallpaper_change &
+# wallpaper_change &
 
 # killall battery_warning 
 # battery_warning &
@@ -41,7 +41,7 @@ wallpaper_change &
 killall dwmblocks
 dwmblocks &
 
-# xnl &
+xnb &
 
 # if [ -z "$GNOME_KEYRING_CONTROL" ]; then
 #     eval $(gnome-keyring-daemon --start)

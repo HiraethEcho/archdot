@@ -6,13 +6,16 @@
 
 # Dependencies: xbacklight
 case $BLOCK_BUTTON in
-  1) xbacklight $(( ($(xbacklight -get) + 20) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-	# 2) xbacklight 75 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-	# 2) wallpaper_change ;;
-  2) xbacklight $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-  3) xbacklight $(( ($(xbacklight -get) + 80) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-  4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
-  5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  1) light -S $(( ($(xbacklight -get) + 20) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  2) light -S $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  3) light -S $(( ($(xbacklight -get) + 80) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  4) light -A 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  5) light -U 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  # 1) xbacklight $(( ($(xbacklight -get) + 20) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  # 2) xbacklight $(rofi -dmenu -config ~/.config/rofi/themes/passwd.rasi) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  # 3) xbacklight $(( ($(xbacklight -get) + 80) % 100  )) ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  # 4) xbacklight -inc 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
+  # 5) xbacklight -dec 5 ; notify-send -h int:value:$(xbacklight -get) "Light" ;;
   6) nohup kitty -e nvim "$0" > /dev/null &;;
 esac
 printf "^c#ffd900^"
